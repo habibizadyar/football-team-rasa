@@ -3,103 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فوتبالیست‌ها و رسا</title>
+
+<title>فوتبالیست ها و رسا</title>
 
 <style>
-body {
-    font-family: Tahoma, sans-serif;
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 30px;
+body{
+    margin:0;
+    font-family:Tahoma, Arial;
+    background:linear-gradient(#0008,#0008),
+    url("https://images.unsplash.com/photo-1574629810360-7efbbe195018");
+    background-size:cover;
+    color:white;
+    text-align:center;
 }
 
-.box {
-    max-width: 450px;
-    margin: auto;
-    background: #222;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px #000;
+.box{
+    margin:50px auto;
+    max-width:450px;
+    background:#111c;
+    padding:30px;
+    border-radius:25px;
 }
 
-h1 {
-    color: gold;
+h1{
+    font-size:35px;
+    color:#ffd700;
 }
 
-input {
-    width: 80%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    margin: 10px;
-    font-size: 16px;
+input{
+    width:80%;
+    padding:12px;
+    border-radius:10px;
+    border:0;
 }
 
-button {
-    padding: 12px 18px;
-    margin: 5px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px;
+button{
+    padding:12px 20px;
+    margin:10px;
+    border:0;
+    border-radius:12px;
+    cursor:pointer;
 }
 
-.yes { background: green; color:white; }
-.maybe { background: orange; }
-.no { background: red; color:white; }
+.green{background:#00a000;color:white}
+.yellow{background:#e5a900}
+.red{background:#c00;color:white}
 
-.list {
-    margin-top:20px;
-    text-align:right;
-}
-
-li {
-    margin:8px;
-}
 </style>
+
 </head>
 
 <body>
 
 <div class="box">
 
-<h1>⚽ فوتبالیست‌ها و رسا</h1>
-<p>سامانه حضور بازیکنان</p>
+<h1>⚽ فوتبالیست ها و رسا</h1>
+
+<p>ثبت حضور بازیکنان</p>
 
 <input id="name" placeholder="اسم بازیکن">
 
 <br>
 
-<button class="yes" onclick="addPlayer('میام')">🟢 میام</button>
-<button class="maybe" onclick="addPlayer('شاید')">🟡 شاید</button>
-<button class="no" onclick="addPlayer('نمیام')">🔴 نمیام</button>
+<button class="green" onclick="save('میام')">🟢 میام</button>
 
-<div class="list">
-<h3>لیست حضور:</h3>
-<ul id="players"></ul>
+<button class="yellow" onclick="save('شاید')">🟡 شاید</button>
+
+<button class="red" onclick="save('نمیام')">🔴 نمیام</button>
+
+<p id="msg"></p>
+
 </div>
 
-</div>
 
 <script>
-function addPlayer(status){
 
-let name = document.getElementById("name").value;
+const SUPABASE_URL="https://vviuzqnnnghaidnwyomt.supabase.co";
 
-if(name==""){
-alert("اسم بازیکن را وارد کن");
+const SUPABASE_KEY=sb_publishable_olTL-pgnq7q-RISyGG0Mjw_vI7Ofl_T
+
+
+async function save(status){
+
+let name=document.getElementById("name").value;
+
+if(!name){
+alert("اسم رو وارد کن");
 return;
 }
 
-let li=document.createElement("li");
 
-li.innerHTML=name+" - "+status;
+let response=await fetch(
+SUPABASE_URL+"/rest/v1/players",
+{
+method:"POST",
 
-document.getElementById("players").appendChild(li);
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+SUPABASE_KEY,
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+name:name,
+status:status
+})
+
+});
+
+
+if(response.ok){
+
+document.getElementById("msg").innerHTML="✅ ثبت شد";
 
 document.getElementById("name").value="";
+
+}else{
+
+document.getElementById("msg").innerHTML="❌ خطا در ثبت";
+
 }
+
+}
+
 </script>
 
 </body>
