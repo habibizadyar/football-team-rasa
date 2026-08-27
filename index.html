@@ -10,9 +10,11 @@
 body{
     margin:0;
     font-family:Tahoma, Arial;
-    background:linear-gradient(#0008,#0008),
+    background:
+    linear-gradient(#0008,#0008),
     url("https://images.unsplash.com/photo-1574629810360-7efbbe195018");
     background-size:cover;
+    min-height:100vh;
     color:white;
     text-align:center;
 }
@@ -26,8 +28,8 @@ body{
 }
 
 h1{
-    font-size:35px;
     color:#ffd700;
+    font-size:35px;
 }
 
 input{
@@ -35,6 +37,7 @@ input{
     padding:12px;
     border-radius:10px;
     border:0;
+    font-size:16px;
 }
 
 button{
@@ -43,12 +46,22 @@ button{
     border:0;
     border-radius:12px;
     cursor:pointer;
+    font-size:16px;
 }
 
-.green{background:#00a000;color:white}
-.yellow{background:#e5a900}
-.red{background:#c00;color:white}
+.green{
+    background:#009900;
+    color:white;
+}
 
+.yellow{
+    background:#e5a900;
+}
+
+.red{
+    background:#cc0000;
+    color:white;
+}
 </style>
 
 </head>
@@ -65,11 +78,17 @@ button{
 
 <br>
 
-<button class="green" onclick="save('میام')">🟢 میام</button>
+<button class="green" onclick="save('میام')">
+🟢 میام
+</button>
 
-<button class="yellow" onclick="save('شاید')">🟡 شاید</button>
+<button class="yellow" onclick="save('شاید')">
+🟡 شاید
+</button>
 
-<button class="red" onclick="save('نمیام')">🔴 نمیام</button>
+<button class="red" onclick="save('نمیام')">
+🔴 نمیام
+</button>
 
 <p id="msg"></p>
 
@@ -78,28 +97,30 @@ button{
 
 <script>
 
-const SUPABASE_URL="https://vviuzqnnnghaidnwyomt.supabase.co";
+const SUPABASE_URL = "https://vviuzqnnnghaidnwyomt.supabase.co";
 
-const SUPABASE_KEY=const SUPABASE_KEY="sb_publishable_olTL-pgnq7q-RISyGG0Mjw_vI7Ofl_T";
+const SUPABASE_KEY =const SUPABASE_KEY = "کلید Publishable خودت را اینجا بگذار";
+
 
 async function save(status){
 
-let name=document.getElementById("name").value;
+let name = document.getElementById("name").value;
 
-if(!name){
-alert("اسم رو وارد کن");
+
+if(name.trim() === ""){
+alert("اسم را وارد کن");
 return;
 }
 
 
-let response=await fetch(
-SUPABASE_URL+"/rest/v1/players",
+let result = await fetch(
+SUPABASE_URL + "/rest/v1/players",
 {
 method:"POST",
 
 headers:{
 "apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+SUPABASE_KEY,
+"Authorization":"Bearer " + SUPABASE_KEY,
 "Content-Type":"application/json"
 },
 
@@ -111,10 +132,9 @@ status:status
 });
 
 
-if(response.ok){
+if(result.ok){
 
 document.getElementById("msg").innerHTML="✅ ثبت شد";
-
 document.getElementById("name").value="";
 
 }else{
@@ -126,6 +146,7 @@ document.getElementById("msg").innerHTML="❌ خطا در ثبت";
 }
 
 </script>
+
 
 </body>
 </html>
