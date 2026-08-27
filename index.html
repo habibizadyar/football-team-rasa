@@ -1,10 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>فوتبالیست‌ها و رسا</title>
+
+<style>
+body {
+    font-family: Tahoma, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.box {
+    max-width: 450px;
+    margin: auto;
+    background: #222;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #000;
+}
+
+h1 {
+    color: gold;
+}
+
+input {
+    width: 80%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 18px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.yes { background: green; color:white; }
+.maybe { background: orange; }
+.no { background: red; color:white; }
+
+.list {
+    margin-top:20px;
+    text-align:right;
+}
+
+li {
+    margin:8px;
+}
+</style>
 </head>
+
 <body>
-<h1>⚽ تیم فوتبالیست‌ها و رسا</h1>
+
+<div class="box">
+
+<h1>⚽ فوتبالیست‌ها و رسا</h1>
 <p>سامانه حضور بازیکنان</p>
+
+<input id="name" placeholder="اسم بازیکن">
+
+<br>
+
+<button class="yes" onclick="addPlayer('میام')">🟢 میام</button>
+<button class="maybe" onclick="addPlayer('شاید')">🟡 شاید</button>
+<button class="no" onclick="addPlayer('نمیام')">🔴 نمیام</button>
+
+<div class="list">
+<h3>لیست حضور:</h3>
+<ul id="players"></ul>
+</div>
+
+</div>
+
+<script>
+function addPlayer(status){
+
+let name = document.getElementById("name").value;
+
+if(name==""){
+alert("اسم بازیکن را وارد کن");
+return;
+}
+
+let li=document.createElement("li");
+
+li.innerHTML=name+" - "+status;
+
+document.getElementById("players").appendChild(li);
+
+document.getElementById("name").value="";
+}
+</script>
+
 </body>
 </html>
