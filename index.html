@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,64 +8,71 @@
 <title>فوتبالیست ها و رسا</title>
 
 <style>
+
 body{
-    margin:0;
-    font-family:Tahoma, Arial;
-    background:
-    linear-gradient(#0008,#0008),
-    url("https://images.unsplash.com/photo-1574629810360-7efbbe195018");
-    background-size:cover;
-    min-height:100vh;
-    color:white;
-    text-align:center;
+margin:0;
+font-family:Tahoma, Arial;
+background:
+linear-gradient(#0009,#0009),
+url("https://images.unsplash.com/photo-1574629810360-7efbbe195018");
+background-size:cover;
+min-height:100vh;
+color:white;
+text-align:center;
 }
 
 .box{
-    margin:50px auto;
-    max-width:450px;
-    background:#111c;
-    padding:30px;
-    border-radius:25px;
+margin:50px auto;
+max-width:450px;
+background:#111c;
+padding:30px;
+border-radius:25px;
 }
 
 h1{
-    color:#ffd700;
-    font-size:35px;
+font-size:35px;
+color:#ffd700;
 }
 
 input{
-    width:80%;
-    padding:12px;
-    border-radius:10px;
-    border:0;
-    font-size:16px;
+width:80%;
+padding:12px;
+border-radius:10px;
+border:0;
+font-size:16px;
 }
 
 button{
-    padding:12px 20px;
-    margin:10px;
-    border:0;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:16px;
+padding:12px 20px;
+margin:10px;
+border:0;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
 }
 
 .green{
-    background:#009900;
-    color:white;
+background:#00a000;
+color:white;
 }
 
 .yellow{
-    background:#e5a900;
+background:#e5a900;
 }
 
 .red{
-    background:#cc0000;
-    color:white;
+background:#cc0000;
+color:white;
 }
+
+#msg{
+font-size:20px;
+}
+
 </style>
 
 </head>
+
 
 <body>
 
@@ -104,18 +112,22 @@ const SUPABASE_KEY = "sb_publishable_olTL-pgnq7q-RISyGG0Mjw_vI7Ofl_T";
 
 async function save(status){
 
-let name = document.getElementById("name").value;
+let name = document.getElementById("name").value.trim();
 
 
-if(name.trim() === ""){
-alert("اسم را وارد کن");
+if(name === ""){
+alert("اسم رو وارد کن");
 return;
 }
 
 
-let result = await fetch(
+try{
+
+
+let response = await fetch(
 SUPABASE_URL + "/rest/v1/players",
 {
+
 method:"POST",
 
 headers:{
@@ -125,23 +137,36 @@ headers:{
 },
 
 body:JSON.stringify({
+
 name:name,
 status:status
+
 })
 
 });
 
 
-if(result.ok){
+if(response.ok){
 
 document.getElementById("msg").innerHTML="✅ ثبت شد";
+
 document.getElementById("name").value="";
 
 }else{
 
-document.getElementById("msg").innerHTML="❌ خطا در ثبت";
+let error = await response.text();
+
+document.getElementById("msg").innerHTML="❌ خطا: "+error;
 
 }
+
+
+}catch(e){
+
+document.getElementById("msg").innerHTML="❌ مشکل اتصال";
+
+}
+
 
 }
 
@@ -149,4 +174,5 @@ document.getElementById("msg").innerHTML="❌ خطا در ثبت";
 
 
 </body>
+
 </html>
