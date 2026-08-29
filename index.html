@@ -10,140 +10,71 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
-
 *{
 box-sizing:border-box;
+font-family:tahoma;
 }
 
 body{
-
 margin:0;
-font-family:'Vazirmatn',Tahoma,sans-serif;
-
-background:
-linear-gradient(#000b,#000b),
-url("https://images.unsplash.com/photo-1579952363873-27d3bfad9b0c");
-
-background-size:cover;
-background-position:center;
-
-min-height:100vh;
+background:#050505;
 color:white;
-
 }
 
 
-/* هدر */
+header{
 
-.header{
-
+background:linear-gradient(135deg,#000,#3a2b00);
+padding:30px;
 text-align:center;
-padding:35px 15px;
+border-bottom:3px solid gold;
 
 }
 
 
 .logo{
-
-font-size:55px;
-
-filter:
-drop-shadow(0 0 20px #ffd700);
-
+font-size:60px;
 }
 
 
-.brand{
-
-font-size:42px;
-font-weight:900;
+h1{
 
 color:#ffd700;
-
-text-shadow:
-0 0 10px #ffd700,
-0 0 30px #b88600;
+font-size:40px;
 
 }
 
 
-.title{
+.container{
 
-font-size:28px;
-
-margin-top:10px;
-
-font-weight:bold;
+max-width:900px;
+margin:auto;
+padding:20px;
 
 }
-
-
-/* باکس اصلی */
 
 
 .box{
 
-max-width:500px;
-
-margin:auto;
-
+background:#111;
+border:2px solid gold;
+border-radius:25px;
 padding:25px;
-
-background:
-
-rgba(10,10,10,.75);
-
-border:
-
-1px solid #d4af37;
-
-border-radius:30px;
-
-box-shadow:
-
-0 0 40px #000;
-
-backdrop-filter:blur(10px);
+margin-top:25px;
+box-shadow:0 0 25px #ffd70055;
 
 }
 
 
-
-/* ورودی */
 
 input{
 
 width:100%;
-
 padding:15px;
-
 border-radius:15px;
-
 border:none;
-
 font-size:18px;
-
-text-align:center;
-
-margin-bottom:15px;
-
-}
-
-
-
-/* دکمه ها */
-
-
-.buttons{
-
-display:flex;
-
-justify-content:center;
-
-gap:10px;
-
-flex-wrap:wrap;
+margin:10px 0;
 
 }
 
@@ -151,34 +82,45 @@ flex-wrap:wrap;
 
 button{
 
+padding:15px;
 border:none;
-
-padding:14px 22px;
-
-border-radius:18px;
-
-font-size:17px;
-
+border-radius:20px;
+font-size:18px;
 font-weight:bold;
-
 cursor:pointer;
+background:gold;
 
-transition:.3s;
+}
+
+
+
+.status{
+
+display:flex;
+gap:10px;
 
 }
 
 
-button:hover{
+.status button{
 
-transform:scale(1.05);
+flex:1;
 
 }
+
 
 
 .green{
 
-background:#00b34a;
+background:#009933;
+color:white;
 
+}
+
+
+.red{
+
+background:#cc0000;
 color:white;
 
 }
@@ -186,49 +128,17 @@ color:white;
 
 .yellow{
 
-background:#dba800;
-
-}
-
-
-.red{
-
-background:#d40000;
-
-color:white;
+background:#d6b600;
 
 }
 
 
 
-/* پیام */
-
-
-#msg{
-
-text-align:center;
-
-font-size:20px;
-
-color:#ffd700;
-
-}
-
-
-
-
-/* کارت بازیکن */
-
-
-.players{
+.cards{
 
 display:grid;
-
-grid-template-columns:1fr;
-
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:20px;
-
-margin-top:30px;
 
 }
 
@@ -236,61 +146,21 @@ margin-top:30px;
 
 .card{
 
-
-background:
-
-linear-gradient(
-
-145deg,
-
-#191919,
-
-#050505
-
-);
-
-
-border:
-
-2px solid #d4af37;
-
-
+background:linear-gradient(145deg,#3a2b00,#111);
+border:3px solid gold;
 border-radius:25px;
-
-
 padding:20px;
-
-
 text-align:center;
-
-
-box-shadow:
-
-0 0 25px #000;
-
-
-position:relative;
-
-
-overflow:hidden;
 
 }
 
 
 
-.card::before{
+.rating{
 
-content:"⭐";
-
-position:absolute;
-
-top:10px;
-
-left:15px;
-
-font-size:25px;
-
-color:#ffd700;
+font-size:45px;
+color:gold;
+font-weight:bold;
 
 }
 
@@ -298,18 +168,11 @@ color:#ffd700;
 
 .avatar{
 
-
-width:90px;
-
-height:90px;
-
+width:120px;
+height:120px;
 border-radius:50%;
-
-border:3px solid #ffd700;
-
+border:3px solid gold;
 object-fit:cover;
-
-margin:auto;
 
 }
 
@@ -317,118 +180,80 @@ margin:auto;
 
 .name{
 
-font-size:26px;
-
-font-weight:900;
-
-color:#ffd700;
-
-}
-
-
-.stats{
-
-
-display:flex;
-
-justify-content:center;
-
-gap:10px;
-
-flex-wrap:wrap;
-
-margin-top:15px;
-
-}
-
-
-
-.stat{
-
-
-background:#222;
-
-padding:8px 12px;
-
-border-radius:15px;
-
-border:1px solid #555;
-
-}
-
-
-
-.score{
-
-
-font-size:22px;
-
-color:#ffd700;
-
-margin-top:15px;
-
+font-size:28px;
+color:gold;
 font-weight:bold;
 
-
 }
 
 
 
-/* موبایل */
+.hidden{
 
-
-@media(max-width:500px){
-
-
-.brand{
-
-font-size:34px;
+display:none;
 
 }
-
-
-.title{
-
-font-size:22px;
-
-}
-
-
-.logo{
-
-font-size:45px;
-
-}
-
-
-}
-
 
 
 </style>
 
-</head>
 
+</head>
 
 
 <body>
 
 
-<div class="header">
-
+<header>
 
 <div class="logo">
-⚽⭐
+⚽
 </div>
 
-
-<div class="brand">
+<h1>
 Footballers
-</div>
+</h1>
 
-
-<div class="title">
+<h2>
 فوتبالیست‌ها و رسا
+</h2>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="box">
+
+<h2>
+👤 بازیکن
+</h2>
+
+
+<input id="playerName" placeholder="اسم خودتو وارد کن">
+
+
+
+<div class="status">
+
+
+<button class="green" onclick="savePlayer('میام')">
+🟢 میام
+</button>
+
+
+<button class="red" onclick="savePlayer('نمیام')">
+🔴 نمیام
+</button>
+
+
+<button class="yellow" onclick="savePlayer('شاید')">
+🟡 شاید
+</button>
+
+
 </div>
 
 
@@ -438,250 +263,131 @@ Footballers
 
 <div class="box">
 
-
-<input id="name" placeholder="اسم بازیکن">
-
-
-<div class="buttons">
+<h2>
+👑 پنل مدیر
+</h2>
 
 
-<button class="green" onclick="save('میام')">
-🟢 میام
-</button>
+<input id="adminPass" placeholder="رمز مدیر">
 
 
-<button class="yellow" onclick="save('شاید')">
-🟡 شاید
-</button>
-
-
-<button class="red" onclick="save('نمیام')">
-🔴 نمیام
+<button onclick="loginAdmin()">
+ورود
 </button>
 
 
 </div>
 
 
-<p id="msg"></p>
+
+<div id="adminPanel" class="box hidden">
+
+<h2>
+📋 بازیکنان
+</h2>
 
 
+<div id="stats"></div>
 
-<div class="players" id="players"></div>
+
+<div id="players" class="cards"></div>
 
 
 </div>
-<script>
-
-const URL =
-"https://vviuzqnnnghaidnwyomt.supabase.co";
-
-
-const KEY =
-"sb_publishable_olTL-pgnq7q-RISyGG0Mjw_vI7Ofl_T";
 
 
 
-<script>
+</div>
+<script type="module">
 
-const URL = "...";
-const KEY = "...";
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
-async function save(status){
-...
+import { 
+getDatabase,
+ref,
+push,
+set,
+onValue
 }
+from 
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
-// اینجا تابع جدید loadPlayers قرار می‌گیره
 
-async function loadPlayers(){
+const firebaseConfig = {
 
-...
-}
+apiKey: "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
 
+authDomain: "footballers-273ab.firebaseapp.com",
 
-loadPlayers();
+databaseURL: "https://footballers-273ab-default-rtdb.firebaseio.com",
 
-</script>
+projectId: "footballers-273ab",
 
+storageBucket: "footballers-273ab.firebasestorage.app",
 
-let name =
-document.getElementById("name").value.trim();
+messagingSenderId: "354306335709",
 
-
-
-if(name==""){
-
-alert("اسم رو وارد کن");
-return;
-
-}
-
-
-
-let today =
-new Date().toISOString().split("T")[0];
-
-
-
-// پیدا کردن بازیکن قبلی
-
-let find =
-await fetch(
-URL+
-"/rest/v1/players?name=eq."+name,
-{
-
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+KEY
-}
-
-});
-
-
-let data =
-await find.json();
-
-
-
-if(data.length>0 &&
-data[0].last_vote_date==today){
-
-alert(
-"⚠️ امروز قبلاً ثبت کردی"
-);
-
-return;
-
-}
-
-
-
-let player=data[0];
-
-
-
-let come =
-player ? player.come_count : 0;
-
-
-let no =
-player ? player.no_count : 0;
-
-
-let score =
-player ? player.score : 0;
-
-
-
-if(status=="میام"){
-
-come++;
-score+=3;
-
-}
-
-
-if(status=="نمیام"){
-
-no++;
-score-=1;
-
-}
-
-
-if(status=="شاید"){
-
-score+=1;
-
-}
-
-
-
-
-
-let body={
-
-name:name,
-
-status:status,
-
-come_count:come,
-
-no_count:no,
-
-score:score,
-
-last_vote_date:today
+appId: "1:354306335709:web:bb778c2c40898a4824cc34"
 
 };
 
 
 
+const app = initializeApp(firebaseConfig);
 
 
-let result;
+const db = getDatabase(app);
 
 
 
-if(player){
+
+// ثبت بازیکن
+
+window.savePlayer = function(status){
 
 
-result =
-await fetch(
+let name = document
+.getElementById("playerName")
+.value
+.trim();
 
-URL+
-"/rest/v1/players?id=eq."+player.id,
 
-{
 
-method:"PATCH",
+if(name===""){
 
-headers:{
+alert("اسم رو وارد کن ⚽");
 
-"apikey":KEY,
-
-"Authorization":"Bearer "+KEY,
-
-"Content-Type":"application/json"
-
-},
-
-body:JSON.stringify(body)
-
-});
-
+return;
 
 }
 
-else{
 
 
-result =
-await fetch(
+let player = push(ref(db,"players"));
 
-URL+
-"/rest/v1/players",
 
-{
 
-method:"POST",
+set(player,{
 
-headers:{
+name:name,
 
-"apikey":KEY,
+status:status,
 
-"Authorization":"Bearer "+KEY,
+score:0,
 
-"Content-Type":"application/json"
-
-},
-
-body:JSON.stringify(body)
+photo:""
 
 });
+
+
+
+alert("ثبت شد ✅");
+
+
+document.getElementById("playerName").value="";
 
 
 }
@@ -689,15 +395,24 @@ body:JSON.stringify(body)
 
 
 
+// ورود مدیر
 
-if(result.ok){
-
-
-document.getElementById("msg").innerHTML=
-"✅ ثبت شد";
+window.loginAdmin=function(){
 
 
-document.getElementById("name").value="";
+let password = document
+.getElementById("adminPass")
+.value;
+
+
+
+if(password==="habib7979"){
+
+
+document
+.getElementById("adminPanel")
+.classList
+.remove("hidden");
 
 
 loadPlayers();
@@ -707,54 +422,43 @@ loadPlayers();
 
 else{
 
-
-document.getElementById("msg").innerHTML=
-"❌ خطا در ثبت";
-
+alert("رمز اشتباهه ❌");
 
 }
 
 
 }
+// نمایش بازیکن ها برای مدیر
 
+window.loadPlayers=function(){
 
-
-
-
-
-
-async function loadPlayers(){
-
-
-let res =
-await fetch(
-
-URL+
-"/rest/v1/players",
-
-{
-
-headers:{
-
-"apikey":KEY,
-
-"Authorization":"Bearer "+KEY
-
-}
-
-});
-
-
-let players =
-await res.json();
-
-
+onValue(ref(db,"players"),(snapshot)=>{
 
 let html="";
 
+let countCome=0;
+let countNo=0;
+let countMaybe=0;
 
 
-players.forEach(p=>{
+snapshot.forEach((item)=>{
+
+
+let p=item.val();
+
+
+if(p.status==="میام"){
+countCome++;
+}
+
+if(p.status==="نمیام"){
+countNo++;
+}
+
+if(p.status==="شاید"){
+countMaybe++;
+}
+
 
 
 html+=`
@@ -762,58 +466,46 @@ html+=`
 <div class="card">
 
 
-<img class="avatar"
-src="${p.photo || 'https://via.placeholder.com/100'}">
+<div class="rating">
+⭐ ${p.score || 0}
+</div>
 
+
+<img class="avatar"
+src="${p.photo || 'https://via.placeholder.com/120'}">
 
 
 <div class="name">
-
 ${p.name}
-
 </div>
-
 
 
 <p>
 وضعیت:
-${p.status || "-"}
+${p.status}
 </p>
 
 
-
-<div class="stats">
-
-
-<div class="stat">
-
-🟢 ${p.come_count || 0}
-
 </div>
 
 
+`;
 
-<div class="stat">
 
-🔴 ${p.no_count || 0}
-
-</div>
+});
 
 
 
-</div>
+document.getElementById("players").innerHTML=html;
 
 
+document.getElementById("stats").innerHTML=`
 
-<div class="score">
-
-⭐ ${p.score || 0}
-
-</div>
-
-
-
-</div>
+🟢 حاضر: ${countCome}
+<br>
+🔴 غایب: ${countNo}
+<br>
+🟡 شاید: ${countMaybe}
 
 `;
 
@@ -822,24 +514,12 @@ ${p.status || "-"}
 });
 
 
-
-document.getElementById("players")
-.innerHTML=html;
-
-
-
 }
 
 
-
-loadPlayers();
-
+// پایان فایل
 
 </script>
 
-
-
-
 </body>
-
 </html>
