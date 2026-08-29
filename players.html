@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>بازیکنان رسا</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Tahoma,Arial;
+background:
+linear-gradient(#0008,#0008),
+url("https://images.unsplash.com/photo-1579952363873-27f3bade9f55");
+background-size:cover;
+min-height:100vh;
+color:white;
+text-align:center;
+}
+
+h1{
+color:#ffd700;
+font-size:35px;
+}
+
+.container{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+padding:30px;
+}
+
+
+.card{
+
+width:280px;
+height:420px;
+
+background:
+linear-gradient(145deg,#d4af37,#fff2a8,#b8860b);
+
+border-radius:25px;
+
+color:#111;
+
+padding:20px;
+
+box-shadow:
+0 0 25px #ffd700;
+
+position:relative;
+
+}
+
+
+.rating{
+
+font-size:45px;
+font-weight:bold;
+
+}
+
+
+.photo{
+
+width:160px;
+height:160px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:5px solid white;
+
+background:#ddd;
+
+}
+
+
+.name{
+
+font-size:25px;
+font-weight:bold;
+
+margin:15px;
+
+}
+
+
+.position{
+
+font-size:22px;
+
+}
+
+
+.stats{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:10px;
+
+margin-top:20px;
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+
+.stat{
+
+background:#ffffff66;
+
+border-radius:10px;
+
+padding:8px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>🏆 بازیکنان رسا</h1>
+
+
+<div class="container" id="players">
+
+</div>
+
+
+
+<script>
+
+
+const SUPABASE_URL =
+"https://vviuzqnnnghaidnwyomt.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_olTL-pgnq7q-RISyGG0Mjw_vI7Ofl_T";
+
+
+
+async function loadPlayers(){
+
+
+let res = await fetch(
+
+SUPABASE_URL+
+"/rest/v1/player_stats?select=*",
+
+{
+
+headers:{
+
+"apikey":SUPABASE_KEY,
+
+"Authorization":
+"Bearer "+SUPABASE_KEY
+
+}
+
+}
+
+);
+
+
+
+let players = await res.json();
+
+
+let box=document.getElementById("players");
+
+
+players.forEach(p=>{
+
+
+box.innerHTML += `
+
+
+<div class="card">
+
+
+<div class="rating">
+⭐ ${p.score}
+</div>
+
+
+<img class="photo"
+src="${p.photo || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}">
+
+
+<div class="name">
+${p.player_name}
+</div>
+
+
+<div class="position">
+${p.position || "PLAYER"}
+<br>
+👕 ${p.number || 0}
+</div>
+
+
+
+<div class="stats">
+
+
+<div class="stat">
+⚽ گل
+<br>
+${p.goals}
+</div>
+
+
+<div class="stat">
+🅰️ پاس گل
+<br>
+${p.assists}
+</div>
+
+
+<div class="stat">
+🎮 بازی
+<br>
+${p.matches}
+</div>
+
+
+<div class="stat">
+🏆 برد
+<br>
+${p.wins}
+</div>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+loadPlayers();
+
+
+</script>
+
+
+</body>
+
+</html>
