@@ -235,14 +235,46 @@ Footballers
 
 
 
-<button onclick="showPage('admin')">
-🔐 پنل مدیریت
-</button>
+<div id="admin" class="box hidden">
 
+
+<h2>
+🔐 پنل مدیریت
+</h2>
+
+
+<div id="adminLogin">
+
+
+<input id="adminPass" placeholder="رمز مدیر">
+
+
+<button onclick="loginAdmin()">
+ورود
+</button>
 
 
 </div>
 
+
+
+<div id="adminContent" class="hidden">
+
+
+<h3>
+👑 مدیریت بازیکنان
+</h3>
+
+
+<div id="adminPlayers" class="cards">
+
+</div>
+
+
+</div>
+
+
+</div>
 
 
 
@@ -782,3 +814,204 @@ loadPlayers();
 
 
 </script>
+// ===============================
+// ورود مدیر
+// ===============================
+
+window.loginAdmin=function(){
+
+
+let pass=document
+.getElementById("adminPass")
+.value;
+
+
+
+if(pass==="habib7979"){
+
+
+document
+.getElementById("adminLogin")
+.classList
+.add("hidden");
+
+
+document
+.getElementById("adminContent")
+.classList
+.remove("hidden");
+
+
+loadAdminPlayers();
+
+
+}
+
+else{
+
+
+alert("رمز اشتباهه ❌");
+
+
+}
+
+
+}
+
+
+
+
+
+// ===============================
+// نمایش بازیکنان برای مدیر
+// ===============================
+
+function loadAdminPlayers(){
+
+
+onValue(ref(db,"players"),(snapshot)=>{
+
+
+let html="";
+
+
+snapshot.forEach((item)=>{
+
+
+let p=item.val();
+
+
+html+=`
+
+<div class="card">
+
+
+<h2>
+${p.name}
+</h2>
+
+
+<p>
+⚽ گل
+</p>
+
+<input 
+id="goals-${item.key}"
+value="${p.goals || 0}">
+
+
+
+<p>
+🎯 پاس گل
+</p>
+
+<input 
+id="assists-${item.key}"
+value="${p.assists || 0}">
+
+
+
+<p>
+🏟 بازی
+</p>
+
+<input 
+id="games-${item.key}"
+value="${p.games || 0}">
+
+
+
+<p>
+⭐ امتیاز
+</p>
+
+<input 
+id="score-${item.key}"
+value="${p.score || 0}">
+
+
+
+<button onclick="saveStats('${item.key}')">
+
+💾 ذخیره
+
+</button>
+
+
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+document
+.getElementById("adminPlayers")
+.innerHTML=html;
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+// ===============================
+// ذخیره آمار
+// ===============================
+
+
+window.saveStats=function(id){
+
+
+
+update(
+ref(db,"players/"+id),
+
+{
+
+
+goals:
+Number(
+document.getElementById("goals-"+id).value
+),
+
+
+assists:
+Number(
+document.getElementById("assists-"+id).value
+),
+
+
+games:
+Number(
+document.getElementById("games-"+id).value
+),
+
+
+score:
+Number(
+document.getElementById("score-"+id).value
+)
+
+
+}
+
+);
+
+
+
+alert("آمار ذخیره شد ✅");
+
+
+}
