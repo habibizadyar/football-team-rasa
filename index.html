@@ -8,1010 +8,1972 @@
 
 <title>Footballers ⚽</title>
 
-
 <style>
 
 *{
-box-sizing:border-box;
-font-family:Tahoma;
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
 }
-
 
 body{
-margin:0;
-background:#050505;
-color:white;
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top,#302500 0%,#090909 35%,#050505 100%);
+    color:white;
 }
 
-
+/* =========================
+   HEADER
+========================= */
 
 header{
-
-background:linear-gradient(135deg,#000,#3a2b00);
-padding:30px;
-text-align:center;
-border-bottom:3px solid gold;
-
+    text-align:center;
+    padding:25px 15px 30px;
+    background:linear-gradient(135deg,#000,#3a2b00);
+    border-bottom:2px solid #ffd700;
 }
-
-
 
 .logo{
-font-size:70px;
+    font-size:62px;
 }
 
-
-
-h1{
-color:#ffd700;
-font-size:45px;
-margin:10px;
+header h1{
+    margin:8px 0;
+    color:#ffd700;
+    font-size:40px;
 }
 
+header p{
+    margin:0;
+    color:#ddd;
+    font-size:17px;
+}
 
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
-
-max-width:1000px;
-margin:auto;
-padding:20px;
-
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:18px;
 }
 
-
+/* =========================
+   MENU
+========================= */
 
 .menu{
-
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-justify-content:center;
-margin-top:20px;
-
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:18px;
 }
-
-
 
 .menu button{
-
-background:gold;
-border:none;
-padding:15px 25px;
-border-radius:25px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-
+    border:none;
+    padding:15px 10px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#ffd700,#c49a00);
+    color:#000;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
 }
 
-
-
-.box{
-
-background:#111;
-border:2px solid gold;
-border-radius:25px;
-padding:25px;
-margin-top:25px;
-box-shadow:0 0 25px #ffd70055;
-
+.menu button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(255,215,0,.18);
 }
 
+/* =========================
+   PAGES
+========================= */
 
+.page{
+    background:#111;
+    border:2px solid #ffd700;
+    border-radius:24px;
+    padding:22px;
+    box-shadow:0 0 25px rgba(255,215,0,.10);
+}
 
 .hidden{
-
-display:none;
-
+    display:none !important;
 }
 
+.page-title{
+    text-align:center;
+    color:#ffd700;
+    font-size:30px;
+    margin-top:0;
+}
 
+/* =========================
+   INPUT
+========================= */
 
 input{
-
-width:100%;
-padding:15px;
-border-radius:15px;
-border:none;
-font-size:18px;
-margin:10px 0;
-
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border-radius:13px;
+    border:1px solid #444;
+    background:#1b1b1b;
+    color:white;
+    font-size:16px;
+    outline:none;
 }
 
-
-
-.status{
-
-display:flex;
-gap:10px;
-
+input:focus{
+    border-color:#ffd700;
 }
 
-
-
-.status button{
-
-flex:1;
-padding:15px;
-border:none;
-border-radius:20px;
-font-weight:bold;
-cursor:pointer;
-
+input[type="file"]{
+    padding:10px;
 }
 
+/* =========================
+   BUTTONS
+========================= */
 
+button{
+    cursor:pointer;
+}
+
+.primary-btn{
+    width:100%;
+    border:none;
+    border-radius:14px;
+    padding:14px;
+    margin-top:8px;
+    background:#ffd700;
+    color:#000;
+    font-weight:bold;
+    font-size:16px;
+}
 
 .green{
-background:#009933;
-color:white;
+    background:#009933;
+    color:white;
 }
-
-
 
 .red{
-background:#cc0000;
-color:white;
+    background:#c90000;
+    color:white;
 }
-
-
 
 .yellow{
-background:#d6b600;
+    background:#d6b600;
+    color:#000;
 }
 
+/* =========================
+   ATTENDANCE
+========================= */
 
+.status-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:10px;
+}
+
+.status-buttons button{
+    border:none;
+    padding:15px;
+    border-radius:15px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.message{
+    margin-top:15px;
+    padding:12px;
+    text-align:center;
+    background:#181818;
+    border-radius:13px;
+    color:#bbb;
+}
+
+.attendance-section{
+    background:#181818;
+    border:1px solid #333;
+    border-radius:16px;
+    padding:15px;
+    margin-top:12px;
+}
+
+.attendance-section h3{
+    margin-top:0;
+    color:#ffd700;
+}
+
+.attendance-names{
+    line-height:2.2;
+    font-size:17px;
+}
+
+/* =========================
+   PLAYERS GRID
+========================= */
 
 .cards{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
 }
 
+/* =========================
+   FIFA STYLE CARD
+========================= */
 
+.fifa-card{
+    position:relative;
+    min-height:430px;
+    overflow:hidden;
+    border-radius:24px;
+    padding:18px;
+    text-align:center;
 
-.card{
+    background:
+        linear-gradient(
+            145deg,
+            #665000 0%,
+            #211b05 25%,
+            #080808 60%,
+            #3c2e00 100%
+        );
 
-background:linear-gradient(145deg,#3a2b00,#111);
-border:3px solid gold;
-border-radius:25px;
-padding:20px;
-text-align:center;
+    border:3px solid #ffd700;
 
+    box-shadow:
+        0 0 15px rgba(255,215,0,.18),
+        inset 0 0 30px rgba(255,215,0,.05);
 }
 
+/* خطوط تزئینی کارت */
 
+.fifa-card::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(255,215,0,.35);
+    border-radius:19px;
+    pointer-events:none;
+}
+
+.fifa-card::after{
+    content:"⚽";
+    position:absolute;
+    left:-15px;
+    bottom:-25px;
+    font-size:120px;
+    opacity:.04;
+    pointer-events:none;
+}
+
+/* =========================
+   CARD TOP
+========================= */
+
+.card-top{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:4px 5px;
+}
+
+.rating{
+    font-size:45px;
+    font-weight:bold;
+    color:#ffd700;
+    line-height:1;
+}
+
+.rating-label{
+    font-size:13px;
+    color:#bbb;
+    margin-top:5px;
+}
+
+.position{
+    font-size:18px;
+    color:#ddd;
+    margin-top:7px;
+}
+
+/* =========================
+   PHOTO
+========================= */
+
+.player-photo{
+    position:relative;
+    z-index:2;
+
+    width:190px;
+    height:190px;
+
+    margin:5px auto 10px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid #ffd700;
+
+    background:#222;
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,.25);
+}
+
+.no-photo{
+    position:relative;
+    z-index:2;
+
+    width:190px;
+    height:190px;
+
+    margin:5px auto 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:4px solid #ffd700;
+
+    background:#222;
+
+    font-size:75px;
+}
+
+/* =========================
+   PLAYER NAME
+========================= */
+
+.fifa-name{
+    position:relative;
+    z-index:2;
+
+    color:#ffd700;
+    font-size:26px;
+    font-weight:bold;
+
+    margin:8px 0;
+}
+
+/* =========================
+   AGE
+========================= */
+
+.age{
+    position:relative;
+    z-index:2;
+
+    color:#ddd;
+    font-size:15px;
+    margin-bottom:14px;
+}
+
+/* =========================
+   CARD STATS
+========================= */
+
+.card-stats{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:7px;
+
+    margin-top:10px;
+}
+
+.card-stat{
+    background:rgba(0,0,0,.45);
+    border:1px solid rgba(255,215,0,.3);
+    border-radius:12px;
+    padding:8px 4px;
+}
+
+.card-stat strong{
+    display:block;
+    color:#ffd700;
+    font-size:20px;
+    margin-top:3px;
+}
+
+.card-stat span{
+    color:#ccc;
+    font-size:12px;
+}
+
+/* =========================
+   ADMIN
+========================= */
+
+.admin-box{
+    background:#181818;
+    border:1px solid #333;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+.admin-box h3{
+    color:#ffd700;
+    text-align:center;
+    margin-top:0;
+}
+
+.admin-card{
+    text-align:right;
+}
+
+.admin-card h3{
+    text-align:center;
+    color:#ffd700;
+}
+
+.admin-label{
+    display:block;
+    color:#aaa;
+    font-size:13px;
+    margin-top:8px;
+}
+
+.save-btn{
+    width:100%;
+    padding:13px;
+    margin-top:10px;
+    border:none;
+    border-radius:13px;
+    background:#ffd700;
+    color:#000;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.delete-btn{
+    width:100%;
+    padding:11px;
+    margin-top:8px;
+    border:none;
+    border-radius:13px;
+    background:#9b0000;
+    color:white;
+    font-weight:bold;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    text-align:center;
+    color:#aaa;
+    padding:25px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .menu{
+        grid-template-columns:1fr;
+    }
+
+    .status-buttons{
+        grid-template-columns:1fr;
+    }
+
+    header h1{
+        font-size:34px;
+    }
+
+    .page{
+        padding:16px;
+    }
+
+    .fifa-card{
+        min-height:420px;
+    }
+
+}
 
 </style>
 
 </head>
 
 
-
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-<div class="logo">
-⚽
-</div>
+    <div class="logo">
+        ⚽
+    </div>
 
+    <h1>
+        Footballers
+    </h1>
 
-<h1>
-Footballers
-</h1>
-
-
-<p>
-پنل فوتبال دوستان
-</p>
-
+    <p>
+        فوتبالیست‌ها و رسا
+    </p>
 
 </header>
-
-
-
 
 
 <div class="container">
 
 
+<!-- =========================
+     MAIN MENU
+========================= -->
 
 <div class="menu">
 
+    <button onclick="showPage('attendancePage')">
+        🟢 ثبت اعلام حضور
+    </button>
 
-<button onclick="showPage('attendance')">
-🟢 اعلام ثبت حضور
-</button>
+    <button onclick="showPage('playersPage')">
+        🏆 اسامی بازیکنان
+    </button>
 
+    <button onclick="showPage('adminPage')">
+        👑 مدیریت
+    </button>
 
-
-<button onclick="showPage('players')">
-🏆 اطلاعات بازیکنان
-</button>
-
-
-
-<div id="admin" class="box hidden">
-
-
-<h2>
-🔐 پنل مدیریت
-</h2>
+</div>
 
 
-<div id="adminLogin">
+<!-- =========================
+     ATTENDANCE PAGE
+========================= -->
+
+<section id="attendancePage" class="page">
+
+    <h2 class="page-title">
+        ⚽ ثبت اعلام حضور
+    </h2>
+
+    <input
+        id="playerName"
+        type="text"
+        maxlength="40"
+        placeholder="اسم بازیکن را وارد کن"
+    >
+
+    <div class="status-buttons">
+
+        <button id="comeBtn" class="green">
+            🟢 میام
+        </button>
+
+        <button id="noBtn" class="red">
+            🔴 نمیام
+        </button>
+
+        <button id="maybeBtn" class="yellow">
+            🟡 شاید
+        </button>
+
+    </div>
+
+    <div id="attendanceMessage" class="message">
+        آماده ثبت اعلام حضور
+    </div>
+
+    <h3>
+        📋 وضعیت امروز
+    </h3>
+
+    <div id="attendanceList">
+        در حال بارگذاری...
+    </div>
+
+</section>
 
 
-<input id="adminPass" placeholder="رمز مدیر">
+<!-- =========================
+     PLAYERS PAGE
+========================= -->
+
+<section id="playersPage" class="page hidden">
+
+    <h2 class="page-title">
+        🏆 اسامی بازیکنان
+    </h2>
+
+    <div id="playerCards" class="cards">
+
+        <div class="empty">
+            در حال بارگذاری بازیکنان...
+        </div>
+
+    </div>
+
+</section>
 
 
-<button onclick="loginAdmin()">
-ورود
-</button>
+<!-- =========================
+     ADMIN PAGE
+========================= -->
+
+<section id="adminPage" class="page hidden">
+
+    <h2 class="page-title">
+        👑 پنل مدیریت
+    </h2>
+
+
+    <!-- LOGIN -->
+
+    <div id="adminLogin">
+
+        <input
+            id="adminPass"
+            type="password"
+            placeholder="رمز مدیر"
+        >
+
+        <button
+            id="adminLoginBtn"
+            class="primary-btn"
+        >
+            🔐 ورود به مدیریت
+        </button>
+
+    </div>
+
+
+    <!-- ADMIN CONTENT -->
+
+    <div id="adminContent" class="hidden">
+
+
+        <!-- ADD PLAYER -->
+
+        <div class="admin-box">
+
+            <h3>
+                ➕ اضافه کردن بازیکن
+            </h3>
+
+            <input
+                id="newPlayerName"
+                type="text"
+                placeholder="نام بازیکن"
+                maxlength="40"
+            >
+
+            <input
+                id="newPlayerAge"
+                type="number"
+                min="1"
+                max="100"
+                placeholder="سن بازیکن"
+            >
+
+            <label class="admin-label">
+                📷 عکس بازیکن
+            </label>
+
+            <input
+                id="newPlayerPhoto"
+                type="file"
+                accept="image/*"
+            >
+
+            <button
+                id="addPlayerBtn"
+                class="primary-btn"
+            >
+                ➕ اضافه کردن بازیکن
+            </button>
+
+        </div>
+
+
+        <!-- EXISTING PLAYERS -->
+
+        <h3 style="color:#ffd700;text-align:center;">
+            ⚽ مدیریت بازیکنان
+        </h3>
+
+        <div id="adminPlayers" class="cards">
+
+            <div class="empty">
+                در حال بارگذاری...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 </div>
 
 
+<!-- =========================
+     FIREBASE
+========================= -->
 
-<div id="adminContent" class="hidden">
-
-
-<h3>
-👑 مدیریت بازیکنان
-</h3>
-
-
-<div id="adminPlayers" class="cards">
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-<!-- ثبت حضور -->
-
-<div id="attendance" class="box">
-
-
-<h2>
-⚽ اعلام حضور
-</h2>
-
-
-<input id="playerName"
-placeholder="اسم خودتو وارد کن">
-
-
-
-<div class="status">
-
-
-<button class="green">
-🟢 میام
-</button>
-
-
-<button class="red">
-🔴 نمیام
-</button>
-
-
-<button class="yellow">
-🟡 شاید
-</button>
-
-
-</div>
-
-
-</div>
-<br>
-
-<h3>
-📋 وضعیت امروز
-</h3>
-
-<div id="attendanceList">
-
-در حال بارگذاری...
-
-</div>
-
-
-
-
-
-
-<!-- اطلاعات بازیکنان -->
-
-
-<div id="players" class="box hidden">
-
-
-<h2>
-🏆 کارت بازیکنان
-</h2>
-
-
-<div id="playersList" class="cards">
-
-در حال بارگذاری...
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- پنل مدیریت -->
-
-
-<div id="admin" class="box hidden">
-
-
-<h2>
-🔐 پنل مدیریت
-</h2>
-
-
-<input placeholder="رمز مدیر">
-
-
-<button>
-ورود
-</button>
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-
-<script>
-
-
-function showPage(page){
-
-
-document
-.querySelectorAll(".box")
-.forEach(x=>{
-
-x.classList.add("hidden");
-
-});
-
-
-
-document
-.getElementById(page)
-.classList
-.remove("hidden");
-
-
-}
-
-
-
-</script>
-
-
-
-</body>
-
-</html>
-// ===============================
-// نمایش وضعیت حضور
-// ===============================
-
-function loadAttendance(){
-
-
-onValue(ref(db,"players"),(snapshot)=>{
-
-
-let come="";
-let no="";
-let maybe="";
-
-
-snapshot.forEach((item)=>{
-
-
-let p=item.val();
-
-
-
-if(p.status==="میام"){
-
-come += `
-🟢 ${p.name}<br>
-`;
-
-}
-
-
-if(p.status==="نمیام"){
-
-no += `
-🔴 ${p.name}<br>
-`;
-
-}
-
-
-
-if(p.status==="شاید"){
-
-maybe += `
-🟡 ${p.name}<br>
-`;
-
-}
-
-
-});
-
-
-
-document.getElementById("attendanceList").innerHTML=
-
-`
-
-<div>
-
-<h3>🟢 میان:</h3>
-
-${come || "کسی ثبت نکرده"}
-
-</div>
-
-
-<hr>
-
-
-<div>
-
-<h3>🔴 نمیان:</h3>
-
-${no || "کسی ثبت نکرده"}
-
-</div>
-
-
-<hr>
-
-
-<div>
-
-<h3>🟡 شاید:</h3>
-
-${maybe || "کسی ثبت نکرده"}
-
-</div>
-
-`;
-
-
-
-});
-
-
-}
-
-
-
-loadAttendance();
 <script type="module">
 
 import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
 import {
 
-getDatabase,
-ref,
-push,
-set,
-onValue
+    getDatabase,
+    ref,
+    push,
+    set,
+    onValue,
+    update,
+    remove
 
 }
 
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
+/* =========================
+   FIREBASE CONFIG
+========================= */
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
+    apiKey:
+    "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
 
-authDomain: "footballers-273ab.firebaseapp.com",
+    authDomain:
+    "footballers-273ab.firebaseapp.com",
 
-databaseURL: "https://footballers-273ab-default-rtdb.firebaseio.com",
+    databaseURL:
+    "https://footballers-273ab-default-rtdb.firebaseio.com",
 
-projectId: "footballers-273ab",
+    projectId:
+    "footballers-273ab",
 
-storageBucket: "footballers-273ab.firebasestorage.app",
+    storageBucket:
+    "footballers-273ab.firebasestorage.app",
 
-messagingSenderId: "354306335709",
+    messagingSenderId:
+    "354306335709",
 
-appId: "1:354306335709:web:bb778c2c40898a4824cc34"
+    appId:
+    "1:354306335709:web:bb778c2c40898a4824cc34"
 
 };
 
 
-
-const app = initializeApp(firebaseConfig);
-
-
-const db = getDatabase(app);
+const app =
+    initializeApp(firebaseConfig);
 
 
+const db =
+    getDatabase(app);
 
 
+/* =========================
+   CHANGE PAGE
+========================= */
 
-// ===============================
-// ثبت حضور بازیکن
-// ===============================
+window.showPage = function(pageId){
+
+    const pages = [
+
+        "attendancePage",
+        "playersPage",
+        "adminPage"
+
+    ];
+
+    pages.forEach(id => {
+
+        const page =
+            document.getElementById(id);
+
+        if(page){
+
+            page.classList.add("hidden");
+
+        }
+
+    });
 
 
-window.savePlayer = function(status){
+    const selected =
+        document.getElementById(pageId);
 
 
-let name = document
-.getElementById("playerName")
-.value
-.trim();
+    if(selected){
+
+        selected.classList.remove("hidden");
+
+    }
+
+};
 
 
+/* =========================
+   STATUS ICON
+========================= */
 
-if(name===""){
+function statusIcon(status){
 
-alert("اسم رو وارد کن ⚽");
+    if(status === "میام"){
+        return "🟢";
+    }
 
-return;
+    if(status === "نمیام"){
+        return "🔴";
+    }
+
+    if(status === "شاید"){
+        return "🟡";
+    }
+
+    return "⚪";
 
 }
 
 
+/* =========================
+   ESCAPE HTML
+========================= */
 
-let player = push(ref(db,"players"));
+function escapeHtml(value){
 
+    return String(value ?? "")
 
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
-set(player,{
-
-name:name,
-
-status:status,
-
-goals:0,
-
-assists:0,
-
-games:0,
-
-score:0,
-
-photo:""
-
-});
+}
 
 
+/* =========================
+   IMAGE TO BASE64
+========================= */
 
-alert("ثبت شد ✅");
+function imageToBase64(file){
+
+    return new Promise((resolve,reject)=>{
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = () => {
+
+            resolve(reader.result);
+
+        };
+
+
+        reader.onerror = reject;
+
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* =========================
+   SAVE ATTENDANCE
+========================= */
+
+async function savePlayer(status){
+
+    const input =
+        document.getElementById("playerName");
+
+
+    const message =
+        document.getElementById(
+            "attendanceMessage"
+        );
+
+
+    const name =
+        input.value.trim();
+
+
+    if(!name){
+
+        message.textContent =
+            "اول اسم بازیکن را وارد کن ⚽";
+
+        return;
+
+    }
+
+
+    try{
+
+        const playerRef =
+            push(ref(db,"players"));
+
+
+        await set(playerRef,{
+
+            name:name,
+
+            age:0,
+
+            photo:"",
+
+            status:status,
+
+            goals:0,
+
+            assists:0,
+
+            games:0,
+
+            score:0
+
+        });
+
+
+        message.textContent =
+            "اعلام حضور با موفقیت ثبت شد ✅";
+
+
+        input.value = "";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        message.textContent =
+            "ثبت اطلاعات انجام نشد ❌";
+
+        alert(
+            "خطا در اتصال به Firebase"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   ATTENDANCE BUTTONS
+========================= */
+
+document
+    .getElementById("comeBtn")
+    .addEventListener("click",()=>{
+
+        savePlayer("میام");
+
+    });
 
 
 document
-.getElementById("playerName")
-.value="";
+    .getElementById("noBtn")
+    .addEventListener("click",()=>{
 
+        savePlayer("نمیام");
 
-}
-
-
-
-
-
-
-// وصل کردن دکمه های حضور
+    });
 
 
 document
-.querySelector(".green")
-.onclick=function(){
+    .getElementById("maybeBtn")
+    .addEventListener("click",()=>{
 
-savePlayer("میام");
+        savePlayer("شاید");
+
+    });
+
+
+/* =========================
+   LOAD ATTENDANCE
+========================= */
+
+function loadAttendance(){
+
+    onValue(
+        ref(db,"players"),
+        snapshot => {
+
+            const come = [];
+            const no = [];
+            const maybe = [];
+
+
+            snapshot.forEach(item => {
+
+                const player =
+                    item.val();
+
+
+                if(player.status === "میام"){
+
+                    come.push(player.name);
+
+                }
+
+                else if(
+                    player.status === "نمیام"
+                ){
+
+                    no.push(player.name);
+
+                }
+
+                else if(
+                    player.status === "شاید"
+                ){
+
+                    maybe.push(player.name);
+
+                }
+
+            });
+
+
+            const html = `
+
+                <div class="attendance-section">
+
+                    <h3>
+                        🟢 میان
+                        (${come.length})
+                    </h3>
+
+                    <div class="attendance-names">
+
+                        ${
+                            come.length
+                            ? come.map(
+                                name =>
+                                "🟢 " +
+                                escapeHtml(name)
+                              ).join("<br>")
+                            : "کسی ثبت نکرده"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-section">
+
+                    <h3>
+                        🔴 نمیان
+                        (${no.length})
+                    </h3>
+
+                    <div class="attendance-names">
+
+                        ${
+                            no.length
+                            ? no.map(
+                                name =>
+                                "🔴 " +
+                                escapeHtml(name)
+                              ).join("<br>")
+                            : "کسی ثبت نکرده"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-section">
+
+                    <h3>
+                        🟡 شاید
+                        (${maybe.length})
+                    </h3>
+
+                    <div class="attendance-names">
+
+                        ${
+                            maybe.length
+                            ? maybe.map(
+                                name =>
+                                "🟡 " +
+                                escapeHtml(name)
+                              ).join("<br>")
+                            : "کسی ثبت نکرده"
+                        }
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            document
+                .getElementById(
+                    "attendanceList"
+                )
+                .innerHTML = html;
+
+        }
+
+    );
 
 }
 
 
-
-document
-.querySelector(".red")
-.onclick=function(){
-
-savePlayer("نمیام");
-
-}
-
-
-
-document
-.querySelector(".yellow")
-.onclick=function(){
-
-savePlayer("شاید");
-
-}
-
-
-
-
-
-
-
-// ===============================
-// نمایش کارت بازیکنان
-// ===============================
-
+/* =========================
+   LOAD PLAYER CARDS
+========================= */
 
 function loadPlayers(){
 
+    onValue(
+        ref(db,"players"),
+        snapshot => {
 
-onValue(ref(db,"players"),(snapshot)=>{
+            const players = [];
 
 
-let players=[];
+            snapshot.forEach(item => {
 
+                players.push({
 
+                    id:item.key,
 
-snapshot.forEach((item)=>{
+                    ...item.val()
 
+                });
 
-players.push({
+            });
 
-id:item.key,
 
-...item.val()
+            players.sort(
 
-});
+                (a,b) =>
 
+                (Number(b.score) || 0) -
 
-});
+                (Number(a.score) || 0)
 
+            );
 
 
+            const container =
+                document.getElementById(
+                    "playerCards"
+                );
 
-// مرتب سازی امتیاز بالا به پایین
 
+            if(!players.length){
 
-players.sort((a,b)=>{
+                container.innerHTML = `
 
-return (b.score || 0)-(a.score || 0);
+                    <div class="empty">
 
-});
+                        هنوز بازیکنی ثبت نشده ⚽
 
+                    </div>
 
+                `;
 
+                return;
 
+            }
 
-let html="";
 
+            let html = "";
 
 
+            players.forEach(player => {
 
-players.forEach((p,index)=>{
+                const score =
+                    Number(player.score) || 0;
 
 
+                const goals =
+                    Number(player.goals) || 0;
 
-html+=`
 
-<div class="card">
+                const assists =
+                    Number(player.assists) || 0;
 
 
-<h1>
+                const games =
+                    Number(player.games) || 0;
 
-${index+1}
 
-</h1>
+                const age =
+                    Number(player.age) || 0;
 
 
+                let photoHtml = "";
 
-<div style="font-size:45px">
 
-⭐ ${p.score || 0}
+                if(player.photo){
 
-</div>
+                    photoHtml = `
 
+                        <img
+                            class="player-photo"
+                            src="${player.photo}"
+                            alt="${escapeHtml(player.name)}"
+                        >
 
+                    `;
 
-<h2>
+                }
 
-${p.name}
+                else{
 
-</h2>
+                    photoHtml = `
 
+                        <div class="no-photo">
+                            ⚽
+                        </div>
 
+                    `;
 
-<p>
+                }
 
-⚽ گل:
-${p.goals || 0}
 
-</p>
+                html += `
 
+                    <div class="fifa-card">
 
-<p>
+                        <div class="card-top">
 
-🎯 پاس گل:
-${p.assists || 0}
+                            <div>
 
-</p>
+                                <div class="rating">
+                                    ${score}
+                                </div>
 
+                                <div class="rating-label">
+                                    RATING
+                                </div>
 
-<p>
+                                <div class="position">
+                                    ⚽
+                                </div>
 
-🏟 بازی:
-${p.games || 0}
+                            </div>
 
-</p>
 
+                            <div class="position">
 
-</div>
+                                ${statusIcon(player.status)}
 
+                            </div>
 
-`;
+                        </div>
 
 
+                        ${photoHtml}
 
-});
 
+                        <div class="fifa-name">
 
+                            ${escapeHtml(player.name)}
 
+                        </div>
 
 
-document
-.getElementById("playersList")
-.innerHTML=html;
+                        <div class="age">
 
+                            👤 سن:
+                            ${
+                                age > 0
+                                ? age
+                                : "ثبت نشده"
+                            }
 
+                        </div>
 
-});
 
+                        <div class="card-stats">
 
+                            <div class="card-stat">
+
+                                ⚽
+                                <span>گل</span>
+
+                                <strong>
+                                    ${goals}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="card-stat">
+
+                                🎯
+                                <span>پاس گل</span>
+
+                                <strong>
+                                    ${assists}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="card-stat">
+
+                                🏟
+                                <span>بازی</span>
+
+                                <strong>
+                                    ${games}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            container.innerHTML = html;
+
+        }
+
+    );
 
 }
 
 
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+function loginAdmin(){
+
+    const password =
+        document
+            .getElementById("adminPass")
+            .value;
+
+
+    if(password !== "habib7979"){
+
+        alert(
+            "رمز مدیر اشتباه است ❌"
+        );
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("adminLogin")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("adminContent")
+        .classList
+        .remove("hidden");
+
+
+    loadAdminPlayers();
+
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+document
+    .getElementById("adminLoginBtn")
+    .addEventListener(
+        "click",
+        loginAdmin
+    );
+
+
+/* =========================
+   ADD NEW PLAYER
+========================= */
+
+async function addNewPlayer(){
+
+    const nameInput =
+        document.getElementById(
+            "newPlayerName"
+        );
+
+
+    const ageInput =
+        document.getElementById(
+            "newPlayerAge"
+        );
+
+
+    const photoInput =
+        document.getElementById(
+            "newPlayerPhoto"
+        );
+
+
+    const name =
+        nameInput.value.trim();
+
+
+    const age =
+        Number(ageInput.value) || 0;
+
+
+    if(!name){
+
+        alert(
+            "اسم بازیکن را وارد کن ⚽"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        let photo = "";
+
+
+        if(photoInput.files.length > 0){
+
+            const file =
+                photoInput.files[0];
+
+
+            if(file.size > 3 * 1024 * 1024){
+
+                alert(
+                    "حجم عکس باید کمتر از 3 مگابایت باشد."
+                );
+
+                return;
+
+            }
+
+
+            photo =
+                await imageToBase64(file);
+
+        }
+
+
+        const playerRef =
+            push(ref(db,"players"));
+
+
+        await set(playerRef,{
+
+            name:name,
+
+            age:age,
+
+            photo:photo,
+
+            status:"شاید",
+
+            goals:0,
+
+            assists:0,
+
+            games:0,
+
+            score:0
+
+        });
+
+
+        nameInput.value = "";
+        ageInput.value = "";
+        photoInput.value = "";
+
+
+        alert(
+            "بازیکن با موفقیت اضافه شد ✅"
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "اضافه کردن بازیکن انجام نشد ❌"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   ADD PLAYER BUTTON
+========================= */
+
+document
+    .getElementById("addPlayerBtn")
+    .addEventListener(
+        "click",
+        addNewPlayer
+    );
+
+
+/* =========================
+   ADMIN PLAYERS
+========================= */
+
+function loadAdminPlayers(){
+
+    onValue(
+        ref(db,"players"),
+        snapshot => {
+
+            const container =
+                document.getElementById(
+                    "adminPlayers"
+                );
+
+
+            let html = "";
+
+
+            snapshot.forEach(item => {
+
+                const player =
+                    item.val();
+
+
+                const id =
+                    item.key;
+
+
+                html += `
+
+                    <div class="card admin-card">
+
+                        <h3>
+
+                            👤
+                            ${escapeHtml(player.name)}
+
+                        </h3>
+
+
+                        <p>
+
+                            وضعیت:
+                            ${statusIcon(player.status)}
+                            ${escapeHtml(
+                                player.status || "نامشخص"
+                            )}
+
+                        </p>
+
+
+                        <label class="admin-label">
+                            👤 نام بازیکن
+                        </label>
+
+                        <input
+                            id="name-${id}"
+                            type="text"
+                            value="${escapeHtml(
+                                player.name || ""
+                            )}"
+                        >
+
+
+                        <label class="admin-label">
+                            🎂 سن
+                        </label>
+
+                        <input
+                            id="age-${id}"
+                            type="number"
+                            min="1"
+                            max="100"
+                            value="${
+                                Number(player.age) || 0
+                            }"
+                        >
+
+
+                        <label class="admin-label">
+                            📷 عکس جدید
+                        </label>
+
+                        <input
+                            id="photo-${id}"
+                            type="file"
+                            accept="image/*"
+                        >
+
+
+                        <label class="admin-label">
+                            ⚽ گل
+                        </label>
+
+                        <input
+                            id="goals-${id}"
+                            type="number"
+                            min="0"
+                            value="${
+                                Number(player.goals) || 0
+                            }"
+                        >
+
+
+                        <label class="admin-label">
+                            🎯 پاس گل
+                        </label>
+
+                        <input
+                            id="assists-${id}"
+                            type="number"
+                            min="0"
+                            value="${
+                                Number(player.assists) || 0
+                            }"
+                        >
+
+
+                        <label class="admin-label">
+                            🏟 بازی
+                        </label>
+
+                        <input
+                            id="games-${id}"
+                            type="number"
+                            min="0"
+                            value="${
+                                Number(player.games) || 0
+                            }"
+                        >
+
+
+                        <label class="admin-label">
+                            ⭐ امتیاز
+                        </label>
+
+                        <input
+                            id="score-${id}"
+                            type="number"
+                            min="0"
+                            max="99"
+                            value="${
+                                Number(player.score) || 0
+                            }"
+                        >
+
+
+                        <button
+                            class="save-btn"
+                            onclick="saveStats('${id}')"
+                        >
+                            💾 ذخیره تغییرات
+                        </button>
+
+
+                        <button
+                            class="delete-btn"
+                            onclick="deletePlayer('${id}')"
+                        >
+                            🗑 حذف بازیکن
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            container.innerHTML =
+                html ||
+
+                `
+
+                    <div class="empty">
+
+                        هنوز بازیکنی ثبت نشده.
+
+                    </div>
+
+                `;
+
+        }
+
+    );
+
+}
+
+
+/* =========================
+   SAVE PLAYER
+========================= */
+
+window.saveStats = async function(id){
+
+    const nameInput =
+        document.getElementById(
+            "name-" + id
+        );
+
+
+    const ageInput =
+        document.getElementById(
+            "age-" + id
+        );
+
+
+    const photoInput =
+        document.getElementById(
+            "photo-" + id
+        );
+
+
+    const goalsInput =
+        document.getElementById(
+            "goals-" + id
+        );
+
+
+    const assistsInput =
+        document.getElementById(
+            "assists-" + id
+        );
+
+
+    const gamesInput =
+        document.getElementById(
+            "games-" + id
+        );
+
+
+    const scoreInput =
+        document.getElementById(
+            "score-" + id
+        );
+
+
+    if(
+        !nameInput ||
+        !ageInput ||
+        !goalsInput ||
+        !assistsInput ||
+        !gamesInput ||
+        !scoreInput
+    ){
+
+        alert(
+            "اطلاعات بازیکن پیدا نشد ❌"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        let photo = undefined;
+
+
+        if(
+            photoInput &&
+            photoInput.files.length > 0
+        ){
+
+            const file =
+                photoInput.files[0];
+
+
+            if(file.size > 3 * 1024 * 1024){
+
+                alert(
+                    "حجم عکس باید کمتر از 3 مگابایت باشد."
+                );
+
+                return;
+
+            }
+
+
+            photo =
+                await imageToBase64(file);
+
+        }
+
+
+        const data = {
+
+            name:
+                nameInput.value.trim(),
+
+            age:
+                Number(ageInput.value) || 0,
+
+            goals:
+                Number(goalsInput.value) || 0,
+
+            assists:
+                Number(assistsInput.value) || 0,
+
+            games:
+                Number(gamesInput.value) || 0,
+
+            score:
+                Number(scoreInput.value) || 0
+
+        };
+
+
+        if(photo !== undefined){
+
+            data.photo = photo;
+
+        }
+
+
+        await update(
+
+            ref(
+                db,
+                "players/" + id
+            ),
+
+            data
+
+        );
+
+
+        alert(
+            "اطلاعات بازیکن ذخیره شد ✅"
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "ذخیره انجام نشد ❌"
+        );
+
+    }
+
+};
+
+
+/* =========================
+   DELETE PLAYER
+========================= */
+
+window.deletePlayer = async function(id){
+
+    const answer =
+        confirm(
+            "مطمئنی می‌خواهی این بازیکن حذف شود؟"
+        );
+
+
+    if(!answer){
+
+        return;
+
+    }
+
+
+    try{
+
+        await remove(
+            ref(
+                db,
+                "players/" + id
+            )
+        );
+
+
+        alert(
+            "بازیکن حذف شد ✅"
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "حذف بازیکن انجام نشد ❌"
+        );
+
+    }
+
+};
+
+
+/* =========================
+   START
+========================= */
+
+loadAttendance();
 
 loadPlayers();
 
 
-
 </script>
-// ===============================
-// ورود مدیر
-// ===============================
 
-window.loginAdmin=function(){
+</body>
 
-
-let pass=document
-.getElementById("adminPass")
-.value;
-
-
-
-if(pass==="habib7979"){
-
-
-document
-.getElementById("adminLogin")
-.classList
-.add("hidden");
-
-
-document
-.getElementById("adminContent")
-.classList
-.remove("hidden");
-
-
-loadAdminPlayers();
-
-
-}
-
-else{
-
-
-alert("رمز اشتباهه ❌");
-
-
-}
-
-
-}
-
-
-
-
-
-// ===============================
-// نمایش بازیکنان برای مدیر
-// ===============================
-
-function loadAdminPlayers(){
-
-
-onValue(ref(db,"players"),(snapshot)=>{
-
-
-let html="";
-
-
-snapshot.forEach((item)=>{
-
-
-let p=item.val();
-
-
-html+=`
-
-<div class="card">
-
-
-<h2>
-${p.name}
-</h2>
-
-
-<p>
-⚽ گل
-</p>
-
-<input 
-id="goals-${item.key}"
-value="${p.goals || 0}">
-
-
-
-<p>
-🎯 پاس گل
-</p>
-
-<input 
-id="assists-${item.key}"
-value="${p.assists || 0}">
-
-
-
-<p>
-🏟 بازی
-</p>
-
-<input 
-id="games-${item.key}"
-value="${p.games || 0}">
-
-
-
-<p>
-⭐ امتیاز
-</p>
-
-<input 
-id="score-${item.key}"
-value="${p.score || 0}">
-
-
-
-<button onclick="saveStats('${item.key}')">
-
-💾 ذخیره
-
-</button>
-
-
-
-</div>
-
-`;
-
-
-
-});
-
-
-
-document
-.getElementById("adminPlayers")
-.innerHTML=html;
-
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-// ===============================
-// ذخیره آمار
-// ===============================
-
-
-window.saveStats=function(id){
-
-
-
-update(
-ref(db,"players/"+id),
-
-{
-
-
-goals:
-Number(
-document.getElementById("goals-"+id).value
-),
-
-
-assists:
-Number(
-document.getElementById("assists-"+id).value
-),
-
-
-games:
-Number(
-document.getElementById("games-"+id).value
-),
-
-
-score:
-Number(
-document.getElementById("score-"+id).value
-)
-
-
-}
-
-);
-
-
-
-alert("آمار ذخیره شد ✅");
-
-
-}
+</html>
