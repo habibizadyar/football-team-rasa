@@ -381,3 +381,292 @@ document
 </body>
 
 </html>
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+import {
+
+getDatabase,
+ref,
+push,
+set,
+onValue
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
+
+authDomain: "footballers-273ab.firebaseapp.com",
+
+databaseURL: "https://footballers-273ab-default-rtdb.firebaseio.com",
+
+projectId: "footballers-273ab",
+
+storageBucket: "footballers-273ab.firebasestorage.app",
+
+messagingSenderId: "354306335709",
+
+appId: "1:354306335709:web:bb778c2c40898a4824cc34"
+
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+
+
+const db = getDatabase(app);
+
+
+
+
+
+// ===============================
+// ثبت حضور بازیکن
+// ===============================
+
+
+window.savePlayer = function(status){
+
+
+let name = document
+.getElementById("playerName")
+.value
+.trim();
+
+
+
+if(name===""){
+
+alert("اسم رو وارد کن ⚽");
+
+return;
+
+}
+
+
+
+let player = push(ref(db,"players"));
+
+
+
+set(player,{
+
+name:name,
+
+status:status,
+
+goals:0,
+
+assists:0,
+
+games:0,
+
+score:0,
+
+photo:""
+
+});
+
+
+
+alert("ثبت شد ✅");
+
+
+document
+.getElementById("playerName")
+.value="";
+
+
+}
+
+
+
+
+
+
+// وصل کردن دکمه های حضور
+
+
+document
+.querySelector(".green")
+.onclick=function(){
+
+savePlayer("میام");
+
+}
+
+
+
+document
+.querySelector(".red")
+.onclick=function(){
+
+savePlayer("نمیام");
+
+}
+
+
+
+document
+.querySelector(".yellow")
+.onclick=function(){
+
+savePlayer("شاید");
+
+}
+
+
+
+
+
+
+
+// ===============================
+// نمایش کارت بازیکنان
+// ===============================
+
+
+function loadPlayers(){
+
+
+onValue(ref(db,"players"),(snapshot)=>{
+
+
+let players=[];
+
+
+
+snapshot.forEach((item)=>{
+
+
+players.push({
+
+id:item.key,
+
+...item.val()
+
+});
+
+
+});
+
+
+
+
+// مرتب سازی امتیاز بالا به پایین
+
+
+players.sort((a,b)=>{
+
+return (b.score || 0)-(a.score || 0);
+
+});
+
+
+
+
+
+let html="";
+
+
+
+
+players.forEach((p,index)=>{
+
+
+
+html+=`
+
+<div class="card">
+
+
+<h1>
+
+${index+1}
+
+</h1>
+
+
+
+<div style="font-size:45px">
+
+⭐ ${p.score || 0}
+
+</div>
+
+
+
+<h2>
+
+${p.name}
+
+</h2>
+
+
+
+<p>
+
+⚽ گل:
+${p.goals || 0}
+
+</p>
+
+
+<p>
+
+🎯 پاس گل:
+${p.assists || 0}
+
+</p>
+
+
+<p>
+
+🏟 بازی:
+${p.games || 0}
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+
+
+document
+.getElementById("playersList")
+.innerHTML=html;
+
+
+
+});
+
+
+
+}
+
+
+
+loadPlayers();
+
+
+
+</script>
