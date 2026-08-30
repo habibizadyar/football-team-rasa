@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>پنل مدیریت | Footballers</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:tahoma;
+}
+
+body{
+margin:0;
+background:#050505;
+color:white;
+}
+
+
+header{
+background:linear-gradient(135deg,#000,#3a2b00);
+padding:25px;
+text-align:center;
+border-bottom:3px solid gold;
+}
+
+
+h1{
+color:#ffd700;
+}
+
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+
+.box{
+background:#111;
+border:2px solid gold;
+border-radius:25px;
+padding:25px;
+margin-top:20px;
+box-shadow:0 0 20px #ffd70055;
+}
+
+
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:15px;
+border:none;
+font-size:17px;
+}
+
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:20px;
+background:gold;
+font-weight:bold;
+cursor:pointer;
+}
+
+
+.hidden{
+display:none;
+}
+
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+
+}
+
+
+.card{
+
+background:linear-gradient(145deg,#3a2b00,#111);
+border:2px solid gold;
+border-radius:25px;
+padding:20px;
+text-align:center;
+
+}
+
+
+.name{
+
+font-size:28px;
+color:gold;
+font-weight:bold;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>
+👑 پنل مدیریت Footballers
+</h1>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="box" id="loginBox">
+
+<h2>
+🔐 ورود مدیر
+</h2>
+
+
+<input id="adminPass" placeholder="رمز مدیر">
+
+
+<button onclick="loginAdmin()">
+ورود
+</button>
+
+
+</div>
+
+
+
+
+
+<div id="adminPanel" class="hidden">
+
+
+<div class="box">
+
+<h2>
+⚽ لیست بازیکنان
+</h2>
+
+
+<div id="players" class="cards"></div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script type="module">
+
+
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+import { 
+getDatabase,
+ref,
+onValue,
+update
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
+
+authDomain: "footballers-273ab.firebaseapp.com",
+
+databaseURL: "https://footballers-273ab-default-rtdb.firebaseio.com",
+
+projectId: "footballers-273ab",
+
+storageBucket: "footballers-273ab.firebasestorage.app",
+
+messagingSenderId: "354306335709",
+
+appId: "1:354306335709:web:bb778c2c40898a4824cc34"
+
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+
+
+const db = getDatabase(app);
+
+
+
+
+
+window.loginAdmin=function(){
+
+
+let pass=document.getElementById("adminPass").value;
+
+
+
+if(pass==="habib7979"){
+
+
+document
+.getElementById("loginBox")
+.classList
+.add("hidden");
+
+
+
+document
+.getElementById("adminPanel")
+.classList
+.remove("hidden");
+
+
+
+loadPlayers();
+
+
+}
+
+else{
+
+
+alert("رمز اشتباهه ❌");
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+function loadPlayers(){
+
+
+onValue(ref(db,"players"),(snapshot)=>{
+
+
+let html="";
+
+
+
+snapshot.forEach((item)=>{
+
+
+let p=item.val();
+
+
+
+html+=`
+
+<div class="card">
+
+
+<div class="name">
+${p.name}
+</div>
+
+
+<p>
+⚽ گل:
+</p>
+
+<input 
+id="goal-${item.key}" 
+value="${p.goals || 0}">
+
+
+<p>
+🎯 پاس گل:
+</p>
+
+<input 
+id="assist-${item.key}" 
+value="${p.assists || 0}">
+
+
+<p>
+🏟 بازی:
+</p>
+
+<input 
+id="game-${item.key}" 
+value="${p.games || 0}">
+
+
+<p>
+⭐ امتیاز:
+</p>
+
+<input 
+id="score-${item.key}" 
+value="${p.score || 0}">
+
+
+<button onclick="saveStats('${item.key}')">
+
+💾 ذخیره آمار
+
+</button>
+
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+document.getElementById("players").innerHTML=html;
+
+
+
+});
+
+
+}
+
+
+
+
+
+window.saveStats=function(id){
+
+
+let data={
+
+
+goals:
+Number(document.getElementById("goal-"+id).value),
+
+
+assists:
+Number(document.getElementById("assist-"+id).value),
+
+
+games:
+Number(document.getElementById("game-"+id).value),
+
+
+score:
+Number(document.getElementById("score-"+id).value)
+
+
+};
+
+
+
+update(ref(db,"players/"+id),data);
+
+
+alert("آمار ذخیره شد ✅");
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
