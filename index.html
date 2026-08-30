@@ -8,6 +8,7 @@
 
 <title>Footballers | فوتبالیست‌ها و رسا</title>
 
+
 <style>
 
 *{
@@ -15,11 +16,15 @@ box-sizing:border-box;
 font-family:tahoma;
 }
 
+
 body{
+
 margin:0;
 background:#050505;
 color:white;
+
 }
+
 
 
 header{
@@ -33,8 +38,11 @@ border-bottom:3px solid gold;
 
 
 .logo{
+
 font-size:60px;
+
 }
+
 
 
 h1{
@@ -45,6 +53,14 @@ font-size:40px;
 }
 
 
+h2{
+
+color:white;
+
+}
+
+
+
 .container{
 
 max-width:900px;
@@ -52,6 +68,7 @@ margin:auto;
 padding:20px;
 
 }
+
 
 
 .box{
@@ -80,20 +97,6 @@ margin:10px 0;
 
 
 
-button{
-
-padding:15px;
-border:none;
-border-radius:20px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-background:gold;
-
-}
-
-
-
 .status{
 
 display:flex;
@@ -102,9 +105,16 @@ gap:10px;
 }
 
 
-.status button{
+
+button{
 
 flex:1;
+padding:15px;
+border:none;
+border-radius:20px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
 
 }
 
@@ -118,12 +128,14 @@ color:white;
 }
 
 
+
 .red{
 
 background:#cc0000;
 color:white;
 
 }
+
 
 
 .yellow{
@@ -134,63 +146,14 @@ background:#d6b600;
 
 
 
-.cards{
+.link{
 
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-
-}
-
-
-
-.card{
-
-background:linear-gradient(145deg,#3a2b00,#111);
-border:3px solid gold;
-border-radius:25px;
-padding:20px;
+display:block;
+margin-top:25px;
 text-align:center;
-
-}
-
-
-
-.rating{
-
-font-size:45px;
 color:gold;
-font-weight:bold;
-
-}
-
-
-
-.avatar{
-
-width:120px;
-height:120px;
-border-radius:50%;
-border:3px solid gold;
-object-fit:cover;
-
-}
-
-
-
-.name{
-
-font-size:28px;
-color:gold;
-font-weight:bold;
-
-}
-
-
-
-.hidden{
-
-display:none;
+font-size:18px;
+text-decoration:none;
 
 }
 
@@ -201,24 +164,31 @@ display:none;
 </head>
 
 
+
 <body>
 
 
 <header>
 
+
 <div class="logo">
 ⚽
 </div>
+
 
 <h1>
 Footballers
 </h1>
 
+
 <h2>
 فوتبالیست‌ها و رسا
 </h2>
 
+
 </header>
+
+
 
 
 
@@ -227,52 +197,51 @@ Footballers
 
 <div class="box">
 
+
 <h2>
-👤 بازیکن
+👤 ثبت حضور بازیکن
 </h2>
 
 
-<input id="playerName" placeholder="اسم خودتو وارد کن">
+
+<input 
+id="playerName"
+placeholder="اسم خودتو وارد کن">
+
+
 
 
 
 <div class="status">
 
 
-<button class="green" onclick="savePlayer('میام')">
+<button 
+class="green"
+onclick="savePlayer('میام')">
+
 🟢 میام
+
 </button>
 
 
-<button class="red" onclick="savePlayer('نمیام')">
+
+<button 
+class="red"
+onclick="savePlayer('نمیام')">
+
 🔴 نمیام
+
 </button>
 
 
-<button class="yellow" onclick="savePlayer('شاید')">
+
+
+<button 
+class="yellow"
+onclick="savePlayer('شاید')">
+
 🟡 شاید
-</button>
 
-
-</div>
-
-
-</div>
-
-
-
-<div class="box">
-
-<h2>
-👑 پنل مدیر
-</h2>
-
-
-<input id="adminPass" placeholder="رمز مدیر">
-
-
-<button onclick="loginAdmin()">
-ورود
 </button>
 
 
@@ -280,39 +249,47 @@ Footballers
 
 
 
-<div id="adminPanel" class="box hidden">
-
-<h2>
-📋 بازیکنان
-</h2>
+</div>
 
 
-<div id="stats"></div>
 
+<a class="link" href="players.html">
 
-<div id="players" class="cards"></div>
+🏆 مشاهده جدول بازیکنان
+
+</a>
+
 
 
 </div>
 
 
 
-</div>
+
+
 <script type="module">
 
-import { initializeApp } 
+
+import { initializeApp }
+
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
-import { 
+
+import {
+
 getDatabase,
 ref,
 push,
-set,
-onValue
+set
+
 }
+
 from 
+
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
 
 
 
@@ -336,6 +313,8 @@ appId: "1:354306335709:web:bb778c2c40898a4824cc34"
 
 
 
+
+
 const app = initializeApp(firebaseConfig);
 
 
@@ -344,29 +323,34 @@ const db = getDatabase(app);
 
 
 
-// ثبت بازیکن
 
-window.savePlayer = function(status){
+window.savePlayer=function(status){
 
 
-let name = document
+
+let name=document
 .getElementById("playerName")
 .value
 .trim();
 
 
 
+
 if(name===""){
+
 
 alert("اسم رو وارد کن ⚽");
 
 return;
 
+
 }
 
 
 
-let player = push(ref(db,"players"));
+
+let player=push(ref(db,"players"));
+
 
 
 
@@ -376,6 +360,12 @@ name:name,
 
 status:status,
 
+goals:0,
+
+assists:0,
+
+games:0,
+
 score:0,
 
 photo:""
@@ -384,142 +374,26 @@ photo:""
 
 
 
+
+
 alert("ثبت شد ✅");
 
 
-document.getElementById("playerName").value="";
-
-
-}
-
-
-
-
-// ورود مدیر
-
-window.loginAdmin=function(){
-
-
-let password = document
-.getElementById("adminPass")
-.value;
-
-
-
-if(password==="habib7979"){
-
 
 document
-.getElementById("adminPanel")
-.classList
-.remove("hidden");
+.getElementById("playerName")
+.value="";
 
-
-loadPlayers();
-
-
-}
-
-else{
-
-alert("رمز اشتباهه ❌");
-
-}
-
-
-}
-// نمایش بازیکن ها برای مدیر
-
-window.loadPlayers=function(){
-
-onValue(ref(db,"players"),(snapshot)=>{
-
-let html="";
-
-let countCome=0;
-let countNo=0;
-let countMaybe=0;
-
-
-snapshot.forEach((item)=>{
-
-
-let p=item.val();
-
-
-if(p.status==="میام"){
-countCome++;
-}
-
-if(p.status==="نمیام"){
-countNo++;
-}
-
-if(p.status==="شاید"){
-countMaybe++;
-}
-
-
-
-html+=`
-
-<div class="card">
-
-
-<div class="rating">
-⭐ ${p.score || 0}
-</div>
-
-
-<img class="avatar"
-src="${p.photo || 'https://via.placeholder.com/120'}">
-
-
-<div class="name">
-${p.name}
-</div>
-
-
-<p>
-وضعیت:
-${p.status}
-</p>
-
-
-</div>
-
-
-`;
-
-
-});
-
-
-
-document.getElementById("players").innerHTML=html;
-
-
-document.getElementById("stats").innerHTML=`
-
-🟢 حاضر: ${countCome}
-<br>
-🔴 غایب: ${countNo}
-<br>
-🟡 شاید: ${countMaybe}
-
-`;
-
-
-
-});
 
 
 }
 
 
-// پایان فایل
 
 </script>
 
+
+
 </body>
+
 </html>
