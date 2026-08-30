@@ -6,23 +6,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Footballers | فوتبالیست‌ها و رسا</title>
+<title>Footballers ⚽</title>
 
 
 <style>
 
 *{
 box-sizing:border-box;
-font-family:tahoma;
+font-family:Tahoma;
 }
 
 
 body{
-
 margin:0;
 background:#050505;
 color:white;
-
 }
 
 
@@ -37,35 +35,52 @@ border-bottom:3px solid gold;
 }
 
 
+
 .logo{
-
-font-size:60px;
-
+font-size:70px;
 }
 
 
 
 h1{
-
 color:#ffd700;
-font-size:40px;
-
-}
-
-
-h2{
-
-color:white;
-
+font-size:45px;
+margin:10px;
 }
 
 
 
 .container{
 
-max-width:900px;
+max-width:1000px;
 margin:auto;
 padding:20px;
+
+}
+
+
+
+.menu{
+
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:20px;
+
+}
+
+
+
+.menu button{
+
+background:gold;
+border:none;
+padding:15px 25px;
+border-radius:25px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
 
 }
 
@@ -79,6 +94,14 @@ border-radius:25px;
 padding:25px;
 margin-top:25px;
 box-shadow:0 0 25px #ffd70055;
+
+}
+
+
+
+.hidden{
+
+display:none;
 
 }
 
@@ -106,13 +129,12 @@ gap:10px;
 
 
 
-button{
+.status button{
 
 flex:1;
 padding:15px;
 border:none;
 border-radius:20px;
-font-size:18px;
 font-weight:bold;
 cursor:pointer;
 
@@ -121,45 +143,48 @@ cursor:pointer;
 
 
 .green{
-
 background:#009933;
 color:white;
-
 }
 
 
 
 .red{
-
 background:#cc0000;
 color:white;
-
 }
 
 
 
 .yellow{
-
 background:#d6b600;
+}
+
+
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 
 }
 
 
 
-.link{
+.card{
 
-display:block;
-margin-top:25px;
+background:linear-gradient(145deg,#3a2b00,#111);
+border:3px solid gold;
+border-radius:25px;
+padding:20px;
 text-align:center;
-color:gold;
-font-size:18px;
-text-decoration:none;
 
 }
+
 
 
 </style>
-
 
 </head>
 
@@ -169,7 +194,6 @@ text-decoration:none;
 
 
 <header>
-
 
 <div class="logo">
 ⚽
@@ -181,9 +205,9 @@ Footballers
 </h1>
 
 
-<h2>
-فوتبالیست‌ها و رسا
-</h2>
+<p>
+پنل فوتبال دوستان
+</p>
 
 
 </header>
@@ -195,53 +219,120 @@ Footballers
 <div class="container">
 
 
-<div class="box">
+
+<div class="menu">
+
+
+<button onclick="showPage('attendance')">
+🟢 اعلام ثبت حضور
+</button>
+
+
+
+<button onclick="showPage('players')">
+🏆 اطلاعات بازیکنان
+</button>
+
+
+
+<button onclick="showPage('admin')">
+🔐 پنل مدیریت
+</button>
+
+
+
+</div>
+
+
+
+
+
+<!-- ثبت حضور -->
+
+<div id="attendance" class="box">
 
 
 <h2>
-👤 ثبت حضور بازیکن
+⚽ اعلام حضور
 </h2>
 
 
-
-<input 
-id="playerName"
+<input id="playerName"
 placeholder="اسم خودتو وارد کن">
-
-
 
 
 
 <div class="status">
 
 
-<button 
-class="green"
-onclick="savePlayer('میام')">
-
+<button class="green">
 🟢 میام
-
 </button>
 
 
-
-<button 
-class="red"
-onclick="savePlayer('نمیام')">
-
+<button class="red">
 🔴 نمیام
-
 </button>
 
 
-
-
-<button 
-class="yellow"
-onclick="savePlayer('شاید')">
-
+<button class="yellow">
 🟡 شاید
+</button>
 
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- اطلاعات بازیکنان -->
+
+
+<div id="players" class="box hidden">
+
+
+<h2>
+🏆 کارت بازیکنان
+</h2>
+
+
+<div id="playersList" class="cards">
+
+در حال بارگذاری...
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- پنل مدیریت -->
+
+
+<div id="admin" class="box hidden">
+
+
+<h2>
+🔐 پنل مدیریت
+</h2>
+
+
+<input placeholder="رمز مدیر">
+
+
+<button>
+ورود
 </button>
 
 
@@ -249,17 +340,6 @@ onclick="savePlayer('شاید')">
 
 
 
-</div>
-
-
-
-<a class="link" href="players.html">
-
-🏆 مشاهده جدول بازیکنان
-
-</a>
-
-
 
 </div>
 
@@ -267,123 +347,27 @@ onclick="savePlayer('شاید')">
 
 
 
-<script type="module">
+
+<script>
 
 
-import { initializeApp }
-
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+function showPage(page){
 
 
+document
+.querySelectorAll(".box")
+.forEach(x=>{
 
-import {
-
-getDatabase,
-ref,
-push,
-set
-
-}
-
-from 
-
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-
-
-
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
-
-authDomain: "footballers-273ab.firebaseapp.com",
-
-databaseURL: "https://footballers-273ab-default-rtdb.firebaseio.com",
-
-projectId: "footballers-273ab",
-
-storageBucket: "footballers-273ab.firebasestorage.app",
-
-messagingSenderId: "354306335709",
-
-appId: "1:354306335709:web:bb778c2c40898a4824cc34"
-
-};
-
-
-
-
-
-const app = initializeApp(firebaseConfig);
-
-
-const db = getDatabase(app);
-
-
-
-
-
-window.savePlayer=function(status){
-
-
-
-let name=document
-.getElementById("playerName")
-.value
-.trim();
-
-
-
-
-if(name===""){
-
-
-alert("اسم رو وارد کن ⚽");
-
-return;
-
-
-}
-
-
-
-
-let player=push(ref(db,"players"));
-
-
-
-
-set(player,{
-
-name:name,
-
-status:status,
-
-goals:0,
-
-assists:0,
-
-games:0,
-
-score:0,
-
-photo:""
+x.classList.add("hidden");
 
 });
 
 
 
-
-
-alert("ثبت شد ✅");
-
-
-
 document
-.getElementById("playerName")
-.value="";
-
+.getElementById(page)
+.classList
+.remove("hidden");
 
 
 }
