@@ -284,7 +284,17 @@ placeholder="اسم خودتو وارد کن">
 
 
 </div>
+<br>
 
+<h3>
+📋 وضعیت امروز
+</h3>
+
+<div id="attendanceList">
+
+در حال بارگذاری...
+
+</div>
 
 
 
@@ -381,6 +391,108 @@ document
 </body>
 
 </html>
+// ===============================
+// نمایش وضعیت حضور
+// ===============================
+
+function loadAttendance(){
+
+
+onValue(ref(db,"players"),(snapshot)=>{
+
+
+let come="";
+let no="";
+let maybe="";
+
+
+snapshot.forEach((item)=>{
+
+
+let p=item.val();
+
+
+
+if(p.status==="میام"){
+
+come += `
+🟢 ${p.name}<br>
+`;
+
+}
+
+
+if(p.status==="نمیام"){
+
+no += `
+🔴 ${p.name}<br>
+`;
+
+}
+
+
+
+if(p.status==="شاید"){
+
+maybe += `
+🟡 ${p.name}<br>
+`;
+
+}
+
+
+});
+
+
+
+document.getElementById("attendanceList").innerHTML=
+
+`
+
+<div>
+
+<h3>🟢 میان:</h3>
+
+${come || "کسی ثبت نکرده"}
+
+</div>
+
+
+<hr>
+
+
+<div>
+
+<h3>🔴 نمیان:</h3>
+
+${no || "کسی ثبت نکرده"}
+
+</div>
+
+
+<hr>
+
+
+<div>
+
+<h3>🟡 شاید:</h3>
+
+${maybe || "کسی ثبت نکرده"}
+
+</div>
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+loadAttendance();
 <script type="module">
 
 import { initializeApp }
