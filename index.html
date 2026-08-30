@@ -10,507 +10,987 @@
 
 <style>
 
-*{
-    box-sizing:border-box;
-    font-family:Tahoma,Arial,sans-serif;
+* {
+    box-sizing: border-box;
+    font-family: Tahoma, Arial, sans-serif;
 }
 
-body{
-    margin:0;
-    min-height:100vh;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: #fff;
+
     background:
-        radial-gradient(circle at top,#302500 0%,#090909 35%,#050505 100%);
-    color:white;
+        radial-gradient(circle at 50% -10%, rgba(255,215,0,0.20), transparent 35%),
+        radial-gradient(circle at 10% 30%, rgba(255,190,0,0.06), transparent 30%),
+        radial-gradient(circle at 90% 70%, rgba(255,215,0,0.05), transparent 30%),
+        linear-gradient(135deg, #050505, #101010 45%, #050505);
 }
 
 /* =========================
    HEADER
 ========================= */
 
-header{
-    text-align:center;
-    padding:25px 15px 30px;
-    background:linear-gradient(135deg,#000,#3a2b00);
-    border-bottom:2px solid #ffd700;
+header {
+    position: relative;
+    overflow: hidden;
+
+    text-align: center;
+
+    padding: 35px 20px 40px;
+
+    background:
+        linear-gradient(135deg, #000000 0%, #211900 45%, #050505 100%);
+
+    border-bottom: 2px solid #ffd700;
+
+    box-shadow:
+        0 10px 40px rgba(255,215,0,0.12),
+        inset 0 -1px 0 rgba(255,255,255,0.04);
 }
 
-.logo{
-    font-size:62px;
+header::before {
+    content: "";
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: rgba(255,215,0,0.05);
+
+    top: -160px;
+    left: 50%;
+
+    transform: translateX(-50%);
 }
 
-header h1{
-    margin:8px 0;
-    color:#ffd700;
-    font-size:40px;
+header::after {
+    content: "⚽";
+
+    position: absolute;
+
+    right: -35px;
+    bottom: -65px;
+
+    font-size: 180px;
+
+    opacity: 0.035;
+
+    transform: rotate(-15deg);
 }
 
-header p{
-    margin:0;
-    color:#ddd;
-    font-size:17px;
+.logo {
+    position: relative;
+    z-index: 2;
+
+    font-size: 72px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,215,0,0.35));
+}
+
+header h1 {
+    position: relative;
+    z-index: 2;
+
+    margin: 10px 0 6px;
+
+    color: #ffd700;
+
+    font-size: 44px;
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 15px rgba(255,215,0,0.25);
+}
+
+header p {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    color: #ddd;
+
+    font-size: 17px;
 }
 
 /* =========================
    CONTAINER
 ========================= */
 
-.container{
-    width:100%;
-    max-width:1100px;
-    margin:auto;
-    padding:18px;
+.container {
+    width: 100%;
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 22px 18px 50px;
 }
 
 /* =========================
    MENU
 ========================= */
 
-.menu{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-bottom:18px;
+.menu {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 22px;
 }
 
-.menu button{
-    border:none;
-    padding:15px 10px;
-    border-radius:16px;
-    background:linear-gradient(135deg,#ffd700,#c49a00);
-    color:#000;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.2s;
+.menu button {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(255,215,0,0.65);
+
+    padding: 16px 12px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(135deg, #ffd700, #c79d00);
+
+    color: #080808;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+    box-shadow:
+        0 5px 18px rgba(255,215,0,0.10);
 }
 
-.menu button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(255,215,0,.18);
+.menu button::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.25),
+            transparent
+        );
+
+    transition: 0.5s;
+}
+
+.menu button:hover::after {
+    left: 130%;
+}
+
+.menu button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 28px rgba(255,215,0,0.20);
+}
+
+.menu button:active {
+    transform: scale(0.98);
 }
 
 /* =========================
-   PAGES
+   PAGE
 ========================= */
 
-.page{
-    background:#111;
-    border:2px solid #ffd700;
-    border-radius:24px;
-    padding:22px;
-    box-shadow:0 0 25px rgba(255,215,0,.10);
+.page {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,25,25,0.98),
+            rgba(8,8,8,0.98)
+        );
+
+    border: 1px solid rgba(255,215,0,0.75);
+
+    border-radius: 28px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 0 30px rgba(255,215,0,0.07),
+        inset 0 0 40px rgba(255,215,0,0.025);
 }
 
-.hidden{
-    display:none !important;
+.page::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(255,215,0,0.025);
+
+    left: -80px;
+    top: -80px;
+
+    pointer-events: none;
 }
 
-.page-title{
-    text-align:center;
-    color:#ffd700;
-    font-size:30px;
-    margin-top:0;
+.hidden {
+    display: none !important;
+}
+
+.page-title {
+    position: relative;
+
+    text-align: center;
+
+    color: #ffd700;
+
+    font-size: 30px;
+
+    margin: 0 0 24px;
+
+    text-shadow:
+        0 0 12px rgba(255,215,0,0.15);
+}
+
+.page-title::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 3px;
+
+    margin: 10px auto 0;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffd700,
+            transparent
+        );
 }
 
 /* =========================
-   INPUT
+   INPUTS
 ========================= */
 
-input{
-    width:100%;
-    padding:14px;
-    margin:7px 0;
-    border-radius:13px;
-    border:1px solid #444;
-    background:#1b1b1b;
-    color:white;
-    font-size:16px;
-    outline:none;
+input,
+select {
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 7px 0;
+
+    border-radius: 14px;
+
+    border: 1px solid #444;
+
+    background: #181818;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s;
 }
 
-input:focus{
-    border-color:#ffd700;
+input:focus,
+select:focus {
+    border-color: #ffd700;
+
+    box-shadow:
+        0 0 10px rgba(255,215,0,0.08);
 }
 
-input[type="file"]{
-    padding:10px;
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #111;
+    color: #fff;
+}
+
+input[type="file"] {
+    padding: 10px;
+
+    cursor: pointer;
 }
 
 /* =========================
    BUTTONS
 ========================= */
 
-button{
-    cursor:pointer;
+button {
+    cursor: pointer;
 }
 
-.primary-btn{
-    width:100%;
-    border:none;
-    border-radius:14px;
-    padding:14px;
-    margin-top:8px;
-    background:#ffd700;
-    color:#000;
-    font-weight:bold;
-    font-size:16px;
+.primary-btn {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 15px;
+
+    padding: 14px;
+
+    margin-top: 8px;
+
+    background:
+        linear-gradient(135deg, #ffd700, #c99f00);
+
+    color: #000;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    transition: 0.2s;
 }
 
-.green{
-    background:#009933;
-    color:white;
-}
+.primary-btn:hover {
+    transform: translateY(-2px);
 
-.red{
-    background:#c90000;
-    color:white;
-}
-
-.yellow{
-    background:#d6b600;
-    color:#000;
+    box-shadow:
+        0 8px 20px rgba(255,215,0,0.18);
 }
 
 /* =========================
    ATTENDANCE
 ========================= */
 
-.status-buttons{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:10px;
+.status-buttons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 12px;
 }
 
-.status-buttons button{
-    border:none;
-    padding:15px;
-    border-radius:15px;
-    font-size:16px;
-    font-weight:bold;
+.status-buttons button {
+    border: none;
+
+    padding: 16px;
+
+    border-radius: 16px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
 }
 
-.message{
-    margin-top:15px;
-    padding:12px;
-    text-align:center;
-    background:#181818;
-    border-radius:13px;
-    color:#bbb;
+.status-buttons button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.1);
 }
 
-.attendance-section{
-    background:#181818;
-    border:1px solid #333;
-    border-radius:16px;
-    padding:15px;
-    margin-top:12px;
+.green {
+    background:
+        linear-gradient(135deg, #00a83b, #006d27);
+
+    color: white;
 }
 
-.attendance-section h3{
-    margin-top:0;
-    color:#ffd700;
+.red {
+    background:
+        linear-gradient(135deg, #d00000, #870000);
+
+    color: white;
 }
 
-.attendance-names{
-    line-height:2.2;
-    font-size:17px;
+.yellow {
+    background:
+        linear-gradient(135deg, #e0c000, #a48b00);
+
+    color: #000;
 }
 
-/* =========================
-   PLAYERS GRID
-========================= */
+.message {
+    margin-top: 15px;
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-}
+    padding: 13px;
 
-/* =========================
-   FIFA STYLE CARD
-========================= */
-
-.fifa-card{
-    position:relative;
-    min-height:430px;
-    overflow:hidden;
-    border-radius:24px;
-    padding:18px;
-    text-align:center;
+    text-align: center;
 
     background:
-        linear-gradient(
-            145deg,
-            #665000 0%,
-            #211b05 25%,
-            #080808 60%,
-            #3c2e00 100%
-        );
+        linear-gradient(135deg, #191919, #101010);
 
-    border:3px solid #ffd700;
+    border: 1px solid #333;
+
+    border-radius: 14px;
+
+    color: #bbb;
+}
+
+.attendance-section {
+    background:
+        linear-gradient(145deg, #191919, #101010);
+
+    border: 1px solid #333;
+
+    border-radius: 18px;
+
+    padding: 17px;
+
+    margin-top: 14px;
 
     box-shadow:
-        0 0 15px rgba(255,215,0,.18),
-        inset 0 0 30px rgba(255,215,0,.05);
+        inset 0 0 20px rgba(255,255,255,0.015);
 }
 
-/* خطوط تزئینی کارت */
+.attendance-section h3 {
+    margin-top: 0;
 
-.fifa-card::before{
-    content:"";
-    position:absolute;
-    inset:8px;
-    border:1px solid rgba(255,215,0,.35);
-    border-radius:19px;
-    pointer-events:none;
+    color: #ffd700;
+
+    border-bottom: 1px solid #333;
+
+    padding-bottom: 9px;
 }
 
-.fifa-card::after{
-    content:"⚽";
-    position:absolute;
-    left:-15px;
-    bottom:-25px;
-    font-size:120px;
-    opacity:.04;
-    pointer-events:none;
+.attendance-names {
+    line-height: 2.2;
+
+    font-size: 17px;
+}
+
+/* =========================
+   PLAYER CARDS GRID
+========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+
+    gap: 22px;
+}
+
+/* =========================
+   FIFA CARD
+========================= */
+
+.fifa-card {
+    position: relative;
+
+    min-height: 480px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,215,0,0.16),
+            transparent 34%
+        ),
+        linear-gradient(
+            145deg,
+            #806500 0%,
+            #392e08 20%,
+            #151305 48%,
+            #080808 75%,
+            #403300 100%
+        );
+
+    border: 3px solid #dcb500;
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,0.15),
+        0 18px 35px rgba(0,0,0,0.45),
+        inset 0 0 35px rgba(255,215,0,0.07);
+
+    transition: 0.3s;
+}
+
+.fifa-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 0 30px rgba(255,215,0,0.25),
+        0 20px 40px rgba(0,0,0,0.55),
+        inset 0 0 40px rgba(255,215,0,0.09);
+}
+
+.fifa-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    border: 1px solid rgba(255,215,0,0.38);
+
+    border-radius: 22px;
+
+    pointer-events: none;
+}
+
+.fifa-card::after {
+    content: "⚽";
+
+    position: absolute;
+
+    left: -25px;
+    bottom: -35px;
+
+    font-size: 145px;
+
+    opacity: 0.035;
+
+    pointer-events: none;
 }
 
 /* =========================
    CARD TOP
 ========================= */
 
-.card-top{
-    position:relative;
-    z-index:2;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    padding:4px 5px;
+.card-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    padding: 5px 8px;
 }
 
-.rating{
-    font-size:45px;
-    font-weight:bold;
-    color:#ffd700;
-    line-height:1;
+.rating {
+    color: #ffd700;
+
+    font-size: 48px;
+
+    font-weight: bold;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 10px rgba(255,215,0,0.20);
 }
 
-.rating-label{
-    font-size:13px;
-    color:#bbb;
-    margin-top:5px;
+.rating-label {
+    color: #aaa;
+
+    font-size: 11px;
+
+    margin-top: 5px;
 }
 
-.position{
-    font-size:18px;
-    color:#ddd;
-    margin-top:7px;
+.position {
+    color: #eee;
+
+    font-size: 18px;
+
+    margin-top: 6px;
+}
+
+.status-badge {
+    background:
+        rgba(0,0,0,0.40);
+
+    border: 1px solid rgba(255,215,0,0.25);
+
+    border-radius: 20px;
+
+    padding: 7px 10px;
+
+    font-size: 14px;
 }
 
 /* =========================
-   PHOTO
+   PLAYER PHOTO
 ========================= */
 
-.player-photo{
-    position:relative;
-    z-index:2;
+.player-photo {
+    position: relative;
 
-    width:190px;
-    height:190px;
+    z-index: 2;
 
-    margin:5px auto 10px;
+    width: 205px;
+    height: 205px;
 
-    border-radius:50%;
+    margin: 7px auto 12px;
 
-    object-fit:cover;
+    display: block;
 
-    border:4px solid #ffd700;
+    object-fit: cover;
 
-    background:#222;
+    border-radius: 50%;
+
+    border: 4px solid #ffd700;
+
+    background: #222;
 
     box-shadow:
-        0 0 20px rgba(255,215,0,.25);
+        0 0 25px rgba(255,215,0,0.25);
 }
 
-.no-photo{
-    position:relative;
-    z-index:2;
+.no-photo {
+    position: relative;
 
-    width:190px;
-    height:190px;
+    z-index: 2;
 
-    margin:5px auto 10px;
+    width: 205px;
+    height: 205px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    margin: 7px auto 12px;
 
-    border-radius:50%;
+    display: flex;
 
-    border:4px solid #ffd700;
+    align-items: center;
+    justify-content: center;
 
-    background:#222;
+    border-radius: 50%;
 
-    font-size:75px;
+    border: 4px solid #ffd700;
+
+    background:
+        radial-gradient(circle, #333, #111);
+
+    font-size: 75px;
+
+    box-shadow:
+        0 0 25px rgba(255,215,0,0.20);
 }
 
 /* =========================
    PLAYER NAME
 ========================= */
 
-.fifa-name{
-    position:relative;
-    z-index:2;
+.fifa-name {
+    position: relative;
 
-    color:#ffd700;
-    font-size:26px;
-    font-weight:bold;
+    z-index: 2;
 
-    margin:8px 0;
+    color: #ffd700;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    margin: 8px 0;
+
+    text-shadow:
+        0 0 10px rgba(255,215,0,0.15);
 }
 
 /* =========================
    AGE
 ========================= */
 
-.age{
-    position:relative;
-    z-index:2;
+.age {
+    position: relative;
 
-    color:#ddd;
-    font-size:15px;
-    margin-bottom:14px;
+    z-index: 2;
+
+    color: #ddd;
+
+    font-size: 15px;
+
+    margin-bottom: 15px;
 }
 
 /* =========================
    CARD STATS
 ========================= */
 
-.card-stats{
-    position:relative;
-    z-index:2;
+.card-stats {
+    position: relative;
 
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
+    z-index: 2;
 
-    gap:7px;
+    display: grid;
 
-    margin-top:10px;
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+
+    margin-top: 10px;
 }
 
-.card-stat{
-    background:rgba(0,0,0,.45);
-    border:1px solid rgba(255,215,0,.3);
-    border-radius:12px;
-    padding:8px 4px;
+.card-stat {
+    background:
+        rgba(0,0,0,0.45);
+
+    border: 1px solid rgba(255,215,0,0.28);
+
+    border-radius: 13px;
+
+    padding: 9px 4px;
 }
 
-.card-stat strong{
-    display:block;
-    color:#ffd700;
-    font-size:20px;
-    margin-top:3px;
+.card-stat span {
+    display: block;
+
+    color: #ccc;
+
+    font-size: 12px;
 }
 
-.card-stat span{
-    color:#ccc;
-    font-size:12px;
+.card-stat strong {
+    display: block;
+
+    color: #ffd700;
+
+    font-size: 21px;
+
+    margin-top: 3px;
 }
 
 /* =========================
    ADMIN
 ========================= */
 
-.admin-box{
-    background:#181818;
-    border:1px solid #333;
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:20px;
+.admin-box {
+    background:
+        linear-gradient(145deg, #191919, #101010);
+
+    border: 1px solid #333;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        inset 0 0 25px rgba(255,215,0,0.025);
 }
 
-.admin-box h3{
-    color:#ffd700;
-    text-align:center;
-    margin-top:0;
+.admin-box h3 {
+    color: #ffd700;
+
+    text-align: center;
+
+    margin-top: 0;
+
+    font-size: 21px;
 }
 
-.admin-card{
-    text-align:right;
+.admin-label {
+    display: block;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin-top: 9px;
 }
 
-.admin-card h3{
-    text-align:center;
-    color:#ffd700;
+.admin-card {
+    text-align: right;
 }
 
-.admin-label{
-    display:block;
-    color:#aaa;
-    font-size:13px;
-    margin-top:8px;
+.admin-card h3 {
+    color: #ffd700;
+
+    text-align: center;
+
+    margin-top: 0;
 }
 
-.save-btn{
-    width:100%;
-    padding:13px;
-    margin-top:10px;
-    border:none;
-    border-radius:13px;
-    background:#ffd700;
-    color:#000;
-    font-weight:bold;
-    font-size:15px;
+.admin-photo-preview {
+    width: 110px;
+    height: 110px;
+
+    margin: 5px auto 12px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid #ffd700;
+
+    background: #222;
 }
 
-.delete-btn{
-    width:100%;
-    padding:11px;
-    margin-top:8px;
-    border:none;
-    border-radius:13px;
-    background:#9b0000;
-    color:white;
-    font-weight:bold;
+.admin-no-photo {
+    width: 110px;
+    height: 110px;
+
+    margin: 5px auto 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 3px solid #ffd700;
+
+    background: #222;
+
+    font-size: 45px;
+}
+
+.save-btn {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(135deg, #ffd700, #c49a00);
+
+    color: #000;
+
+    font-weight: bold;
+
+    font-size: 15px;
+}
+
+.save-btn:hover {
+    filter: brightness(1.08);
+}
+
+.delete-btn {
+    width: 100%;
+
+    padding: 11px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(135deg, #b40000, #750000);
+
+    color: white;
+
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    filter: brightness(1.12);
 }
 
 /* =========================
    EMPTY
 ========================= */
 
-.empty{
-    text-align:center;
-    color:#aaa;
-    padding:25px;
+.empty {
+    text-align: center;
+
+    color: #aaa;
+
+    padding: 30px;
+
+    background: #121212;
+
+    border: 1px dashed #444;
+
+    border-radius: 18px;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+    text-align: center;
+
+    color: #ffd700;
+
+    padding: 30px;
+
+    font-size: 17px;
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-@media(max-width:700px){
+@media (max-width: 700px) {
 
-    .menu{
-        grid-template-columns:1fr;
+    .menu {
+        grid-template-columns: 1fr;
     }
 
-    .status-buttons{
-        grid-template-columns:1fr;
+    .status-buttons {
+        grid-template-columns: 1fr;
     }
 
-    header h1{
-        font-size:34px;
+    header h1 {
+        font-size: 35px;
     }
 
-    .page{
-        padding:16px;
+    .logo {
+        font-size: 58px;
     }
 
-    .fifa-card{
-        min-height:420px;
+    .page {
+        padding: 17px;
     }
 
+    .fifa-card {
+        min-height: 460px;
+    }
+
+    .player-photo,
+    .no-photo {
+        width: 185px;
+        height: 185px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }
 
 </style>
@@ -520,10 +1000,6 @@ button{
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
@@ -545,192 +1021,237 @@ button{
 <div class="container">
 
 
-<!-- =========================
-     MAIN MENU
-========================= -->
+    <!-- =========================
+         MENU
+    ========================= -->
 
-<div class="menu">
+    <div class="menu">
 
-    <button onclick="showPage('attendancePage')">
-        🟢 ثبت اعلام حضور
-    </button>
-
-    <button onclick="showPage('playersPage')">
-        🏆 اسامی بازیکنان
-    </button>
-
-    <button onclick="showPage('adminPage')">
-        👑 مدیریت
-    </button>
-
-</div>
-
-
-<!-- =========================
-     ATTENDANCE PAGE
-========================= -->
-
-<section id="attendancePage" class="page">
-
-    <h2 class="page-title">
-        ⚽ ثبت اعلام حضور
-    </h2>
-
-    <input
-        id="playerName"
-        type="text"
-        maxlength="40"
-        placeholder="اسم بازیکن را وارد کن"
-    >
-
-    <div class="status-buttons">
-
-        <button id="comeBtn" class="green">
-            🟢 میام
+        <button onclick="showPage('attendancePage')">
+            🟢 ثبت اعلام حضور
         </button>
 
-        <button id="noBtn" class="red">
-            🔴 نمیام
+        <button onclick="showPage('playersPage')">
+            🏆 اسامی بازیکنان
         </button>
 
-        <button id="maybeBtn" class="yellow">
-            🟡 شاید
-        </button>
-
-    </div>
-
-    <div id="attendanceMessage" class="message">
-        آماده ثبت اعلام حضور
-    </div>
-
-    <h3>
-        📋 وضعیت امروز
-    </h3>
-
-    <div id="attendanceList">
-        در حال بارگذاری...
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PLAYERS PAGE
-========================= -->
-
-<section id="playersPage" class="page hidden">
-
-    <h2 class="page-title">
-        🏆 اسامی بازیکنان
-    </h2>
-
-    <div id="playerCards" class="cards">
-
-        <div class="empty">
-            در حال بارگذاری بازیکنان...
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ADMIN PAGE
-========================= -->
-
-<section id="adminPage" class="page hidden">
-
-    <h2 class="page-title">
-        👑 پنل مدیریت
-    </h2>
-
-
-    <!-- LOGIN -->
-
-    <div id="adminLogin">
-
-        <input
-            id="adminPass"
-            type="password"
-            placeholder="رمز مدیر"
-        >
-
-        <button
-            id="adminLoginBtn"
-            class="primary-btn"
-        >
-            🔐 ورود به مدیریت
+        <button onclick="showPage('adminPage')">
+            👑 مدیریت
         </button>
 
     </div>
 
 
-    <!-- ADMIN CONTENT -->
+    <!-- =========================
+         ATTENDANCE
+    ========================= -->
 
-    <div id="adminContent" class="hidden">
+    <section id="attendancePage" class="page">
+
+        <h2 class="page-title">
+            ⚽ ثبت اعلام حضور
+        </h2>
+
+        <select id="attendancePlayer">
+
+            <option value="">
+                بازیکن را انتخاب کن
+            </option>
+
+        </select>
 
 
-        <!-- ADD PLAYER -->
-
-        <div class="admin-box">
-
-            <h3>
-                ➕ اضافه کردن بازیکن
-            </h3>
-
-            <input
-                id="newPlayerName"
-                type="text"
-                placeholder="نام بازیکن"
-                maxlength="40"
-            >
-
-            <input
-                id="newPlayerAge"
-                type="number"
-                min="1"
-                max="100"
-                placeholder="سن بازیکن"
-            >
-
-            <label class="admin-label">
-                📷 عکس بازیکن
-            </label>
-
-            <input
-                id="newPlayerPhoto"
-                type="file"
-                accept="image/*"
-            >
+        <div class="status-buttons">
 
             <button
-                id="addPlayerBtn"
-                class="primary-btn"
+                id="comeBtn"
+                class="green"
             >
-                ➕ اضافه کردن بازیکن
+                🟢 میام
+            </button>
+
+            <button
+                id="noBtn"
+                class="red"
+            >
+                🔴 نمیام
+            </button>
+
+            <button
+                id="maybeBtn"
+                class="yellow"
+            >
+                🟡 شاید
             </button>
 
         </div>
 
 
-        <!-- EXISTING PLAYERS -->
+        <div id="attendanceMessage" class="message">
+            بازیکن را انتخاب کن و وضعیتت را ثبت کن ⚽
+        </div>
 
-        <h3 style="color:#ffd700;text-align:center;">
-            ⚽ مدیریت بازیکنان
+
+        <h3>
+            📋 وضعیت امروز
         </h3>
 
-        <div id="adminPlayers" class="cards">
 
-            <div class="empty">
+        <div id="attendanceList">
+
+            <div class="loading">
                 در حال بارگذاری...
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+
+    <!-- =========================
+         PLAYERS
+    ========================= -->
+
+    <section
+        id="playersPage"
+        class="page hidden"
+    >
+
+        <h2 class="page-title">
+            🏆 اسامی بازیکنان
+        </h2>
+
+
+        <div
+            id="playerCards"
+            class="cards"
+        >
+
+            <div class="loading">
+                در حال بارگذاری بازیکنان...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ADMIN
+    ========================= -->
+
+    <section
+        id="adminPage"
+        class="page hidden"
+    >
+
+        <h2 class="page-title">
+            👑 پنل مدیریت
+        </h2>
+
+
+        <!-- LOGIN -->
+
+        <div id="adminLogin">
+
+            <input
+                id="adminPass"
+                type="password"
+                placeholder="رمز مدیر"
+            >
+
+
+            <button
+                id="adminLoginBtn"
+                class="primary-btn"
+            >
+                🔐 ورود به مدیریت
+            </button>
+
+        </div>
+
+
+        <!-- ADMIN CONTENT -->
+
+        <div
+            id="adminContent"
+            class="hidden"
+        >
+
+
+            <!-- ADD PLAYER -->
+
+            <div class="admin-box">
+
+                <h3>
+                    ➕ اضافه کردن بازیکن
+                </h3>
+
+
+                <input
+                    id="newPlayerName"
+                    type="text"
+                    maxlength="40"
+                    placeholder="نام بازیکن"
+                >
+
+
+                <input
+                    id="newPlayerAge"
+                    type="number"
+                    min="1"
+                    max="100"
+                    placeholder="سن بازیکن"
+                >
+
+
+                <label class="admin-label">
+                    📷 عکس بازیکن
+                </label>
+
+
+                <input
+                    id="newPlayerPhoto"
+                    type="file"
+                    accept="image/*"
+                >
+
+
+                <button
+                    id="addPlayerBtn"
+                    class="primary-btn"
+                >
+                    ➕ اضافه کردن بازیکن
+                </button>
+
+            </div>
+
+
+            <h3
+                style="
+                    color:#ffd700;
+                    text-align:center;
+                    margin:25px 0 15px;
+                "
+            >
+                ⚽ مدیریت بازیکنان
+            </h3>
+
+
+            <div
+                id="adminPlayers"
+                class="cards"
+            >
+
+                <div class="loading">
+                    در حال بارگذاری...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
 </div>
@@ -742,14 +1263,15 @@ button{
 
 <script type="module">
 
-import { initializeApp }
 
+import {
+    initializeApp
+}
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
 import {
-
     getDatabase,
     ref,
     push,
@@ -757,9 +1279,7 @@ import {
     onValue,
     update,
     remove
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
@@ -771,25 +1291,25 @@ from
 const firebaseConfig = {
 
     apiKey:
-    "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
+        "AIzaSyDQNeMq85viJrlXI3VhpkYai5lcQK5w6FA",
 
     authDomain:
-    "footballers-273ab.firebaseapp.com",
+        "footballers-273ab.firebaseapp.com",
 
     databaseURL:
-    "https://footballers-273ab-default-rtdb.firebaseio.com",
+        "https://footballers-273ab-default-rtdb.firebaseio.com",
 
     projectId:
-    "footballers-273ab",
+        "footballers-273ab",
 
     storageBucket:
-    "footballers-273ab.firebasestorage.app",
+        "footballers-273ab.firebasestorage.app",
 
     messagingSenderId:
-    "354306335709",
+        "354306335709",
 
     appId:
-    "1:354306335709:web:bb778c2c40898a4824cc34"
+        "1:354306335709:web:bb778c2c40898a4824cc34"
 
 };
 
@@ -806,25 +1326,22 @@ const db =
    CHANGE PAGE
 ========================= */
 
-window.showPage = function(pageId){
+window.showPage = function(pageId) {
 
     const pages = [
-
         "attendancePage",
         "playersPage",
         "adminPage"
-
     ];
+
 
     pages.forEach(id => {
 
         const page =
             document.getElementById(id);
 
-        if(page){
-
+        if (page) {
             page.classList.add("hidden");
-
         }
 
     });
@@ -834,9 +1351,14 @@ window.showPage = function(pageId){
         document.getElementById(pageId);
 
 
-    if(selected){
+    if (selected) {
 
         selected.classList.remove("hidden");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
     }
 
@@ -847,22 +1369,21 @@ window.showPage = function(pageId){
    STATUS ICON
 ========================= */
 
-function statusIcon(status){
+function statusIcon(status) {
 
-    if(status === "میام"){
+    if (status === "میام") {
         return "🟢";
     }
 
-    if(status === "نمیام"){
+    if (status === "نمیام") {
         return "🔴";
     }
 
-    if(status === "شاید"){
+    if (status === "شاید") {
         return "🟡";
     }
 
     return "⚪";
-
 }
 
 
@@ -870,40 +1391,109 @@ function statusIcon(status){
    ESCAPE HTML
 ========================= */
 
-function escapeHtml(value){
+function escapeHtml(value) {
 
     return String(value ?? "")
-
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================
-   IMAGE TO BASE64
+   IMAGE COMPRESS
 ========================= */
 
-function imageToBase64(file){
+function imageToBase64(file) {
 
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
 
         const reader =
             new FileReader();
 
 
-        reader.onload = () => {
+        reader.onload = function(event) {
 
-            resolve(reader.result);
+            const img =
+                new Image();
+
+
+            img.onload = function() {
+
+                const maxSize = 600;
+
+                let width = img.width;
+                let height = img.height;
+
+
+                if (width > height) {
+
+                    if (width > maxSize) {
+
+                        height =
+                            height * maxSize / width;
+
+                        width = maxSize;
+
+                    }
+
+                }
+                else {
+
+                    if (height > maxSize) {
+
+                        width =
+                            width * maxSize / height;
+
+                        height = maxSize;
+
+                    }
+
+                }
+
+
+                const canvas =
+                    document.createElement("canvas");
+
+
+                canvas.width = width;
+                canvas.height = height;
+
+
+                const ctx =
+                    canvas.getContext("2d");
+
+
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+
+                resolve(
+                    canvas.toDataURL(
+                        "image/jpeg",
+                        0.82
+                    )
+                );
+
+            };
+
+
+            img.onerror = reject;
+
+            img.src = event.target.result;
 
         };
 
 
         reader.onerror = reject;
-
 
         reader.readAsDataURL(file);
 
@@ -913,13 +1503,79 @@ function imageToBase64(file){
 
 
 /* =========================
+   LOAD PLAYERS FOR ATTENDANCE
+========================= */
+
+function loadAttendancePlayers() {
+
+    onValue(
+        ref(db, "players"),
+        snapshot => {
+
+            const select =
+                document.getElementById(
+                    "attendancePlayer"
+                );
+
+
+            const currentValue =
+                select.value;
+
+
+            let html = `
+                <option value="">
+                    بازیکن را انتخاب کن
+                </option>
+            `;
+
+
+            snapshot.forEach(item => {
+
+                const player =
+                    item.val();
+
+
+                html += `
+                    <option value="${item.key}">
+                        ${escapeHtml(player.name)}
+                    </option>
+                `;
+
+            });
+
+
+            select.innerHTML = html;
+
+
+            if (currentValue) {
+
+                const option =
+                    select.querySelector(
+                        `option[value="${currentValue}"]`
+                    );
+
+                if (option) {
+                    select.value = currentValue;
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
    SAVE ATTENDANCE
 ========================= */
 
-async function savePlayer(status){
+async function saveAttendance(status) {
 
-    const input =
-        document.getElementById("playerName");
+    const select =
+        document.getElementById(
+            "attendancePlayer"
+        );
 
 
     const message =
@@ -928,65 +1584,40 @@ async function savePlayer(status){
         );
 
 
-    const name =
-        input.value.trim();
+    const id =
+        select.value;
 
 
-    if(!name){
+    if (!id) {
 
         message.textContent =
-            "اول اسم بازیکن را وارد کن ⚽";
+            "اول بازیکنت رو انتخاب کن ⚽";
 
         return;
 
     }
 
 
-    try{
+    try {
 
-        const playerRef =
-            push(ref(db,"players"));
-
-
-        await set(playerRef,{
-
-            name:name,
-
-            age:0,
-
-            photo:"",
-
-            status:status,
-
-            goals:0,
-
-            assists:0,
-
-            games:0,
-
-            score:0
-
-        });
+        await update(
+            ref(db, "players/" + id),
+            {
+                status: status
+            }
+        );
 
 
         message.textContent =
-            "اعلام حضور با موفقیت ثبت شد ✅";
-
-
-        input.value = "";
+            "اعلام حضورت با موفقیت ثبت شد ✅";
 
     }
-
-    catch(error){
+    catch(error) {
 
         console.error(error);
 
         message.textContent =
-            "ثبت اطلاعات انجام نشد ❌";
-
-        alert(
-            "خطا در اتصال به Firebase"
-        );
+            "ثبت اعلام حضور انجام نشد ❌";
 
     }
 
@@ -999,39 +1630,36 @@ async function savePlayer(status){
 
 document
     .getElementById("comeBtn")
-    .addEventListener("click",()=>{
-
-        savePlayer("میام");
-
-    });
+    .addEventListener(
+        "click",
+        () => saveAttendance("میام")
+    );
 
 
 document
     .getElementById("noBtn")
-    .addEventListener("click",()=>{
-
-        savePlayer("نمیام");
-
-    });
+    .addEventListener(
+        "click",
+        () => saveAttendance("نمیام")
+    );
 
 
 document
     .getElementById("maybeBtn")
-    .addEventListener("click",()=>{
-
-        savePlayer("شاید");
-
-    });
+    .addEventListener(
+        "click",
+        () => saveAttendance("شاید")
+    );
 
 
 /* =========================
    LOAD ATTENDANCE
 ========================= */
 
-function loadAttendance(){
+function loadAttendance() {
 
     onValue(
-        ref(db,"players"),
+        ref(db, "players"),
         snapshot => {
 
             const come = [];
@@ -1045,29 +1673,51 @@ function loadAttendance(){
                     item.val();
 
 
-                if(player.status === "میام"){
+                if (player.status === "میام") {
 
                     come.push(player.name);
 
                 }
 
-                else if(
+                else if (
                     player.status === "نمیام"
-                ){
+                ) {
 
                     no.push(player.name);
 
                 }
 
-                else if(
+                else if (
                     player.status === "شاید"
-                ){
+                ) {
 
                     maybe.push(player.name);
 
                 }
 
             });
+
+
+            const makeNames = (
+                names,
+                icon
+            ) => {
+
+                if (!names.length) {
+                    return "کسی ثبت نکرده";
+                }
+
+
+                return names
+                    .map(
+                        name =>
+                            icon +
+                            " " +
+                            escapeHtml(name)
+                    )
+                    .join("<br>");
+
+            };
 
 
             const html = `
@@ -1080,17 +1730,7 @@ function loadAttendance(){
                     </h3>
 
                     <div class="attendance-names">
-
-                        ${
-                            come.length
-                            ? come.map(
-                                name =>
-                                "🟢 " +
-                                escapeHtml(name)
-                              ).join("<br>")
-                            : "کسی ثبت نکرده"
-                        }
-
+                        ${makeNames(come, "🟢")}
                     </div>
 
                 </div>
@@ -1104,17 +1744,7 @@ function loadAttendance(){
                     </h3>
 
                     <div class="attendance-names">
-
-                        ${
-                            no.length
-                            ? no.map(
-                                name =>
-                                "🔴 " +
-                                escapeHtml(name)
-                              ).join("<br>")
-                            : "کسی ثبت نکرده"
-                        }
-
+                        ${makeNames(no, "🔴")}
                     </div>
 
                 </div>
@@ -1128,17 +1758,7 @@ function loadAttendance(){
                     </h3>
 
                     <div class="attendance-names">
-
-                        ${
-                            maybe.length
-                            ? maybe.map(
-                                name =>
-                                "🟡 " +
-                                escapeHtml(name)
-                              ).join("<br>")
-                            : "کسی ثبت نکرده"
-                        }
-
+                        ${makeNames(maybe, "🟡")}
                     </div>
 
                 </div>
@@ -1153,7 +1773,6 @@ function loadAttendance(){
                 .innerHTML = html;
 
         }
-
     );
 
 }
@@ -1163,10 +1782,10 @@ function loadAttendance(){
    LOAD PLAYER CARDS
 ========================= */
 
-function loadPlayers(){
+function loadPlayers() {
 
     onValue(
-        ref(db,"players"),
+        ref(db, "players"),
         snapshot => {
 
             const players = [];
@@ -1176,7 +1795,7 @@ function loadPlayers(){
 
                 players.push({
 
-                    id:item.key,
+                    id: item.key,
 
                     ...item.val()
 
@@ -1186,13 +1805,9 @@ function loadPlayers(){
 
 
             players.sort(
-
-                (a,b) =>
-
-                (Number(b.score) || 0) -
-
-                (Number(a.score) || 0)
-
+                (a, b) =>
+                    (Number(b.score) || 0) -
+                    (Number(a.score) || 0)
             );
 
 
@@ -1202,13 +1817,17 @@ function loadPlayers(){
                 );
 
 
-            if(!players.length){
+            if (!players.length) {
 
                 container.innerHTML = `
 
                     <div class="empty">
 
-                        هنوز بازیکنی ثبت نشده ⚽
+                        هنوز بازیکنی اضافه نشده ⚽
+
+                        <br><br>
+
+                        مدیر تیم باید بازیکن‌ها را از پنل مدیریت اضافه کند.
 
                     </div>
 
@@ -1227,18 +1846,14 @@ function loadPlayers(){
                 const score =
                     Number(player.score) || 0;
 
-
                 const goals =
                     Number(player.goals) || 0;
-
 
                 const assists =
                     Number(player.assists) || 0;
 
-
                 const games =
                     Number(player.games) || 0;
-
 
                 const age =
                     Number(player.age) || 0;
@@ -1247,7 +1862,7 @@ function loadPlayers(){
                 let photoHtml = "";
 
 
-                if(player.photo){
+                if (player.photo) {
 
                     photoHtml = `
 
@@ -1260,8 +1875,7 @@ function loadPlayers(){
                     `;
 
                 }
-
-                else{
+                else {
 
                     photoHtml = `
 
@@ -1277,6 +1891,7 @@ function loadPlayers(){
                 html += `
 
                     <div class="fifa-card">
+
 
                         <div class="card-top">
 
@@ -1297,7 +1912,7 @@ function loadPlayers(){
                             </div>
 
 
-                            <div class="position">
+                            <div class="status-badge">
 
                                 ${statusIcon(player.status)}
 
@@ -1318,7 +1933,7 @@ function loadPlayers(){
 
                         <div class="age">
 
-                            👤 سن:
+                            🎂 سن:
                             ${
                                 age > 0
                                 ? age
@@ -1330,10 +1945,14 @@ function loadPlayers(){
 
                         <div class="card-stats">
 
+
                             <div class="card-stat">
 
                                 ⚽
-                                <span>گل</span>
+
+                                <span>
+                                    گل
+                                </span>
 
                                 <strong>
                                     ${goals}
@@ -1345,7 +1964,10 @@ function loadPlayers(){
                             <div class="card-stat">
 
                                 🎯
-                                <span>پاس گل</span>
+
+                                <span>
+                                    پاس گل
+                                </span>
 
                                 <strong>
                                     ${assists}
@@ -1357,7 +1979,10 @@ function loadPlayers(){
                             <div class="card-stat">
 
                                 🏟
-                                <span>بازی</span>
+
+                                <span>
+                                    بازی
+                                </span>
 
                                 <strong>
                                     ${games}
@@ -1365,7 +1990,9 @@ function loadPlayers(){
 
                             </div>
 
+
                         </div>
+
 
                     </div>
 
@@ -1374,10 +2001,10 @@ function loadPlayers(){
             });
 
 
-            container.innerHTML = html;
+            container.innerHTML =
+                html;
 
         }
-
     );
 
 }
@@ -1387,7 +2014,7 @@ function loadPlayers(){
    ADMIN LOGIN
 ========================= */
 
-function loginAdmin(){
+function loginAdmin() {
 
     const password =
         document
@@ -1395,7 +2022,7 @@ function loginAdmin(){
             .value;
 
 
-    if(password !== "habib7979"){
+    if (password !== "habib7979") {
 
         alert(
             "رمز مدیر اشتباه است ❌"
@@ -1423,10 +2050,6 @@ function loginAdmin(){
 }
 
 
-/* =========================
-   LOGIN BUTTON
-========================= */
-
 document
     .getElementById("adminLoginBtn")
     .addEventListener(
@@ -1435,11 +2058,27 @@ document
     );
 
 
+document
+    .getElementById("adminPass")
+    .addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+
+                loginAdmin();
+
+            }
+
+        }
+    );
+
+
 /* =========================
    ADD NEW PLAYER
 ========================= */
 
-async function addNewPlayer(){
+async function addNewPlayer() {
 
     const nameInput =
         document.getElementById(
@@ -1467,7 +2106,7 @@ async function addNewPlayer(){
         Number(ageInput.value) || 0;
 
 
-    if(!name){
+    if (!name) {
 
         alert(
             "اسم بازیکن را وارد کن ⚽"
@@ -1478,21 +2117,41 @@ async function addNewPlayer(){
     }
 
 
-    try{
+    if (
+        age < 1 ||
+        age > 100
+    ) {
+
+        alert(
+            "سن بازیکن را درست وارد کن 🎂"
+        );
+
+        return;
+
+    }
+
+
+    try {
 
         let photo = "";
 
 
-        if(photoInput.files.length > 0){
+        if (
+            photoInput.files &&
+            photoInput.files.length > 0
+        ) {
 
             const file =
                 photoInput.files[0];
 
 
-            if(file.size > 3 * 1024 * 1024){
+            if (
+                file.size >
+                8 * 1024 * 1024
+            ) {
 
                 alert(
-                    "حجم عکس باید کمتر از 3 مگابایت باشد."
+                    "حجم عکس باید کمتر از 8 مگابایت باشد."
                 );
 
                 return;
@@ -1507,32 +2166,39 @@ async function addNewPlayer(){
 
 
         const playerRef =
-            push(ref(db,"players"));
+            push(
+                ref(db, "players")
+            );
 
 
-        await set(playerRef,{
+        await set(
+            playerRef,
+            {
 
-            name:name,
+                name: name,
 
-            age:age,
+                age: age,
 
-            photo:photo,
+                photo: photo,
 
-            status:"شاید",
+                status: "شاید",
 
-            goals:0,
+                goals: 0,
 
-            assists:0,
+                assists: 0,
 
-            games:0,
+                games: 0,
 
-            score:0
+                score: 0
 
-        });
+            }
+        );
 
 
         nameInput.value = "";
+
         ageInput.value = "";
+
         photoInput.value = "";
 
 
@@ -1541,8 +2207,7 @@ async function addNewPlayer(){
         );
 
     }
-
-    catch(error){
+    catch(error) {
 
         console.error(error);
 
@@ -1571,10 +2236,10 @@ document
    ADMIN PLAYERS
 ========================= */
 
-function loadAdminPlayers(){
+function loadAdminPlayers() {
 
     onValue(
-        ref(db,"players"),
+        ref(db, "players"),
         snapshot => {
 
             const container =
@@ -1596,19 +2261,50 @@ function loadAdminPlayers(){
                     item.key;
 
 
+                let photoPreview = "";
+
+
+                if (player.photo) {
+
+                    photoPreview = `
+
+                        <img
+                            class="admin-photo-preview"
+                            src="${player.photo}"
+                            alt="عکس بازیکن"
+                        >
+
+                    `;
+
+                }
+                else {
+
+                    photoPreview = `
+
+                        <div class="admin-no-photo">
+                            ⚽
+                        </div>
+
+                    `;
+
+                }
+
+
                 html += `
 
-                    <div class="card admin-card">
+                    <div class="fifa-card admin-card">
+
+
+                        ${photoPreview}
+
 
                         <h3>
-
                             👤
                             ${escapeHtml(player.name)}
-
                         </h3>
 
 
-                        <p>
+                        <p style="text-align:center;color:#ccc;">
 
                             وضعیت:
                             ${statusIcon(player.status)}
@@ -1623,9 +2319,11 @@ function loadAdminPlayers(){
                             👤 نام بازیکن
                         </label>
 
+
                         <input
                             id="name-${id}"
                             type="text"
+                            maxlength="40"
                             value="${escapeHtml(
                                 player.name || ""
                             )}"
@@ -1635,6 +2333,7 @@ function loadAdminPlayers(){
                         <label class="admin-label">
                             🎂 سن
                         </label>
+
 
                         <input
                             id="age-${id}"
@@ -1648,8 +2347,9 @@ function loadAdminPlayers(){
 
 
                         <label class="admin-label">
-                            📷 عکس جدید
+                            📷 تغییر عکس
                         </label>
+
 
                         <input
                             id="photo-${id}"
@@ -1661,6 +2361,7 @@ function loadAdminPlayers(){
                         <label class="admin-label">
                             ⚽ گل
                         </label>
+
 
                         <input
                             id="goals-${id}"
@@ -1676,6 +2377,7 @@ function loadAdminPlayers(){
                             🎯 پاس گل
                         </label>
 
+
                         <input
                             id="assists-${id}"
                             type="number"
@@ -1690,6 +2392,7 @@ function loadAdminPlayers(){
                             🏟 بازی
                         </label>
 
+
                         <input
                             id="games-${id}"
                             type="number"
@@ -1703,6 +2406,7 @@ function loadAdminPlayers(){
                         <label class="admin-label">
                             ⭐ امتیاز
                         </label>
+
 
                         <input
                             id="score-${id}"
@@ -1730,6 +2434,7 @@ function loadAdminPlayers(){
                             🗑 حذف بازیکن
                         </button>
 
+
                     </div>
 
                 `;
@@ -1739,19 +2444,17 @@ function loadAdminPlayers(){
 
             container.innerHTML =
                 html ||
-
                 `
 
                     <div class="empty">
 
-                        هنوز بازیکنی ثبت نشده.
+                        هنوز بازیکنی ثبت نشده ⚽
 
                     </div>
 
                 `;
 
         }
-
     );
 
 }
@@ -1761,7 +2464,8 @@ function loadAdminPlayers(){
    SAVE PLAYER
 ========================= */
 
-window.saveStats = async function(id){
+window.saveStats =
+async function(id) {
 
     const nameInput =
         document.getElementById(
@@ -1805,14 +2509,14 @@ window.saveStats = async function(id){
         );
 
 
-    if(
+    if (
         !nameInput ||
         !ageInput ||
         !goalsInput ||
         !assistsInput ||
         !gamesInput ||
         !scoreInput
-    ){
+    ) {
 
         alert(
             "اطلاعات بازیکن پیدا نشد ❌"
@@ -1823,24 +2527,90 @@ window.saveStats = async function(id){
     }
 
 
-    try{
+    const name =
+        nameInput.value.trim();
 
-        let photo = undefined;
+
+    const age =
+        Number(ageInput.value) || 0;
 
 
-        if(
+    if (!name) {
+
+        alert(
+            "نام بازیکن نمی‌تواند خالی باشد ❌"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        age < 1 ||
+        age > 100
+    ) {
+
+        alert(
+            "سن بازیکن درست نیست ❌"
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const data = {
+
+            name: name,
+
+            age: age,
+
+            goals:
+                Number(
+                    goalsInput.value
+                ) || 0,
+
+            assists:
+                Number(
+                    assistsInput.value
+                ) || 0,
+
+            games:
+                Number(
+                    gamesInput.value
+                ) || 0,
+
+            score:
+                Math.min(
+                    99,
+                    Number(
+                        scoreInput.value
+                    ) || 0
+                )
+
+        };
+
+
+        if (
             photoInput &&
+            photoInput.files &&
             photoInput.files.length > 0
-        ){
+        ) {
 
             const file =
                 photoInput.files[0];
 
 
-            if(file.size > 3 * 1024 * 1024){
+            if (
+                file.size >
+                8 * 1024 * 1024
+            ) {
 
                 alert(
-                    "حجم عکس باید کمتر از 3 مگابایت باشد."
+                    "حجم عکس باید کمتر از 8 مگابایت باشد."
                 );
 
                 return;
@@ -1848,66 +2618,32 @@ window.saveStats = async function(id){
             }
 
 
-            photo =
+            data.photo =
                 await imageToBase64(file);
 
         }
 
 
-        const data = {
-
-            name:
-                nameInput.value.trim(),
-
-            age:
-                Number(ageInput.value) || 0,
-
-            goals:
-                Number(goalsInput.value) || 0,
-
-            assists:
-                Number(assistsInput.value) || 0,
-
-            games:
-                Number(gamesInput.value) || 0,
-
-            score:
-                Number(scoreInput.value) || 0
-
-        };
-
-
-        if(photo !== undefined){
-
-            data.photo = photo;
-
-        }
-
-
         await update(
-
             ref(
                 db,
                 "players/" + id
             ),
-
             data
-
         );
 
 
         alert(
-            "اطلاعات بازیکن ذخیره شد ✅"
+            "اطلاعات بازیکن با موفقیت ذخیره شد ✅"
         );
 
     }
-
-    catch(error){
+    catch(error) {
 
         console.error(error);
 
         alert(
-            "ذخیره انجام نشد ❌"
+            "ذخیره اطلاعات انجام نشد ❌"
         );
 
     }
@@ -1919,22 +2655,21 @@ window.saveStats = async function(id){
    DELETE PLAYER
 ========================= */
 
-window.deletePlayer = async function(id){
+window.deletePlayer =
+async function(id) {
 
     const answer =
         confirm(
-            "مطمئنی می‌خواهی این بازیکن حذف شود؟"
+            "مطمئنی می‌خواهی این بازیکن را حذف کنی؟"
         );
 
 
-    if(!answer){
-
+    if (!answer) {
         return;
-
     }
 
 
-    try{
+    try {
 
         await remove(
             ref(
@@ -1949,8 +2684,7 @@ window.deletePlayer = async function(id){
         );
 
     }
-
-    catch(error){
+    catch(error) {
 
         console.error(error);
 
@@ -1967,12 +2701,14 @@ window.deletePlayer = async function(id){
    START
 ========================= */
 
+loadAttendancePlayers();
+
 loadAttendance();
 
 loadPlayers();
 
-
 </script>
+
 
 </body>
 
