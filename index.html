@@ -153,8 +153,338 @@ function loadAttendancePlayers(){onValue(ref(db,"players"),snapshot=>{const sele
 async function saveAttendance(status){const id=document.getElementById("attendancePlayer").value,message=document.getElementById("attendanceMessage");if(!id){message.textContent="اول بازیکنت رو انتخاب کن ⚽";return}try{await update(ref(db,"players/"+id),{status});message.textContent="اعلام حضورت با موفقیت ثبت شد ✅"}catch(error){console.error(error);message.textContent="ثبت اعلام حضور انجام نشد ❌";alert("ثبت اعلام حضور انجام نشد.\n"+error.message)}}
 document.getElementById("comeBtn").addEventListener("click",()=>saveAttendance("میام"));document.getElementById("noBtn").addEventListener("click",()=>saveAttendance("نمیام"));document.getElementById("maybeBtn").addEventListener("click",()=>saveAttendance("شاید"));
 function loadAttendance(){onValue(ref(db,"players"),snapshot=>{const come=[],no=[],maybe=[];snapshot.forEach(item=>{const p=item.val();if(p.status==="میام")come.push(p.name);else if(p.status==="نمیام")no.push(p.name);else if(p.status==="شاید")maybe.push(p.name)});const makeNames=(names,icon)=>names.length?names.map(name=>icon+" "+escapeHtml(name)).join("<br>"):"کسی ثبت نکرده";document.getElementById("attendanceList").innerHTML=`<div class="attendance-section"><h3>🟢 میان (${come.length})</h3><div class="attendance-names">${makeNames(come,"🟢")}</div></div><div class="attendance-section"><h3>🔴 نمیان (${no.length})</h3><div class="attendance-names">${makeNames(no,"🔴")}</div></div><div class="attendance-section"><h3>🟡 شاید (${maybe.length})</h3><div class="attendance-names">${makeNames(maybe,"🟡")}</div></div>`},error=>{console.error(error);document.getElementById("attendanceList").innerHTML=`<div class="empty">دریافت وضعیت حضور انجام نشد ❌</div>`})}
-function loadPlayers(){onValue(ref(db,"players"),snapshot=>{const players=[];snapshot.forEach(item=>players.push({id:item.key,...item.val()}));players.sort((a,b)=>safeNumber(b.score,0,99)-safeNumber(a.score,0,99));const container=document.getElementById("playerCards");if(!players.length){container.innerHTML=`<div class="empty">هنوز بازیکنی اضافه نشده ⚽<br><br>بازیکن‌ها فقط از پنل مدیریت اضافه می‌شوند.</div>`;return}let html="";players.forEach(player=>{const score=safeNumber(player.score,0,99),age=safeNumber(player.age),goals=safeNumber(player.goals),assists=safeNumber(player.assists),games=safeNumber(player.games);const photo=player.photo?`<img class="fut-photo" src="${player.photo}" alt="${escapeHtml(player.name)}">`:`<div class="fut-no-photo">⚽</div>`;html+=`<div class="fut-card-shell"><article class="fut-card"><div class="fut-inner"><div class="fut-top"><div><div class="fut-rating">${score}</div><div class="fut-position">${escapeHtml(player.position||"ST")}</div></div><div class="fut-status">${statusIcon(player.status)}</div></div><div class="fut-badge"></div><div class="fut-photo-wrap">${photo}</div><div class="fut-name-area"><h3 class="fut-name">${escapeHtml(player.name||"بدون نام")}</h3><div class="fut-subname">FOOTBALLERS • ${age>0?`سن ${age}`:"سن ثبت نشده"}</div></div><div class="fut-divider"></div><div class="fut-stats"><div class="fut-stat">⚽ گل<strong>${goals}</strong></div><div class="fut-stat">🎯 پاس گل<strong>${assists}</strong></div><div class="fut-stat">🏟 بازی<strong>${games}</strong></div></div></div></article></div>`});container.innerHTML=html},error=>{console.error(error);document.getElementById("playerCards").innerHTML=`<div class="empty">بارگذاری بازیکنان انجام نشد ❌</div>`})}
-function loginAdmin(){const pass=document.getElementById("adminPass").value;if(pass!=="habib7979"){alert("رمز مدیر اشتباه است ❌");return}document.getElementById("adminLogin").classList.add("hidden");document.getElementById("adminContent").classList.remove("hidden");loadGameInfo();loadAdminPlayers();loadMatchPlayers()}
+function loadPlayers(){
+
+    const container =
+        document.getElementById("playerCards");
+
+    if(!container){
+        console.error("playerCards پیدا نشد!");
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="loading">
+            در حال بارگذاری بازیکنان... ⚽
+        </div>
+    `;
+
+    onValue(
+
+        ref(db, "players"),
+
+        snapshot => {
+
+            const players = [];
+
+            snapshot.forEach(item => {
+
+                const data = item.val() || {};
+
+                players.push({
+
+                    id: item.key,
+
+                    name: data.name || "بدون نام",
+
+                    age: data.age || 0,
+
+                    position: data.position || "ST",
+
+                    photo: data.photo || "",
+
+                    status: data.status || "شاید",
+
+                    score: data.score || 0,
+
+                    goals: data.goals || 0,
+
+                    assists: data.assists || 0,
+
+                    games: data.games || 0
+
+                });
+
+            });
+
+
+            console.log(
+                "تعداد بازیکن‌ها:",
+                players.length
+            );
+
+
+            /* مرتب‌سازی بر اساس امتیاز */
+
+            players.sort(
+                (a,b) =>
+                    safeNumber(b.score, 0, 99) -
+                    safeNumber(a.score, 0, 99)
+            );
+
+
+            /* اگر بازیکنی نداریم */
+
+            if(players.length === 0){
+
+                container.innerHTML = `
+
+                    <div class="empty">
+
+                        هنوز بازیکنی اضافه نشده ⚽
+
+                        <br><br>
+
+                        بازیکن‌ها فقط از پنل مدیریت اضافه می‌شوند.
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            let html = "";
+
+
+            /* ساخت کارت برای تک تک بازیکن‌ها */
+
+            players.forEach(player => {
+
+                const score =
+                    safeNumber(
+                        player.score,
+                        0,
+                        99
+                    );
+
+
+                const age =
+                    safeNumber(
+                        player.age
+                    );
+
+
+                const goals =
+                    safeNumber(
+                        player.goals
+                    );
+
+
+                const assists =
+                    safeNumber(
+                        player.assists
+                    );
+
+
+                const games =
+                    safeNumber(
+                        player.games
+                    );
+
+
+                const photo =
+                    player.photo
+
+                    ?
+
+                    `
+                        <img
+                            class="fut-photo"
+                            src="${player.photo}"
+                            alt="${escapeHtml(player.name)}"
+                            loading="lazy"
+                        >
+                    `
+
+                    :
+
+                    `
+                        <div class="fut-no-photo">
+                            ⚽
+                        </div>
+                    `;
+
+
+                html += `
+
+                    <div class="fut-card-shell">
+
+                        <article class="fut-card">
+
+                            <div class="fut-inner">
+
+
+                                <!-- بالای کارت -->
+
+                                <div class="fut-top">
+
+                                    <div>
+
+                                        <div class="fut-rating">
+                                            ${score}
+                                        </div>
+
+                                        <div class="fut-position">
+                                            ${escapeHtml(
+                                                player.position
+                                            )}
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="fut-status">
+
+                                        ${statusIcon(
+                                            player.status
+                                        )}
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- عکس -->
+
+                                <div class="fut-photo-wrap">
+
+                                    ${photo}
+
+                                </div>
+
+
+                                <!-- اسم -->
+
+                                <div class="fut-name-area">
+
+                                    <h3 class="fut-name">
+
+                                        ${escapeHtml(
+                                            player.name
+                                        )}
+
+                                    </h3>
+
+
+                                    <div class="fut-subname">
+
+                                        FOOTBALLERS
+
+                                        •
+
+                                        ${
+                                            age > 0
+                                            ? `سن ${age}`
+                                            : "سن ثبت نشده"
+                                        }
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- خط -->
+
+                                <div class="fut-divider"></div>
+
+
+                                <!-- آمار -->
+
+                                <div class="fut-stats">
+
+
+                                    <div class="fut-stat">
+
+                                        ⚽ گل
+
+                                        <strong>
+                                            ${goals}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="fut-stat">
+
+                                        🎯 پاس گل
+
+                                        <strong>
+                                            ${assists}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="fut-stat">
+
+                                        🏟 بازی
+
+                                        <strong>
+                                            ${games}
+                                        </strong>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            /* نمایش تمام کارت‌ها */
+
+            container.innerHTML = html;
+
+
+            console.log(
+                "کارت‌های ساخته‌شده:",
+                players.length
+            );
+
+        },
+
+
+        error => {
+
+            console.error(
+                "خطای Firebase:",
+                error
+            );
+
+
+            container.innerHTML = `
+
+                <div class="empty">
+
+                    بارگذاری بازیکنان انجام نشد ❌
+
+                    <br><br>
+
+                    ${escapeHtml(
+                        error.message ||
+                        "خطای نامشخص"
+                    )}
+
+                </div>
+
+            `;
+
+        }
+
+    );
+
+}function loginAdmin(){const pass=document.getElementById("adminPass").value;if(pass!=="habib7979"){alert("رمز مدیر اشتباه است ❌");return}document.getElementById("adminLogin").classList.add("hidden");document.getElementById("adminContent").classList.remove("hidden");loadGameInfo();loadAdminPlayers();loadMatchPlayers()}
 document.getElementById("adminLoginBtn").addEventListener("click",loginAdmin);document.getElementById("adminPass").addEventListener("keydown",e=>{if(e.key==="Enter")loginAdmin()});
 async function addPlayer(){const name=document.getElementById("newName").value.trim(),age=safeNumber(document.getElementById("newAge").value,1,100),position=document.getElementById("newPosition").value,score=safeNumber(document.getElementById("newScore").value,0,99),photoFile=document.getElementById("newPhoto").files[0];if(!name){alert("نام بازیکن را وارد کن ⚽");return}if(age<1||age>100){alert("سن بازیکن را درست وارد کن 🎂");return}try{const photo=photoFile?await readImage(photoFile):"";const playerRef=push(ref(db,"players"));await set(playerRef,{name,age,position,photo,status:"شاید",score,goals:0,assists:0,games:0});document.getElementById("newName").value="";document.getElementById("newAge").value="";document.getElementById("newScore").value="0";document.getElementById("newPhoto").value="";alert("بازیکن با موفقیت اضافه شد ✅")}catch(error){console.error(error);alert("اضافه کردن بازیکن انجام نشد ❌\n"+error.message)}}
 document.getElementById("addPlayerBtn").addEventListener("click",addPlayer);
