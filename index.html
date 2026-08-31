@@ -10,6 +10,10 @@
 
 <style>
 
+/* =========================
+   GLOBAL
+========================= */
+
 * {
     box-sizing: border-box;
     font-family: Tahoma, Arial, sans-serif;
@@ -25,10 +29,43 @@ body {
     color: #fff;
 
     background:
-        radial-gradient(circle at 50% -10%, rgba(255,215,0,0.20), transparent 35%),
-        radial-gradient(circle at 10% 30%, rgba(255,190,0,0.06), transparent 30%),
-        radial-gradient(circle at 90% 70%, rgba(255,215,0,0.05), transparent 30%),
-        linear-gradient(135deg, #050505, #101010 45%, #050505);
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(255,215,0,0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 30%,
+            rgba(255,190,0,0.07),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(255,215,0,0.06),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #030303,
+            #111 45%,
+            #050505
+        );
+
+    background-attachment: fixed;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
 }
 
 /* =========================
@@ -41,10 +78,15 @@ header {
 
     text-align: center;
 
-    padding: 35px 20px 40px;
+    padding: 38px 20px 42px;
 
     background:
-        linear-gradient(135deg, #000000 0%, #211900 45%, #050505 100%);
+        linear-gradient(
+            135deg,
+            #000 0%,
+            #211900 45%,
+            #050505 100%
+        );
 
     border-bottom: 2px solid #ffd700;
 
@@ -55,16 +97,17 @@ header {
 
 header::before {
     content: "";
+
     position: absolute;
 
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
 
     border-radius: 50%;
 
-    background: rgba(255,215,0,0.05);
+    background: rgba(255,215,0,0.045);
 
-    top: -160px;
+    top: -180px;
     left: 50%;
 
     transform: translateX(-50%);
@@ -92,7 +135,9 @@ header::after {
     font-size: 72px;
 
     filter:
-        drop-shadow(0 0 15px rgba(255,215,0,0.35));
+        drop-shadow(
+            0 0 15px rgba(255,215,0,0.35)
+        );
 }
 
 header h1 {
@@ -127,11 +172,11 @@ header p {
 
 .container {
     width: 100%;
-    max-width: 1150px;
+    max-width: 1200px;
 
     margin: auto;
 
-    padding: 22px 18px 50px;
+    padding: 24px 18px 60px;
 }
 
 /* =========================
@@ -144,9 +189,9 @@ header p {
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 12px;
+    gap: 13px;
 
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 }
 
 .menu button {
@@ -155,19 +200,21 @@ header p {
 
     border: 1px solid rgba(255,215,0,0.65);
 
-    padding: 16px 12px;
+    padding: 17px 12px;
 
     border-radius: 18px;
 
     background:
-        linear-gradient(135deg, #ffd700, #c79d00);
+        linear-gradient(
+            135deg,
+            #ffd700,
+            #c79d00
+        );
 
     color: #080808;
 
     font-size: 17px;
     font-weight: bold;
-
-    cursor: pointer;
 
     transition: 0.25s;
 
@@ -224,14 +271,14 @@ header p {
         linear-gradient(
             145deg,
             rgba(25,25,25,0.98),
-            rgba(8,8,8,0.98)
+            rgba(7,7,7,0.98)
         );
 
-    border: 1px solid rgba(255,215,0,0.75);
+    border: 1px solid rgba(255,215,0,0.70);
 
     border-radius: 28px;
 
-    padding: 25px;
+    padding: 27px;
 
     box-shadow:
         0 0 30px rgba(255,215,0,0.07),
@@ -243,21 +290,17 @@ header p {
 
     position: absolute;
 
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
 
     border-radius: 50%;
 
     background: rgba(255,215,0,0.025);
 
-    left: -80px;
-    top: -80px;
+    left: -100px;
+    top: -100px;
 
     pointer-events: none;
-}
-
-.hidden {
-    display: none !important;
 }
 
 .page-title {
@@ -269,7 +312,7 @@ header p {
 
     font-size: 30px;
 
-    margin: 0 0 24px;
+    margin: 0 0 25px;
 
     text-shadow:
         0 0 12px rgba(255,215,0,0.15);
@@ -280,10 +323,10 @@ header p {
 
     display: block;
 
-    width: 90px;
+    width: 100px;
     height: 3px;
 
-    margin: 10px auto 0;
+    margin: 11px auto 0;
 
     border-radius: 20px;
 
@@ -312,7 +355,12 @@ select {
 
     border: 1px solid #444;
 
-    background: #181818;
+    background:
+        linear-gradient(
+            145deg,
+            #1b1b1b,
+            #111
+        );
 
     color: #fff;
 
@@ -323,12 +371,16 @@ select {
     transition: 0.2s;
 }
 
+input::placeholder {
+    color: #777;
+}
+
 input:focus,
 select:focus {
     border-color: #ffd700;
 
     box-shadow:
-        0 0 10px rgba(255,215,0,0.08);
+        0 0 12px rgba(255,215,0,0.10);
 }
 
 select {
@@ -342,17 +394,12 @@ select option {
 
 input[type="file"] {
     padding: 10px;
-
     cursor: pointer;
 }
 
 /* =========================
-   BUTTONS
+   GENERAL BUTTON
 ========================= */
-
-button {
-    cursor: pointer;
-}
 
 .primary-btn {
     width: 100%;
@@ -366,7 +413,11 @@ button {
     margin-top: 8px;
 
     background:
-        linear-gradient(135deg, #ffd700, #c99f00);
+        linear-gradient(
+            135deg,
+            #ffd700,
+            #c99f00
+        );
 
     color: #000;
 
@@ -375,13 +426,154 @@ button {
     font-size: 16px;
 
     transition: 0.2s;
+
+    box-shadow:
+        0 5px 18px rgba(255,215,0,0.08);
 }
 
 .primary-btn:hover {
     transform: translateY(-2px);
 
     box-shadow:
-        0 8px 20px rgba(255,215,0,0.18);
+        0 8px 22px rgba(255,215,0,0.18);
+}
+
+/* =========================
+   GAME INFO
+========================= */
+
+.game-info {
+    position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: 23px;
+
+    padding: 22px;
+
+    border-radius: 23px;
+
+    border: 1px solid rgba(255,215,0,0.55);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,215,0,0.12),
+            transparent 50%
+        ),
+        linear-gradient(
+            145deg,
+            #1c1808,
+            #0d0d0d 60%,
+            #161205
+        );
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35),
+        inset 0 0 30px rgba(255,215,0,0.035);
+}
+
+.game-info::before {
+    content: "⚽";
+
+    position: absolute;
+
+    left: -18px;
+    bottom: -35px;
+
+    font-size: 130px;
+
+    opacity: 0.035;
+
+    transform: rotate(15deg);
+
+    pointer-events: none;
+}
+
+.game-info-title {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    color: #ffd700;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 17px;
+}
+
+.game-info-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 11px;
+}
+
+.game-info-item {
+    min-height: 92px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 12px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(0,0,0,0.35);
+
+    border: 1px solid rgba(255,215,0,0.20);
+
+    transition: 0.2s;
+}
+
+.game-info-item:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(255,215,0,0.45);
+
+    background:
+        rgba(255,215,0,0.045);
+}
+
+.game-info-icon {
+    font-size: 25px;
+
+    margin-bottom: 6px;
+}
+
+.game-info-label {
+    color: #999;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+.game-info-value {
+    color: #ffd700;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    word-break: break-word;
 }
 
 /* =========================
@@ -419,23 +611,39 @@ button {
     filter: brightness(1.1);
 }
 
+.status-buttons button:active {
+    transform: scale(0.98);
+}
+
 .green {
     background:
-        linear-gradient(135deg, #00a83b, #006d27);
+        linear-gradient(
+            135deg,
+            #00a83b,
+            #006d27
+        );
 
     color: white;
 }
 
 .red {
     background:
-        linear-gradient(135deg, #d00000, #870000);
+        linear-gradient(
+            135deg,
+            #d00000,
+            #870000
+        );
 
     color: white;
 }
 
 .yellow {
     background:
-        linear-gradient(135deg, #e0c000, #a48b00);
+        linear-gradient(
+            135deg,
+            #e0c000,
+            #a48b00
+        );
 
     color: #000;
 }
@@ -448,7 +656,11 @@ button {
     text-align: center;
 
     background:
-        linear-gradient(135deg, #191919, #101010);
+        linear-gradient(
+            135deg,
+            #191919,
+            #101010
+        );
 
     border: 1px solid #333;
 
@@ -459,7 +671,11 @@ button {
 
 .attendance-section {
     background:
-        linear-gradient(145deg, #191919, #101010);
+        linear-gradient(
+            145deg,
+            #191919,
+            #101010
+        );
 
     border: 1px solid #333;
 
@@ -490,7 +706,7 @@ button {
 }
 
 /* =========================
-   PLAYER CARDS GRID
+   PLAYER GRID
 ========================= */
 
 .cards {
@@ -690,7 +906,11 @@ button {
     border: 4px solid #ffd700;
 
     background:
-        radial-gradient(circle, #333, #111);
+        radial-gradient(
+            circle,
+            #333,
+            #111
+        );
 
     font-size: 75px;
 
@@ -789,7 +1009,11 @@ button {
 
 .admin-box {
     background:
-        linear-gradient(145deg, #191919, #101010);
+        linear-gradient(
+            145deg,
+            #191919,
+            #101010
+        );
 
     border: 1px solid #333;
 
@@ -822,6 +1046,109 @@ button {
 
     margin-top: 9px;
 }
+
+/* =========================
+   GAME SETTINGS
+========================= */
+
+.game-settings {
+    background:
+        linear-gradient(
+            145deg,
+            #191919,
+            #101010
+        );
+
+    border: 1px solid rgba(255,215,0,0.30);
+
+    border-radius: 22px;
+
+    padding: 22px;
+
+    margin-bottom: 27px;
+
+    box-shadow:
+        inset 0 0 30px rgba(255,215,0,0.025);
+}
+
+.game-settings h3 {
+    color: #ffd700;
+
+    text-align: center;
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+.settings-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.settings-field {
+    width: 100%;
+}
+
+.settings-field.full {
+    grid-column: 1 / -1;
+}
+
+.settings-field label {
+    display: block;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin: 4px 0;
+}
+
+.settings-save-btn {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd700,
+            #c49a00
+        );
+
+    color: #000;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.settings-save-btn:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 8px 22px rgba(255,215,0,0.18);
+}
+
+/* =========================
+   ADMIN PLAYER CARD
+========================= */
 
 .admin-card {
     text-align: right;
@@ -884,17 +1211,25 @@ button {
     border-radius: 14px;
 
     background:
-        linear-gradient(135deg, #ffd700, #c49a00);
+        linear-gradient(
+            135deg,
+            #ffd700,
+            #c49a00
+        );
 
     color: #000;
 
     font-weight: bold;
 
     font-size: 15px;
+
+    transition: 0.2s;
 }
 
 .save-btn:hover {
     filter: brightness(1.08);
+
+    transform: translateY(-1px);
 }
 
 .delete-btn {
@@ -909,15 +1244,23 @@ button {
     border-radius: 14px;
 
     background:
-        linear-gradient(135deg, #b40000, #750000);
+        linear-gradient(
+            135deg,
+            #b40000,
+            #750000
+        );
 
     color: white;
 
     font-weight: bold;
+
+    transition: 0.2s;
 }
 
 .delete-btn:hover {
     filter: brightness(1.12);
+
+    transform: translateY(-1px);
 }
 
 /* =========================
@@ -953,8 +1296,74 @@ button {
 }
 
 /* =========================
+   ADMIN LOGIN
+========================= */
+
+.login-box {
+    max-width: 500px;
+
+    margin: 20px auto;
+
+    padding: 25px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #191919,
+            #0e0e0e
+        );
+
+    border: 1px solid #333;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+}
+
+.login-title {
+    text-align: center;
+
+    color: #ffd700;
+
+    font-size: 21px;
+
+    margin-bottom: 18px;
+}
+
+/* =========================
+   ADMIN STATUS
+========================= */
+
+.admin-status {
+    text-align: center;
+
+    color: #ccc;
+
+    margin: 10px 0 15px;
+
+    padding: 10px;
+
+    background:
+        rgba(0,0,0,0.25);
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,215,0,0.12);
+}
+
+/* =========================
    MOBILE
 ========================= */
+
+@media (max-width: 850px) {
+
+    .game-info-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
 
 @media (max-width: 700px) {
 
@@ -964,6 +1373,14 @@ button {
 
     .status-buttons {
         grid-template-columns: 1fr;
+    }
+
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-field.full {
+        grid-column: auto;
     }
 
     header h1 {
@@ -976,6 +1393,14 @@ button {
 
     .page {
         padding: 17px;
+    }
+
+    .game-info {
+        padding: 15px;
+    }
+
+    .game-info-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
     .fifa-card {
@@ -991,6 +1416,19 @@ button {
     .cards {
         grid-template-columns: 1fr;
     }
+
+}
+
+@media (max-width: 420px) {
+
+    .game-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-info-item {
+        min-height: 78px;
+    }
+
 }
 
 </style>
@@ -1000,6 +1438,10 @@ button {
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -1021,229 +1463,125 @@ button {
 <div class="container">
 
 
-    <!-- =========================
-         MENU
-    ========================= -->
+<!-- =========================
+     MENU
+========================= -->
 
-    <div class="menu">
+<div class="menu">
 
-        <button onclick="showPage('attendancePage')">
-            🟢 ثبت اعلام حضور
-        </button>
+    <button onclick="showPage('attendancePage')">
+        🟢 ثبت اعلام حضور
+    </button>
 
-        <button onclick="showPage('playersPage')">
-            🏆 اسامی بازیکنان
-        </button>
+    <button onclick="showPage('playersPage')">
+        🏆 اسامی بازیکنان
+    </button>
 
-        <button onclick="showPage('adminPage')">
-            👑 مدیریت
-        </button>
+    <button onclick="showPage('adminPage')">
+        👑 مدیریت
+    </button>
 
-    </div>
-
-
-    <!-- =========================
-         ATTENDANCE
-    ========================= -->
-
-    <section id="attendancePage" class="page">
-
-        <h2 class="page-title">
-            ⚽ ثبت اعلام حضور
-        </h2>
-
-        <select id="attendancePlayer">
-
-            <option value="">
-                بازیکن را انتخاب کن
-            </option>
-
-        </select>
+</div>
 
 
-        <div class="status-buttons">
+<!-- =========================
+     ATTENDANCE PAGE
+========================= -->
 
-            <button
-                id="comeBtn"
-                class="green"
-            >
-                🟢 میام
-            </button>
+<section
+    id="attendancePage"
+    class="page"
+>
 
-            <button
-                id="noBtn"
-                class="red"
-            >
-                🔴 نمیام
-            </button>
+    <h2 class="page-title">
+        ⚽ ثبت اعلام حضور
+    </h2>
 
-            <button
-                id="maybeBtn"
-                class="yellow"
-            >
-                🟡 شاید
-            </button>
 
+    <!-- GAME INFO -->
+
+    <div class="game-info">
+
+        <div class="game-info-title">
+            🏟️ اطلاعات بازی
         </div>
 
+        <div class="game-info-grid">
 
-        <div id="attendanceMessage" class="message">
-            بازیکن را انتخاب کن و وضعیتت را ثبت کن ⚽
-        </div>
+            <div class="game-info-item">
 
+                <div class="game-info-icon">
+                    🏟️
+                </div>
 
-        <h3>
-            📋 وضعیت امروز
-        </h3>
+                <div class="game-info-label">
+                    باشگاه
+                </div>
 
-
-        <div id="attendanceList">
-
-            <div class="loading">
-                در حال بارگذاری...
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PLAYERS
-    ========================= -->
-
-    <section
-        id="playersPage"
-        class="page hidden"
-    >
-
-        <h2 class="page-title">
-            🏆 اسامی بازیکنان
-        </h2>
-
-
-        <div
-            id="playerCards"
-            class="cards"
-        >
-
-            <div class="loading">
-                در حال بارگذاری بازیکنان...
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         ADMIN
-    ========================= -->
-
-    <section
-        id="adminPage"
-        class="page hidden"
-    >
-
-        <h2 class="page-title">
-            👑 پنل مدیریت
-        </h2>
-
-
-        <!-- LOGIN -->
-
-        <div id="adminLogin">
-
-            <input
-                id="adminPass"
-                type="password"
-                placeholder="رمز مدیر"
-            >
-
-
-            <button
-                id="adminLoginBtn"
-                class="primary-btn"
-            >
-                🔐 ورود به مدیریت
-            </button>
-
-        </div>
-
-
-        <!-- ADMIN CONTENT -->
-
-        <div
-            id="adminContent"
-            class="hidden"
-        >
-
-
-            <!-- ADD PLAYER -->
-
-            <div class="admin-box">
-
-                <h3>
-                    ➕ اضافه کردن بازیکن
-                </h3>
-
-
-                <input
-                    id="newPlayerName"
-                    type="text"
-                    maxlength="40"
-                    placeholder="نام بازیکن"
+                <div
+                    id="gameClubName"
+                    class="game-info-value"
                 >
-
-
-                <input
-                    id="newPlayerAge"
-                    type="number"
-                    min="1"
-                    max="100"
-                    placeholder="سن بازیکن"
-                >
-
-
-                <label class="admin-label">
-                    📷 عکس بازیکن
-                </label>
-
-
-                <input
-                    id="newPlayerPhoto"
-                    type="file"
-                    accept="image/*"
-                >
-
-
-                <button
-                    id="addPlayerBtn"
-                    class="primary-btn"
-                >
-                    ➕ اضافه کردن بازیکن
-                </button>
+                    در حال بارگذاری...
+                </div>
 
             </div>
 
 
-            <h3
-                style="
-                    color:#ffd700;
-                    text-align:center;
-                    margin:25px 0 15px;
-                "
-            >
-                ⚽ مدیریت بازیکنان
-            </h3>
+            <div class="game-info-item">
+
+                <div class="game-info-icon">
+                    📍
+                </div>
+
+                <div class="game-info-label">
+                    آدرس باشگاه
+                </div>
+
+                <div
+                    id="gameAddress"
+                    class="game-info-value"
+                >
+                    در حال بارگذاری...
+                </div>
+
+            </div>
 
 
-            <div
-                id="adminPlayers"
-                class="cards"
-            >
+            <div class="game-info-item">
 
-                <div class="loading">
+                <div class="game-info-icon">
+                    📅
+                </div>
+
+                <div class="game-info-label">
+                    تاریخ
+                </div>
+
+                <div
+                    id="gameDate"
+                    class="game-info-value"
+                >
+                    در حال بارگذاری...
+                </div>
+
+            </div>
+
+
+            <div class="game-info-item">
+
+                <div class="game-info-icon">
+                    🕐
+                </div>
+
+                <div class="game-info-label">
+                    زمان
+                </div>
+
+                <div
+                    id="gameTime"
+                    class="game-info-value"
+                >
                     در حال بارگذاری...
                 </div>
 
@@ -1251,7 +1589,328 @@ button {
 
         </div>
 
-    </section>
+    </div>
+
+
+    <!-- PLAYER SELECT -->
+
+    <select id="attendancePlayer">
+
+        <option value="">
+            بازیکن را انتخاب کن
+        </option>
+
+    </select>
+
+
+    <!-- STATUS -->
+
+    <div class="status-buttons">
+
+        <button
+            id="comeBtn"
+            class="green"
+        >
+            🟢 میام
+        </button>
+
+        <button
+            id="noBtn"
+            class="red"
+        >
+            🔴 نمیام
+        </button>
+
+        <button
+            id="maybeBtn"
+            class="yellow"
+        >
+            🟡 شاید
+        </button>
+
+    </div>
+
+
+    <div
+        id="attendanceMessage"
+        class="message"
+    >
+        بازیکن را انتخاب کن و وضعیتت را ثبت کن ⚽
+    </div>
+
+
+    <h3>
+        📋 وضعیت امروز
+    </h3>
+
+
+    <div id="attendanceList">
+
+        <div class="loading">
+            در حال بارگذاری...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PLAYERS PAGE
+========================= -->
+
+<section
+    id="playersPage"
+    class="page hidden"
+>
+
+    <h2 class="page-title">
+        🏆 اسامی بازیکنان
+    </h2>
+
+
+    <div
+        id="playerCards"
+        class="cards"
+    >
+
+        <div class="loading">
+            در حال بارگذاری بازیکنان...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ADMIN PAGE
+========================= -->
+
+<section
+    id="adminPage"
+    class="page hidden"
+>
+
+    <h2 class="page-title">
+        👑 پنل مدیریت
+    </h2>
+
+
+    <!-- LOGIN -->
+
+    <div
+        id="adminLogin"
+        class="login-box"
+    >
+
+        <div class="login-title">
+            🔐 ورود به پنل مدیریت
+        </div>
+
+        <input
+            id="adminPass"
+            type="password"
+            placeholder="رمز مدیر"
+        >
+
+        <button
+            id="adminLoginBtn"
+            class="primary-btn"
+        >
+            🔐 ورود به مدیریت
+        </button>
+
+    </div>
+
+
+    <!-- ADMIN CONTENT -->
+
+    <div
+        id="adminContent"
+        class="hidden"
+    >
+
+
+        <!-- =========================
+             GAME SETTINGS
+        ========================= -->
+
+        <div class="game-settings">
+
+            <h3>
+                ⚙️ تنظیمات اطلاعات بازی
+            </h3>
+
+            <div class="settings-grid">
+
+
+                <div class="settings-field">
+
+                    <label>
+                        🏟️ نام باشگاه
+                    </label>
+
+                    <input
+                        id="gameClubInput"
+                        type="text"
+                        maxlength="60"
+                        placeholder="مثلاً جام جم"
+                    >
+
+                </div>
+
+
+                <div class="settings-field">
+
+                    <label>
+                        📍 آدرس باشگاه
+                    </label>
+
+                    <input
+                        id="gameAddressInput"
+                        type="text"
+                        maxlength="150"
+                        placeholder="مثلاً سالن جام جم"
+                    >
+
+                </div>
+
+
+                <div class="settings-field">
+
+                    <label>
+                        📅 تاریخ بازی
+                    </label>
+
+                    <input
+                        id="gameDateInput"
+                        type="text"
+                        maxlength="30"
+                        placeholder="مثلاً ۱۴۰۵/۰۶/۱۰"
+                    >
+
+                </div>
+
+
+                <div class="settings-field">
+
+                    <label>
+                        🕐 زمان بازی
+                    </label>
+
+                    <input
+                        id="gameTimeInput"
+                        type="text"
+                        maxlength="10"
+                        placeholder="مثلاً 22:30"
+                    >
+
+                </div>
+
+
+                <div class="settings-field full">
+
+                    <button
+                        id="saveGameInfoBtn"
+                        class="settings-save-btn"
+                    >
+                        💾 ذخیره اطلاعات بازی
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ADD PLAYER
+        ========================= -->
+
+        <div class="admin-box">
+
+            <h3>
+                ➕ اضافه کردن بازیکن
+            </h3>
+
+
+            <label class="admin-label">
+                👤 نام بازیکن
+            </label>
+
+            <input
+                id="newPlayerName"
+                type="text"
+                maxlength="40"
+                placeholder="نام بازیکن"
+            >
+
+
+            <label class="admin-label">
+                🎂 سن بازیکن
+            </label>
+
+            <input
+                id="newPlayerAge"
+                type="number"
+                min="1"
+                max="100"
+                placeholder="سن بازیکن"
+            >
+
+
+            <label class="admin-label">
+                📷 عکس بازیکن
+            </label>
+
+            <input
+                id="newPlayerPhoto"
+                type="file"
+                accept="image/*"
+            >
+
+
+            <button
+                id="addPlayerBtn"
+                class="primary-btn"
+            >
+                ➕ اضافه کردن بازیکن
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             PLAYER MANAGEMENT
+        ========================= -->
+
+        <h3
+            style="
+                color:#ffd700;
+                text-align:center;
+                margin:25px 0 15px;
+            "
+        >
+            ⚽ مدیریت بازیکنان
+        </h3>
+
+
+        <div
+            id="adminPlayers"
+            class="cards"
+        >
+
+            <div class="loading">
+                در حال بارگذاری...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 </div>
@@ -1341,7 +2000,9 @@ window.showPage = function(pageId) {
             document.getElementById(id);
 
         if (page) {
+
             page.classList.add("hidden");
+
         }
 
     });
@@ -1384,6 +2045,7 @@ function statusIcon(status) {
     }
 
     return "⚪";
+
 }
 
 
@@ -1441,6 +2103,7 @@ function imageToBase64(file) {
                     }
 
                 }
+
                 else {
 
                     if (height > maxSize) {
@@ -1503,6 +2166,244 @@ function imageToBase64(file) {
 
 
 /* =========================
+   LOAD GAME INFO
+========================= */
+
+function loadGameInfo() {
+
+    onValue(
+        ref(db, "gameInfo"),
+        snapshot => {
+
+            const info =
+                snapshot.val() || {};
+
+
+            const clubName =
+                info.clubName ||
+                "ثبت نشده";
+
+            const address =
+                info.address ||
+                "ثبت نشده";
+
+            const date =
+                info.date ||
+                "ثبت نشده";
+
+            const time =
+                info.time ||
+                "ثبت نشده";
+
+
+            document.getElementById(
+                "gameClubName"
+            ).textContent = clubName;
+
+
+            document.getElementById(
+                "gameAddress"
+            ).textContent = address;
+
+
+            document.getElementById(
+                "gameDate"
+            ).textContent = date;
+
+
+            document.getElementById(
+                "gameTime"
+            ).textContent = time;
+
+
+            /* ADMIN INPUTS */
+
+            const clubInput =
+                document.getElementById(
+                    "gameClubInput"
+                );
+
+            const addressInput =
+                document.getElementById(
+                    "gameAddressInput"
+                );
+
+            const dateInput =
+                document.getElementById(
+                    "gameDateInput"
+                );
+
+            const timeInput =
+                document.getElementById(
+                    "gameTimeInput"
+                );
+
+
+            if (clubInput) {
+                clubInput.value =
+                    info.clubName || "";
+            }
+
+            if (addressInput) {
+                addressInput.value =
+                    info.address || "";
+            }
+
+            if (dateInput) {
+                dateInput.value =
+                    info.date || "";
+            }
+
+            if (timeInput) {
+                timeInput.value =
+                    info.time || "";
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SAVE GAME INFO
+========================= */
+
+async function saveGameInfo() {
+
+    const clubInput =
+        document.getElementById(
+            "gameClubInput"
+        );
+
+    const addressInput =
+        document.getElementById(
+            "gameAddressInput"
+        );
+
+    const dateInput =
+        document.getElementById(
+            "gameDateInput"
+        );
+
+    const timeInput =
+        document.getElementById(
+            "gameTimeInput"
+        );
+
+
+    const clubName =
+        clubInput.value.trim();
+
+    const address =
+        addressInput.value.trim();
+
+    const date =
+        dateInput.value.trim();
+
+    const time =
+        timeInput.value.trim();
+
+
+    if (!clubName) {
+
+        alert(
+            "نام باشگاه را وارد کن 🏟️"
+        );
+
+        clubInput.focus();
+
+        return;
+
+    }
+
+
+    if (!address) {
+
+        alert(
+            "آدرس باشگاه را وارد کن 📍"
+        );
+
+        addressInput.focus();
+
+        return;
+
+    }
+
+
+    if (!date) {
+
+        alert(
+            "تاریخ بازی را وارد کن 📅"
+        );
+
+        dateInput.focus();
+
+        return;
+
+    }
+
+
+    if (!time) {
+
+        alert(
+            "زمان بازی را وارد کن 🕐"
+        );
+
+        timeInput.focus();
+
+        return;
+
+    }
+
+
+    try {
+
+        await set(
+            ref(db, "gameInfo"),
+            {
+                clubName: clubName,
+                address: address,
+                date: date,
+                time: time
+            }
+        );
+
+
+        alert(
+            "اطلاعات بازی با موفقیت ذخیره شد ✅"
+        );
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert(
+            "ذخیره اطلاعات بازی انجام نشد ❌"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SAVE GAME INFO BUTTON
+========================= */
+
+document
+    .getElementById(
+        "saveGameInfoBtn"
+    )
+    .addEventListener(
+        "click",
+        saveGameInfo
+    );
+
+
+/* =========================
    LOAD PLAYERS FOR ATTENDANCE
 ========================= */
 
@@ -1544,18 +2445,22 @@ function loadAttendancePlayers() {
             });
 
 
-            select.innerHTML = html;
+            select.innerHTML =
+                html;
 
 
             if (currentValue) {
 
                 const option =
                     select.querySelector(
-                        `option[value="${currentValue}"]`
+                        `option[value="${CSS.escape(currentValue)}"]`
                     );
 
                 if (option) {
-                    select.value = currentValue;
+
+                    select.value =
+                        currentValue;
+
                 }
 
             }
@@ -1601,7 +2506,10 @@ async function saveAttendance(status) {
     try {
 
         await update(
-            ref(db, "players/" + id),
+            ref(
+                db,
+                "players/" + id
+            ),
             {
                 status: status
             }
@@ -1612,6 +2520,7 @@ async function saveAttendance(status) {
             "اعلام حضورت با موفقیت ثبت شد ✅";
 
     }
+
     catch(error) {
 
         console.error(error);
@@ -1698,26 +2607,26 @@ function loadAttendance() {
             });
 
 
-            const makeNames = (
-                names,
-                icon
-            ) => {
+            const makeNames =
+                (names, icon) => {
 
-                if (!names.length) {
-                    return "کسی ثبت نکرده";
-                }
+                    if (!names.length) {
+
+                        return "کسی ثبت نکرده";
+
+                    }
 
 
-                return names
-                    .map(
-                        name =>
-                            icon +
-                            " " +
-                            escapeHtml(name)
-                    )
-                    .join("<br>");
+                    return names
+                        .map(
+                            name =>
+                                icon +
+                                " " +
+                                escapeHtml(name)
+                        )
+                        .join("<br>");
 
-            };
+                };
 
 
             const html = `
@@ -1770,7 +2679,8 @@ function loadAttendance() {
                 .getElementById(
                     "attendanceList"
                 )
-                .innerHTML = html;
+                .innerHTML =
+                html;
 
         }
     );
@@ -1827,7 +2737,8 @@ function loadPlayers() {
 
                         <br><br>
 
-                        مدیر تیم باید بازیکن‌ها را از پنل مدیریت اضافه کند.
+                        مدیر تیم باید بازیکن‌ها را
+                        از پنل مدیریت اضافه کند.
 
                     </div>
 
@@ -1875,6 +2786,7 @@ function loadPlayers() {
                     `;
 
                 }
+
                 else {
 
                     photoHtml = `
@@ -1891,7 +2803,6 @@ function loadPlayers() {
                 html += `
 
                     <div class="fifa-card">
-
 
                         <div class="card-top">
 
@@ -1913,9 +2824,7 @@ function loadPlayers() {
 
 
                             <div class="status-badge">
-
                                 ${statusIcon(player.status)}
-
                             </div>
 
                         </div>
@@ -1993,7 +2902,6 @@ function loadPlayers() {
 
                         </div>
 
-
                     </div>
 
                 `;
@@ -2047,8 +2955,14 @@ function loginAdmin() {
 
     loadAdminPlayers();
 
+    loadGameInfo();
+
 }
 
+
+/* =========================
+   LOGIN BUTTON
+========================= */
 
 document
     .getElementById("adminLoginBtn")
@@ -2112,6 +3026,8 @@ async function addNewPlayer() {
             "اسم بازیکن را وارد کن ⚽"
         );
 
+        nameInput.focus();
+
         return;
 
     }
@@ -2125,6 +3041,8 @@ async function addNewPlayer() {
         alert(
             "سن بازیکن را درست وارد کن 🎂"
         );
+
+        ageInput.focus();
 
         return;
 
@@ -2207,6 +3125,7 @@ async function addNewPlayer() {
         );
 
     }
+
     catch(error) {
 
         console.error(error);
@@ -2233,7 +3152,7 @@ document
 
 
 /* =========================
-   ADMIN PLAYERS
+   LOAD ADMIN PLAYERS
 ========================= */
 
 function loadAdminPlayers() {
@@ -2277,6 +3196,7 @@ function loadAdminPlayers() {
                     `;
 
                 }
+
                 else {
 
                     photoPreview = `
@@ -2292,27 +3212,31 @@ function loadAdminPlayers() {
 
                 html += `
 
-                    <div class="fifa-card admin-card">
-
+                    <div
+                        class="fifa-card admin-card"
+                    >
 
                         ${photoPreview}
 
 
                         <h3>
+
                             👤
                             ${escapeHtml(player.name)}
+
                         </h3>
 
 
-                        <p style="text-align:center;color:#ccc;">
+                        <div class="admin-status">
 
                             وضعیت:
                             ${statusIcon(player.status)}
                             ${escapeHtml(
-                                player.status || "نامشخص"
+                                player.status ||
+                                "نامشخص"
                             )}
 
-                        </p>
+                        </div>
 
 
                         <label class="admin-label">
@@ -2434,7 +3358,6 @@ function loadAdminPlayers() {
                             🗑 حذف بازیکن
                         </button>
 
-
                     </div>
 
                 `;
@@ -2444,6 +3367,7 @@ function loadAdminPlayers() {
 
             container.innerHTML =
                 html ||
+
                 `
 
                     <div class="empty">
@@ -2535,6 +3459,37 @@ async function(id) {
         Number(ageInput.value) || 0;
 
 
+    const goals =
+        Math.max(
+            0,
+            Number(goalsInput.value) || 0
+        );
+
+
+    const assists =
+        Math.max(
+            0,
+            Number(assistsInput.value) || 0
+        );
+
+
+    const games =
+        Math.max(
+            0,
+            Number(gamesInput.value) || 0
+        );
+
+
+    const score =
+        Math.min(
+            99,
+            Math.max(
+                0,
+                Number(scoreInput.value) || 0
+            )
+        );
+
+
     if (!name) {
 
         alert(
@@ -2568,28 +3523,13 @@ async function(id) {
 
             age: age,
 
-            goals:
-                Number(
-                    goalsInput.value
-                ) || 0,
+            goals: goals,
 
-            assists:
-                Number(
-                    assistsInput.value
-                ) || 0,
+            assists: assists,
 
-            games:
-                Number(
-                    gamesInput.value
-                ) || 0,
+            games: games,
 
-            score:
-                Math.min(
-                    99,
-                    Number(
-                        scoreInput.value
-                    ) || 0
-                )
+            score: score
 
         };
 
@@ -2638,6 +3578,7 @@ async function(id) {
         );
 
     }
+
     catch(error) {
 
         console.error(error);
@@ -2684,6 +3625,7 @@ async function(id) {
         );
 
     }
+
     catch(error) {
 
         console.error(error);
@@ -2701,11 +3643,14 @@ async function(id) {
    START
 ========================= */
 
+loadGameInfo();
+
 loadAttendancePlayers();
 
 loadAttendance();
 
 loadPlayers();
+
 
 </script>
 
