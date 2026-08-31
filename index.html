@@ -2,7 +2,6 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,1450 +9,1748 @@
 
 <style>
 
-/* =========================
-   GLOBAL
-========================= */
+/* =========================================================
+   BASE
+========================================================= */
 
-* {
-    box-sizing: border-box;
-    font-family: Tahoma, Arial, sans-serif;
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    color: #fff;
+body{
+    margin:0;
+    min-height:100vh;
+
+    color:#f6f7fa;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     background:
+
         radial-gradient(
             circle at 50% -10%,
-            rgba(255,215,0,0.20),
-            transparent 35%
+            rgba(255,215,90,.13),
+            transparent 28%
         ),
+
         radial-gradient(
-            circle at 10% 30%,
-            rgba(255,190,0,0.07),
-            transparent 30%
+            circle at 0% 30%,
+            rgba(21,67,116,.18),
+            transparent 28%
         ),
+
         radial-gradient(
-            circle at 90% 70%,
-            rgba(255,215,0,0.06),
-            transparent 30%
+            circle at 100% 70%,
+            rgba(255,215,90,.06),
+            transparent 25%
         ),
+
         linear-gradient(
             135deg,
-            #030303,
-            #111 45%,
-            #050505
+            #02040a 0%,
+            #09111d 42%,
+            #03050a 100%
         );
 
-    background-attachment: fixed;
+    background-attachment:fixed;
 }
 
 button,
 input,
-select {
-    font-family: inherit;
+select{
+    font:inherit;
 }
 
-button {
-    cursor: pointer;
+button{
+    cursor:pointer;
 }
 
-.hidden {
-    display: none !important;
+.hidden{
+    display:none !important;
 }
 
-/* =========================
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
-header {
-    position: relative;
-    overflow: hidden;
+header{
 
-    text-align: center;
+    position:relative;
 
-    padding: 38px 20px 42px;
+    overflow:hidden;
+
+    text-align:center;
+
+    padding:
+        28px
+        20px
+        32px;
 
     background:
+
         linear-gradient(
-            135deg,
-            #000 0%,
-            #211900 45%,
-            #050505 100%
+            180deg,
+            #050911 0%,
+            #09101b 65%,
+            #04060a 100%
         );
 
-    border-bottom: 2px solid #ffd700;
+    border-bottom:
+        1px solid
+        rgba(255,215,90,.35);
 
     box-shadow:
-        0 10px 40px rgba(255,215,0,0.12),
-        inset 0 -1px 0 rgba(255,255,255,0.04);
+        0 15px 40px rgba(0,0,0,.35);
 }
 
-header::before {
-    content: "";
+header::before{
 
-    position: absolute;
+    content:"";
 
-    width: 300px;
-    height: 300px;
+    position:absolute;
 
-    border-radius: 50%;
+    width:420px;
+    height:420px;
 
-    background: rgba(255,215,0,0.045);
+    top:-330px;
+    left:50%;
 
-    top: -180px;
-    left: 50%;
+    transform:
+        translateX(-50%);
 
-    transform: translateX(-50%);
-}
-
-header::after {
-    content: "⚽";
-
-    position: absolute;
-
-    right: -35px;
-    bottom: -65px;
-
-    font-size: 180px;
-
-    opacity: 0.035;
-
-    transform: rotate(-15deg);
-}
-
-.logo {
-    position: relative;
-    z-index: 2;
-
-    font-size: 72px;
-
-    filter:
-        drop-shadow(
-            0 0 15px rgba(255,215,0,0.35)
-        );
-}
-
-header h1 {
-    position: relative;
-    z-index: 2;
-
-    margin: 10px 0 6px;
-
-    color: #ffd700;
-
-    font-size: 44px;
-    letter-spacing: 1px;
-
-    text-shadow:
-        0 0 15px rgba(255,215,0,0.25);
-}
-
-header p {
-    position: relative;
-    z-index: 2;
-
-    margin: 0;
-
-    color: #ddd;
-
-    font-size: 17px;
-}
-
-/* =========================
-   CONTAINER
-========================= */
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding: 24px 18px 60px;
-}
-
-/* =========================
-   MENU
-========================= */
-
-.menu {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 13px;
-
-    margin-bottom: 24px;
-}
-
-.menu button {
-    position: relative;
-    overflow: hidden;
-
-    border: 1px solid rgba(255,215,0,0.65);
-
-    padding: 17px 12px;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd700,
-            #c79d00
-        );
-
-    color: #080808;
-
-    font-size: 17px;
-    font-weight: bold;
-
-    transition: 0.25s;
-
-    box-shadow:
-        0 5px 18px rgba(255,215,0,0.10);
-}
-
-.menu button::after {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -100%;
-
-    width: 60%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.25),
-            transparent
-        );
-
-    transition: 0.5s;
-}
-
-.menu button:hover::after {
-    left: 130%;
-}
-
-.menu button:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 10px 28px rgba(255,215,0,0.20);
-}
-
-.menu button:active {
-    transform: scale(0.98);
-}
-
-/* =========================
-   PAGE
-========================= */
-
-.page {
-    position: relative;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,25,25,0.98),
-            rgba(7,7,7,0.98)
-        );
-
-    border: 1px solid rgba(255,215,0,0.70);
-
-    border-radius: 28px;
-
-    padding: 27px;
-
-    box-shadow:
-        0 0 30px rgba(255,215,0,0.07),
-        inset 0 0 40px rgba(255,215,0,0.025);
-}
-
-.page::before {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    border-radius: 50%;
-
-    background: rgba(255,215,0,0.025);
-
-    left: -100px;
-    top: -100px;
-
-    pointer-events: none;
-}
-
-.page-title {
-    position: relative;
-
-    text-align: center;
-
-    color: #ffd700;
-
-    font-size: 30px;
-
-    margin: 0 0 25px;
-
-    text-shadow:
-        0 0 12px rgba(255,215,0,0.15);
-}
-
-.page-title::after {
-    content: "";
-
-    display: block;
-
-    width: 100px;
-    height: 3px;
-
-    margin: 11px auto 0;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #ffd700,
-            transparent
-        );
-}
-
-/* =========================
-   INPUTS
-========================= */
-
-input,
-select {
-    width: 100%;
-
-    padding: 14px;
-
-    margin: 7px 0;
-
-    border-radius: 14px;
-
-    border: 1px solid #444;
-
-    background:
-        linear-gradient(
-            145deg,
-            #1b1b1b,
-            #111
-        );
-
-    color: #fff;
-
-    font-size: 16px;
-
-    outline: none;
-
-    transition: 0.2s;
-}
-
-input::placeholder {
-    color: #777;
-}
-
-input:focus,
-select:focus {
-    border-color: #ffd700;
-
-    box-shadow:
-        0 0 12px rgba(255,215,0,0.10);
-}
-
-select {
-    cursor: pointer;
-}
-
-select option {
-    background: #111;
-    color: #fff;
-}
-
-input[type="file"] {
-    padding: 10px;
-    cursor: pointer;
-}
-
-/* =========================
-   GENERAL BUTTON
-========================= */
-
-.primary-btn {
-    width: 100%;
-
-    border: none;
-
-    border-radius: 15px;
-
-    padding: 14px;
-
-    margin-top: 8px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd700,
-            #c99f00
-        );
-
-    color: #000;
-
-    font-weight: bold;
-
-    font-size: 16px;
-
-    transition: 0.2s;
-
-    box-shadow:
-        0 5px 18px rgba(255,215,0,0.08);
-}
-
-.primary-btn:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 22px rgba(255,215,0,0.18);
-}
-
-/* =========================
-   GAME INFO
-========================= */
-
-.game-info {
-    position: relative;
-
-    overflow: hidden;
-
-    margin-bottom: 23px;
-
-    padding: 22px;
-
-    border-radius: 23px;
-
-    border: 1px solid rgba(255,215,0,0.55);
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(255,215,0,0.12),
-            transparent 50%
-        ),
-        linear-gradient(
-            145deg,
-            #1c1808,
-            #0d0d0d 60%,
-            #161205
-        );
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.35),
-        inset 0 0 30px rgba(255,215,0,0.035);
-}
-
-.game-info::before {
-    content: "⚽";
-
-    position: absolute;
-
-    left: -18px;
-    bottom: -35px;
-
-    font-size: 130px;
-
-    opacity: 0.035;
-
-    transform: rotate(15deg);
-
-    pointer-events: none;
-}
-
-.game-info-title {
-    position: relative;
-    z-index: 2;
-
-    text-align: center;
-
-    color: #ffd700;
-
-    font-size: 22px;
-
-    font-weight: bold;
-
-    margin-bottom: 17px;
-}
-
-.game-info-grid {
-    position: relative;
-    z-index: 2;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 11px;
-}
-
-.game-info-item {
-    min-height: 92px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    padding: 12px;
-
-    border-radius: 17px;
-
-    background:
-        rgba(0,0,0,0.35);
-
-    border: 1px solid rgba(255,215,0,0.20);
-
-    transition: 0.2s;
-}
-
-.game-info-item:hover {
-    transform: translateY(-2px);
-
-    border-color:
-        rgba(255,215,0,0.45);
-
-    background:
-        rgba(255,215,0,0.045);
-}
-
-.game-info-icon {
-    font-size: 25px;
-
-    margin-bottom: 6px;
-}
-
-.game-info-label {
-    color: #999;
-
-    font-size: 12px;
-
-    margin-bottom: 5px;
-}
-
-.game-info-value {
-    color: #ffd700;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    word-break: break-word;
-}
-
-/* =========================
-   ATTENDANCE
-========================= */
-
-.status-buttons {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 12px;
-}
-
-.status-buttons button {
-    border: none;
-
-    padding: 16px;
-
-    border-radius: 16px;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    transition: 0.2s;
-}
-
-.status-buttons button:hover {
-    transform: translateY(-2px);
-
-    filter: brightness(1.1);
-}
-
-.status-buttons button:active {
-    transform: scale(0.98);
-}
-
-.green {
-    background:
-        linear-gradient(
-            135deg,
-            #00a83b,
-            #006d27
-        );
-
-    color: white;
-}
-
-.red {
-    background:
-        linear-gradient(
-            135deg,
-            #d00000,
-            #870000
-        );
-
-    color: white;
-}
-
-.yellow {
-    background:
-        linear-gradient(
-            135deg,
-            #e0c000,
-            #a48b00
-        );
-
-    color: #000;
-}
-
-.message {
-    margin-top: 15px;
-
-    padding: 13px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #191919,
-            #101010
-        );
-
-    border: 1px solid #333;
-
-    border-radius: 14px;
-
-    color: #bbb;
-}
-
-.attendance-section {
-    background:
-        linear-gradient(
-            145deg,
-            #191919,
-            #101010
-        );
-
-    border: 1px solid #333;
-
-    border-radius: 18px;
-
-    padding: 17px;
-
-    margin-top: 14px;
-
-    box-shadow:
-        inset 0 0 20px rgba(255,255,255,0.015);
-}
-
-.attendance-section h3 {
-    margin-top: 0;
-
-    color: #ffd700;
-
-    border-bottom: 1px solid #333;
-
-    padding-bottom: 9px;
-}
-
-.attendance-names {
-    line-height: 2.2;
-
-    font-size: 17px;
-}
-
-/* =========================
-   PLAYER GRID
-========================= */
-
-.cards {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(270px, 1fr));
-
-    gap: 22px;
-}
-
-/* =========================
-   FIFA CARD
-========================= */
-
-.fifa-card {
-    position: relative;
-
-    min-height: 480px;
-
-    overflow: hidden;
-
-    border-radius: 28px;
-
-    padding: 18px;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(255,215,0,0.16),
-            transparent 34%
-        ),
-        linear-gradient(
-            145deg,
-            #806500 0%,
-            #392e08 20%,
-            #151305 48%,
-            #080808 75%,
-            #403300 100%
-        );
-
-    border: 3px solid #dcb500;
-
-    box-shadow:
-        0 0 20px rgba(255,215,0,0.15),
-        0 18px 35px rgba(0,0,0,0.45),
-        inset 0 0 35px rgba(255,215,0,0.07);
-
-    transition: 0.3s;
-}
-
-.fifa-card:hover {
-    transform: translateY(-7px);
-
-    box-shadow:
-        0 0 30px rgba(255,215,0,0.25),
-        0 20px 40px rgba(0,0,0,0.55),
-        inset 0 0 40px rgba(255,215,0,0.09);
-}
-
-.fifa-card::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 8px;
-
-    border: 1px solid rgba(255,215,0,0.38);
-
-    border-radius: 22px;
-
-    pointer-events: none;
-}
-
-.fifa-card::after {
-    content: "⚽";
-
-    position: absolute;
-
-    left: -25px;
-    bottom: -35px;
-
-    font-size: 145px;
-
-    opacity: 0.035;
-
-    pointer-events: none;
-}
-
-/* =========================
-   CARD TOP
-========================= */
-
-.card-top {
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: flex-start;
-
-    padding: 5px 8px;
-}
-
-.rating {
-    color: #ffd700;
-
-    font-size: 48px;
-
-    font-weight: bold;
-
-    line-height: 1;
-
-    text-shadow:
-        0 0 10px rgba(255,215,0,0.20);
-}
-
-.rating-label {
-    color: #aaa;
-
-    font-size: 11px;
-
-    margin-top: 5px;
-}
-
-.position {
-    color: #eee;
-
-    font-size: 18px;
-
-    margin-top: 6px;
-}
-
-.status-badge {
-    background:
-        rgba(0,0,0,0.40);
-
-    border: 1px solid rgba(255,215,0,0.25);
-
-    border-radius: 20px;
-
-    padding: 7px 10px;
-
-    font-size: 14px;
-}
-
-/* =========================
-   PLAYER PHOTO
-========================= */
-
-.player-photo {
-    position: relative;
-
-    z-index: 2;
-
-    width: 205px;
-    height: 205px;
-
-    margin: 7px auto 12px;
-
-    display: block;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    border: 4px solid #ffd700;
-
-    background: #222;
-
-    box-shadow:
-        0 0 25px rgba(255,215,0,0.25);
-}
-
-.no-photo {
-    position: relative;
-
-    z-index: 2;
-
-    width: 205px;
-    height: 205px;
-
-    margin: 7px auto 12px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    border: 4px solid #ffd700;
+    border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            #333,
-            #111
+            rgba(255,215,90,.12),
+            transparent 70%
         );
-
-    font-size: 75px;
-
-    box-shadow:
-        0 0 25px rgba(255,215,0,0.20);
 }
 
-/* =========================
-   PLAYER NAME
-========================= */
+header::after{
 
-.fifa-name {
-    position: relative;
+    content:"⚽";
 
-    z-index: 2;
+    position:absolute;
 
-    color: #ffd700;
+    right:-35px;
+    bottom:-80px;
 
-    font-size: 28px;
+    font-size:190px;
 
-    font-weight: bold;
+    opacity:.025;
 
-    margin: 8px 0;
+    transform:
+        rotate(-15deg);
+}
+
+.logo-wrap{
+
+    position:relative;
+
+    z-index:2;
+
+    width:118px;
+
+    margin:
+        0
+        auto
+        9px;
+
+    filter:
+        drop-shadow(
+            0
+            0
+            22px
+            rgba(255,215,90,.18)
+        );
+}
+
+.logo-wrap svg{
+
+    width:100%;
+    height:auto;
+
+    display:block;
+}
+
+.brand{
+
+    position:relative;
+
+    z-index:2;
+
+    margin:0;
+
+    color:#f5d76c;
+
+    font-size:
+        clamp(
+            35px,
+            6vw,
+            58px
+        );
+
+    font-weight:900;
+
+    letter-spacing:2px;
 
     text-shadow:
-        0 0 10px rgba(255,215,0,0.15);
+        0
+        0
+        18px
+        rgba(255,215,90,.12);
 }
 
-/* =========================
-   AGE
-========================= */
+.subtitle{
 
-.age {
-    position: relative;
+    position:relative;
 
-    z-index: 2;
+    z-index:2;
 
-    color: #ddd;
+    margin:
+        8px
+        0
+        0;
 
-    font-size: 15px;
+    color:#b6c0cc;
 
-    margin-bottom: 15px;
+    font-size:15px;
 }
 
-/* =========================
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:1220px;
+
+    margin:auto;
+
+    padding:
+        20px
+        16px
+        60px;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:11px;
+
+    margin-bottom:18px;
+}
+
+.menu button{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:16px 10px;
+
+    color:#07090d;
+
+    border:
+        1px solid
+        rgba(255,215,90,.50);
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe483 0%,
+            #e2bb42 45%,
+            #9d7400 100%
+        );
+
+    font-weight:900;
+
+    box-shadow:
+        0 10px 26px
+        rgba(0,0,0,.24);
+
+    transition:
+        .22s ease;
+}
+
+.menu button::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-110%;
+    top:0;
+
+    width:55%;
+    height:100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.30),
+            transparent
+        );
+
+    transition:.5s;
+}
+
+.menu button:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 16px 32px
+        rgba(0,0,0,.35);
+}
+
+.menu button:hover::after{
+
+    left:130%;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:23px;
+
+    border:
+        1px solid
+        rgba(255,215,90,.28);
+
+    border-radius:26px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(18,26,38,.96),
+            rgba(6,9,15,.98)
+        );
+
+    box-shadow:
+
+        0 25px 50px
+        rgba(0,0,0,.24),
+
+        inset 0 0 45px
+        rgba(255,215,90,.018);
+}
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    right:-130px;
+    top:-130px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,215,90,.07),
+            transparent 68%
+        );
+
+    pointer-events:none;
+}
+
+.page-title{
+
+    position:relative;
+
+    margin:
+        0
+        0
+        22px;
+
+    text-align:center;
+
+    color:#f5d76c;
+
+    font-size:29px;
+
+    text-shadow:
+        0
+        0
+        14px
+        rgba(255,215,90,.12);
+}
+
+.page-title::after{
+
+    content:"";
+
+    display:block;
+
+    width:95px;
+    height:3px;
+
+    margin:
+        10px
+        auto
+        0;
+
+    border-radius:20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            #f5d76c,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+input,
+select{
+
+    width:100%;
+
+    margin:
+        6px
+        0;
+
+    padding:
+        13px
+        14px;
+
+    color:#fff;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #121a25,
+            #0a1018
+        );
+
+    border:
+        1px solid
+        #2c3948;
+
+    border-radius:13px;
+
+    outline:none;
+
+    transition:
+        .2s;
+}
+
+input::placeholder{
+    color:#667284;
+}
+
+input:focus,
+select:focus{
+
+    border-color:
+        rgba(255,215,90,.72);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(255,215,90,.05);
+}
+
+input[type="file"]{
+    padding:9px;
+}
+
+select{
+    cursor:pointer;
+}
+
+select option{
+    color:white;
+    background:#0d141e;
+}
+
+
+/* =========================================================
+   GENERAL BUTTONS
+========================================================= */
+
+.primary-btn{
+
+    width:100%;
+
+    margin-top:8px;
+
+    padding:14px;
+
+    border:0;
+
+    border-radius:14px;
+
+    color:#080a0d;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #f8dc72,
+            #c29a17
+        );
+
+    font-weight:900;
+
+    transition:.2s;
+}
+
+.primary-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   GAME INFO
+========================================================= */
+
+.game-info{
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-bottom:22px;
+
+    padding:18px;
+
+    border:
+        1px solid
+        rgba(255,215,90,.28);
+
+    border-radius:22px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0,
+            rgba(255,215,90,.10),
+            transparent 55%
+        ),
+
+        linear-gradient(
+            145deg,
+            #111a27,
+            #070d15
+        );
+
+    box-shadow:
+        inset 0
+        0
+        35px
+        rgba(255,215,90,.02);
+}
+
+.game-info-title{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-bottom:15px;
+
+    text-align:center;
+
+    color:#f4d66b;
+
+    font-size:21px;
+
+    font-weight:900;
+}
+
+.game-info-grid{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:9px;
+}
+
+.game-info-item{
+
+    min-height:90px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:10px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius:16px;
+
+    background:
+        rgba(0,0,0,.20);
+}
+
+.game-info-icon{
+    font-size:24px;
+}
+
+.game-info-label{
+
+    margin-top:5px;
+
+    color:#7e8997;
+
+    font-size:11px;
+}
+
+.game-info-value{
+
+    margin-top:5px;
+
+    color:#f4d66b;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    word-break:
+        break-word;
+}
+
+
+/* =========================================================
+   ATTENDANCE
+========================================================= */
+
+.status-buttons{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:10px;
+}
+
+.status-buttons button{
+
+    border:0;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    font-weight:900;
+
+    transition:.2s;
+}
+
+.status-buttons button:hover{
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.08);
+}
+
+.green{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #14b75a,
+            #08762f
+        );
+}
+
+.red{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ec3a3a,
+            #860707
+        );
+}
+
+.yellow{
+
+    color:#111;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0d246,
+            #a8890d
+        );
+}
+
+.message{
+
+    margin-top:13px;
+
+    padding:12px;
+
+    color:#acb5c1;
+
+    text-align:center;
+
+    border:
+        1px solid
+        #24303d;
+
+    border-radius:13px;
+
+    background:#0a1018;
+}
+
+.attendance-section{
+
+    padding:16px;
+
+    margin-top:12px;
+
+    border:
+        1px solid
+        #232e3a;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111924,
+            #090f16
+        );
+}
+
+.attendance-section h3{
+
+    margin:
+        0
+        0
+        9px;
+
+    padding-bottom:8px;
+
+    color:#f5d76c;
+
+    border-bottom:
+        1px solid
+        #222c37;
+}
+
+.attendance-names{
+
+    color:#dfe5ed;
+
+    line-height:2.1;
+
+    font-size:16px;
+}
+
+
+/* =========================================================
+   CARDS GRID
+========================================================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(270px,1fr)
+        );
+
+    gap:21px;
+}
+
+
+/* =========================================================
+   FIFA STYLE PLAYER CARD
+   3:4
+========================================================= */
+
+.fifa-card{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:3/4;
+
+    overflow:hidden;
+
+    padding:15px;
+
+    border:
+        2px solid
+        #b89328;
+
+    border-radius:28px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(30,87,142,.38),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 55% 85%,
+            rgba(255,215,90,.08),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            155deg,
+            #18283b 0%,
+            #0a1523 40%,
+            #050b14 70%,
+            #18290d 100%
+        );
+
+    box-shadow:
+
+        0 20px 40px
+        rgba(0,0,0,.42),
+
+        inset 0
+        0
+        0
+        1px
+        rgba(255,215,90,.10),
+
+        inset 0
+        0
+        50px
+        rgba(0,77,146,.08);
+
+    transition:.28s ease;
+}
+
+.fifa-card:hover{
+
+    transform:
+        translateY(-7px)
+        scale(1.01);
+
+    box-shadow:
+
+        0 28px 48px
+        rgba(0,0,0,.52),
+
+        0 0 24px
+        rgba(255,215,90,.13),
+
+        inset 0
+        0
+        50px
+        rgba(0,77,146,.10);
+}
+
+.fifa-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:7px;
+
+    border:
+        1px solid
+        rgba(255,215,90,.38);
+
+    border-radius:22px;
+
+    pointer-events:none;
+}
+
+.fifa-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            transparent 0 48%,
+            rgba(255,255,255,.04) 50%,
+            transparent 52%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.card-top{
+
+    position:relative;
+
+    z-index:4;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+}
+
+.card-rating{
+
+    color:#f6d66b;
+
+    font-size:47px;
+
+    line-height:.92;
+
+    font-weight:900;
+
+    text-shadow:
+        0
+        0
+        10px
+        rgba(255,215,90,.12);
+}
+
+.card-position{
+
+    margin-top:5px;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:900;
+}
+
+.card-status{
+
+    padding:6px 9px;
+
+    color:#d4dbe5;
+
+    border:
+        1px solid
+        rgba(255,215,90,.20);
+
+    border-radius:14px;
+
+    background:
+        rgba(0,0,0,.26);
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   CARD PHOTO
+========================================================= */
+
+.photo-frame{
+
+    position:absolute;
+
+    z-index:3;
+
+    left:11%;
+
+    right:11%;
+
+    top:18%;
+
+    height:47%;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.player-photo{
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+
+    object-position:center bottom;
+
+    filter:none;
+
+    border:0;
+
+    border-radius:0;
+
+    background:transparent;
+}
+
+.no-photo{
+
+    width:72%;
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:
+        rgba(0,0,0,.16);
+
+    color:#667388;
+
+    font-size:65px;
+}
+
+
+/* =========================================================
+   CARD NAME
+========================================================= */
+
+.card-name{
+
+    position:absolute;
+
+    z-index:5;
+
+    left:15px;
+    right:15px;
+
+    top:65%;
+
+    margin:0;
+
+    color:#f6d66b;
+
+    text-align:center;
+
+    font-size:25px;
+
+    font-weight:900;
+
+    text-shadow:
+        0
+        0
+        10px
+        rgba(0,0,0,.45);
+}
+
+.card-age{
+
+    position:absolute;
+
+    z-index:5;
+
+    top:72%;
+
+    left:15px;
+    right:15px;
+
+    color:#d0d7e0;
+
+    text-align:center;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   CARD ATTRIBUTES
+========================================================= */
+
+.card-attributes{
+
+    position:absolute;
+
+    z-index:5;
+
+    top:9%;
+
+    left:10%;
+
+    display:grid;
+
+    gap:2px;
+
+    color:#cad2dd;
+
+    font-size:9px;
+
+    text-align:left;
+}
+
+.attr-line strong{
+
+    color:#f6d66b;
+
+    margin-left:2px;
+}
+
+
+/* =========================================================
    CARD STATS
-========================= */
+========================================================= */
 
-.card-stats {
-    position: relative;
+.card-stats{
 
-    z-index: 2;
+    position:absolute;
 
-    display: grid;
+    z-index:5;
+
+    left:15px;
+    right:15px;
+
+    bottom:14px;
+
+    display:grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    gap: 7px;
+    gap:6px;
 
-    margin-top: 10px;
+    padding-top:9px;
+
+    border-top:
+        1px solid
+        rgba(255,215,90,.22);
 }
 
-.card-stat {
-    background:
-        rgba(0,0,0,0.45);
+.card-stat{
 
-    border: 1px solid rgba(255,215,0,0.28);
+    color:#adb7c5;
 
-    border-radius: 13px;
+    font-size:10px;
 
-    padding: 9px 4px;
+    text-align:center;
 }
 
-.card-stat span {
-    display: block;
+.card-stat strong{
 
-    color: #ccc;
+    display:block;
 
-    font-size: 12px;
+    margin-top:2px;
+
+    color:#fff;
+
+    font-size:16px;
 }
 
-.card-stat strong {
-    display: block;
 
-    color: #ffd700;
-
-    font-size: 21px;
-
-    margin-top: 3px;
-}
-
-/* =========================
+/* =========================================================
    ADMIN
-========================= */
+========================================================= */
 
-.admin-box {
+.login-box{
+
+    max-width:470px;
+
+    margin:
+        8px
+        auto
+        22px;
+
+    padding:21px;
+
+    border:
+        1px solid
+        #263343;
+
+    border-radius:21px;
+
     background:
         linear-gradient(
             145deg,
-            #191919,
-            #101010
+            #111a25,
+            #090f17
         );
-
-    border: 1px solid #333;
-
-    border-radius: 20px;
-
-    padding: 20px;
-
-    margin-bottom: 25px;
-
-    box-shadow:
-        inset 0 0 25px rgba(255,215,0,0.025);
 }
 
-.admin-box h3 {
-    color: #ffd700;
+.login-title{
 
-    text-align: center;
+    margin-bottom:13px;
 
-    margin-top: 0;
+    color:#f5d76c;
 
-    font-size: 21px;
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:900;
 }
 
-.admin-label {
-    display: block;
+.admin-box{
 
-    color: #aaa;
+    padding:20px;
 
-    font-size: 13px;
+    margin-bottom:22px;
 
-    margin-top: 9px;
-}
+    border:
+        1px solid
+        #273444;
 
-/* =========================
-   GAME SETTINGS
-========================= */
+    border-radius:21px;
 
-.game-settings {
     background:
         linear-gradient(
             145deg,
-            #191919,
-            #101010
+            #111a25,
+            #090f17
         );
-
-    border: 1px solid rgba(255,215,0,0.30);
-
-    border-radius: 22px;
-
-    padding: 22px;
-
-    margin-bottom: 27px;
-
-    box-shadow:
-        inset 0 0 30px rgba(255,215,0,0.025);
 }
 
-.game-settings h3 {
-    color: #ffd700;
+.admin-box h3{
 
-    text-align: center;
+    margin-top:0;
 
-    margin-top: 0;
+    color:#f5d76c;
 
-    margin-bottom: 20px;
-
-    font-size: 22px;
+    text-align:center;
 }
 
-.settings-grid {
-    display: grid;
+.two-col{
+
+    display:grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(2,1fr);
 
-    gap: 12px;
+    gap:10px;
 }
 
-.settings-field {
-    width: 100%;
+.full{
+    grid-column:1/-1;
 }
 
-.settings-field.full {
-    grid-column: 1 / -1;
+.admin-label{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#8e99a7;
+
+    font-size:12px;
 }
 
-.settings-field label {
-    display: block;
+.save-btn{
 
-    color: #aaa;
+    width:100%;
 
-    font-size: 13px;
+    padding:13px;
 
-    margin: 4px 0;
-}
+    margin-top:10px;
 
-.settings-save-btn {
-    width: 100%;
+    border:0;
 
-    margin-top: 15px;
+    border-radius:13px;
 
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 15px;
+    color:#07090c;
 
     background:
         linear-gradient(
             135deg,
-            #ffd700,
-            #c49a00
+            #f7db71,
+            #c39a17
         );
 
-    color: #000;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    transition: 0.2s;
+    font-weight:900;
 }
 
-.settings-save-btn:hover {
-    transform: translateY(-2px);
+.delete-btn{
 
-    filter: brightness(1.08);
+    width:100%;
 
-    box-shadow:
-        0 8px 22px rgba(255,215,0,0.18);
-}
+    padding:11px;
 
-/* =========================
-   ADMIN PLAYER CARD
-========================= */
+    margin-top:8px;
 
-.admin-card {
-    text-align: right;
-}
+    border:0;
 
-.admin-card h3 {
-    color: #ffd700;
+    border-radius:13px;
 
-    text-align: center;
-
-    margin-top: 0;
-}
-
-.admin-photo-preview {
-    width: 110px;
-    height: 110px;
-
-    margin: 5px auto 12px;
-
-    display: block;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    border: 3px solid #ffd700;
-
-    background: #222;
-}
-
-.admin-no-photo {
-    width: 110px;
-    height: 110px;
-
-    margin: 5px auto 12px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    border: 3px solid #ffd700;
-
-    background: #222;
-
-    font-size: 45px;
-}
-
-.save-btn {
-    width: 100%;
-
-    padding: 13px;
-
-    margin-top: 12px;
-
-    border: none;
-
-    border-radius: 14px;
+    color:white;
 
     background:
         linear-gradient(
             135deg,
-            #ffd700,
-            #c49a00
+            #b51b1b,
+            #6b0606
         );
 
-    color: #000;
-
-    font-weight: bold;
-
-    font-size: 15px;
-
-    transition: 0.2s;
+    font-weight:800;
 }
 
-.save-btn:hover {
-    filter: brightness(1.08);
+.admin-card{
 
-    transform: translateY(-1px);
+    text-align:right;
 }
 
-.delete-btn {
-    width: 100%;
-
-    padding: 11px;
-
-    margin-top: 8px;
-
-    border: none;
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #b40000,
-            #750000
-        );
-
-    color: white;
-
-    font-weight: bold;
-
-    transition: 0.2s;
+.admin-card h3{
+    text-align:center;
 }
 
-.delete-btn:hover {
-    filter: brightness(1.12);
+.admin-photo-preview{
 
-    transform: translateY(-1px);
+    width:105px;
+    height:105px;
+
+    margin:
+        4px
+        auto
+        12px;
+
+    display:block;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    filter:none;
+
+    border:
+        3px solid
+        #e1bf4f;
+
+    border-radius:50%;
+
+    background:#0b1018;
 }
 
-/* =========================
-   EMPTY
-========================= */
+.admin-no-photo{
 
-.empty {
-    text-align: center;
+    width:105px;
+    height:105px;
 
-    color: #aaa;
+    margin:
+        4px
+        auto
+        12px;
 
-    padding: 30px;
+    display:flex;
 
-    background: #121212;
+    align-items:center;
+    justify-content:center;
 
-    border: 1px dashed #444;
+    border:
+        3px solid
+        #e1bf4f;
 
-    border-radius: 18px;
+    border-radius:50%;
+
+    background:#0b1018;
+
+    color:#5f6d7e;
+
+    font-size:45px;
 }
 
-/* =========================
-   LOADING
-========================= */
 
-.loading {
-    text-align: center;
+/* =========================================================
+   MATCH REGISTER
+========================================================= */
 
-    color: #ffd700;
+.match-box{
 
-    padding: 30px;
+    padding:15px;
 
-    font-size: 17px;
+    margin-top:12px;
+
+    border:
+        1px solid
+        #263444;
+
+    border-radius:17px;
+
+    background:#0b1119;
 }
 
-/* =========================
-   ADMIN LOGIN
-========================= */
+.match-list{
 
-.login-box {
-    max-width: 500px;
+    max-height:230px;
 
-    margin: 20px auto;
+    overflow:auto;
 
-    padding: 25px;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #191919,
-            #0e0e0e
-        );
-
-    border: 1px solid #333;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.25);
+    margin:
+        10px
+        0;
 }
 
-.login-title {
-    text-align: center;
+.match-player{
 
-    color: #ffd700;
+    display:flex;
 
-    font-size: 21px;
+    align-items:center;
 
-    margin-bottom: 18px;
+    gap:9px;
+
+    padding:9px 0;
+
+    color:#d9dfe6;
+
+    border-bottom:
+        1px solid
+        #1a2430;
 }
 
-/* =========================
-   ADMIN STATUS
-========================= */
-
-.admin-status {
-    text-align: center;
-
-    color: #ccc;
-
-    margin: 10px 0 15px;
-
-    padding: 10px;
-
-    background:
-        rgba(0,0,0,0.25);
-
-    border-radius: 12px;
-
-    border: 1px solid rgba(255,215,0,0.12);
+.match-player:last-child{
+    border-bottom:0;
 }
 
-/* =========================
+.match-player input{
+
+    width:auto;
+
+    margin:0;
+
+    cursor:pointer;
+}
+
+.small{
+    color:#778293;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.empty{
+
+    padding:28px;
+
+    color:#8f9aaa;
+
+    text-align:center;
+
+    border:
+        1px dashed
+        #334151;
+
+    border-radius:17px;
+
+    background:#09101a;
+}
+
+.loading{
+
+    padding:28px;
+
+    color:#d0b955;
+
+    text-align:center;
+}
+
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 850px) {
+@media(max-width:900px){
 
-    .game-info-grid {
+    .game-info-grid{
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
 }
 
-@media (max-width: 700px) {
+@media(max-width:700px){
 
-    .menu {
-        grid-template-columns: 1fr;
+    .menu{
+        grid-template-columns:1fr;
     }
 
-    .status-buttons {
-        grid-template-columns: 1fr;
+    .status-buttons{
+        grid-template-columns:1fr;
     }
 
-    .settings-grid {
-        grid-template-columns: 1fr;
+    .two-col{
+        grid-template-columns:1fr;
     }
 
-    .settings-field.full {
-        grid-column: auto;
+    .full{
+        grid-column:auto;
     }
 
-    header h1 {
-        font-size: 35px;
+    .cards{
+        grid-template-columns:1fr;
     }
 
-    .logo {
-        font-size: 58px;
-    }
-
-    .page {
-        padding: 17px;
-    }
-
-    .game-info {
-        padding: 15px;
-    }
-
-    .game-info-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .fifa-card {
-        min-height: 460px;
-    }
-
-    .player-photo,
-    .no-photo {
-        width: 185px;
-        height: 185px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
+    .page{
+        padding:16px;
     }
 
 }
 
-@media (max-width: 420px) {
+@media(max-width:430px){
 
-    .game-info-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .game-info-item {
-        min-height: 78px;
+    .game-info-grid{
+        grid-template-columns:1fr;
     }
 
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- =========================================================
      HEADER
-========================= -->
+========================================================= -->
 
 <header>
 
-    <div class="logo">
-        ⚽
+    <div class="logo-wrap">
+
+        <svg
+            viewBox="0 0 300 300"
+            aria-label="Footballers logo"
+        >
+
+            <defs>
+
+                <linearGradient
+                    id="goldGradient"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1"
+                >
+
+                    <stop
+                        offset="0"
+                        stop-color="#fff2a7"
+                    />
+
+                    <stop
+                        offset=".48"
+                        stop-color="#e4bd43"
+                    />
+
+                    <stop
+                        offset="1"
+                        stop-color="#856000"
+                    />
+
+                </linearGradient>
+
+
+                <linearGradient
+                    id="navyGradient"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                >
+
+                    <stop
+                        offset="0"
+                        stop-color="#1a2c43"
+                    />
+
+                    <stop
+                        offset="1"
+                        stop-color="#050a12"
+                    />
+
+                </linearGradient>
+
+            </defs>
+
+
+            <path
+                d="
+                    M150 18
+                    L262 52
+                    V132
+                    C262 207 217 252 150 282
+                    C83 252 38 207 38 132
+                    V52
+                    Z
+                "
+                fill="url(#navyGradient)"
+                stroke="url(#goldGradient)"
+                stroke-width="11"
+            />
+
+
+            <path
+                d="
+                    M70 84
+                    L150 56
+                    L230 84
+                    V135
+                    C230 192 198 224 150 250
+                    C102 224 70 192 70 135
+                    Z
+                "
+                fill="none"
+                stroke="rgba(255,215,90,.24)"
+                stroke-width="2"
+            />
+
+
+            <circle
+                cx="150"
+                cy="116"
+                r="46"
+                fill="none"
+                stroke="url(#goldGradient)"
+                stroke-width="8"
+            />
+
+
+            <path
+                d="
+                    M123 116
+                    L140 101
+                    L161 108
+                    L175 128
+                    L159 143
+                    L136 137
+                    Z
+                "
+                fill="none"
+                stroke="#f6d66b"
+                stroke-width="6"
+                stroke-linejoin="round"
+            />
+
+
+            <text
+                x="150"
+                y="204"
+                text-anchor="middle"
+                fill="#f6d66b"
+                font-size="48"
+                font-family="Arial"
+                font-weight="900"
+            >
+                F
+            </text>
+
+
+            <text
+                x="150"
+                y="238"
+                text-anchor="middle"
+                fill="#ccd5e0"
+                font-size="17"
+                font-family="Arial"
+                font-weight="700"
+                letter-spacing="2.5"
+            >
+                FOOTBALLERS
+            </text>
+
+        </svg>
+
     </div>
 
-    <h1>
-        Footballers
+
+    <h1 class="brand">
+        FOOTBALLERS
     </h1>
 
-    <p>
+
+    <p class="subtitle">
         فوتبالیست‌ها و رسا
     </p>
 
@@ -1463,30 +1760,38 @@ input[type="file"] {
 <div class="container">
 
 
-<!-- =========================
-     MENU
-========================= -->
+<!-- =========================================================
+     MAIN MENU
+========================================================= -->
 
 <div class="menu">
 
-    <button onclick="showPage('attendancePage')">
+    <button
+        onclick="showPage('attendancePage')"
+    >
         🟢 ثبت اعلام حضور
     </button>
 
-    <button onclick="showPage('playersPage')">
+
+    <button
+        onclick="showPage('playersPage')"
+    >
         🏆 اسامی بازیکنان
     </button>
 
-    <button onclick="showPage('adminPage')">
+
+    <button
+        onclick="showPage('adminPage')"
+    >
         👑 مدیریت
     </button>
 
 </div>
 
 
-<!-- =========================
-     ATTENDANCE PAGE
-========================= -->
+<!-- =========================================================
+     ATTENDANCE
+========================================================= -->
 
 <section
     id="attendancePage"
@@ -1498,7 +1803,7 @@ input[type="file"] {
     </h2>
 
 
-    <!-- GAME INFO -->
+    <!-- اطلاعات بازی -->
 
     <div class="game-info">
 
@@ -1506,7 +1811,9 @@ input[type="file"] {
             🏟️ اطلاعات بازی
         </div>
 
+
         <div class="game-info-grid">
+
 
             <div class="game-info-item">
 
@@ -1515,7 +1822,7 @@ input[type="file"] {
                 </div>
 
                 <div class="game-info-label">
-                    باشگاه
+                    نام باشگاه
                 </div>
 
                 <div
@@ -1587,12 +1894,13 @@ input[type="file"] {
 
             </div>
 
+
         </div>
 
     </div>
 
 
-    <!-- PLAYER SELECT -->
+    <!-- انتخاب بازیکن -->
 
     <select id="attendancePlayer">
 
@@ -1603,7 +1911,7 @@ input[type="file"] {
     </select>
 
 
-    <!-- STATUS -->
+    <!-- وضعیت -->
 
     <div class="status-buttons">
 
@@ -1614,12 +1922,14 @@ input[type="file"] {
             🟢 میام
         </button>
 
+
         <button
             id="noBtn"
             class="red"
         >
             🔴 نمیام
         </button>
+
 
         <button
             id="maybeBtn"
@@ -1655,9 +1965,9 @@ input[type="file"] {
 </section>
 
 
-<!-- =========================
-     PLAYERS PAGE
-========================= -->
+<!-- =========================================================
+     PLAYERS
+========================================================= -->
 
 <section
     id="playersPage"
@@ -1683,9 +1993,9 @@ input[type="file"] {
 </section>
 
 
-<!-- =========================
-     ADMIN PAGE
-========================= -->
+<!-- =========================================================
+     ADMIN
+========================================================= -->
 
 <section
     id="adminPage"
@@ -1705,8 +2015,9 @@ input[type="file"] {
     >
 
         <div class="login-title">
-            🔐 ورود به پنل مدیریت
+            🔐 ورود مدیر
         </div>
+
 
         <input
             id="adminPass"
@@ -1714,11 +2025,12 @@ input[type="file"] {
             placeholder="رمز مدیر"
         >
 
+
         <button
             id="adminLoginBtn"
             class="primary-btn"
         >
-            🔐 ورود به مدیریت
+            ورود به مدیریت
         </button>
 
     </div>
@@ -1732,102 +2044,92 @@ input[type="file"] {
     >
 
 
-        <!-- =========================
+        <!-- =================================================
              GAME SETTINGS
-        ========================= -->
+        ================================================== -->
 
-        <div class="game-settings">
+        <div class="admin-box">
 
             <h3>
-                ⚙️ تنظیمات اطلاعات بازی
+                ⚙️ تنظیمات بازی
             </h3>
 
-            <div class="settings-grid">
+
+            <div class="two-col">
 
 
-                <div class="settings-field">
+                <div>
 
-                    <label>
+                    <label class="admin-label">
                         🏟️ نام باشگاه
                     </label>
 
                     <input
                         id="gameClubInput"
-                        type="text"
-                        maxlength="60"
                         placeholder="مثلاً جام جم"
                     >
 
                 </div>
 
 
-                <div class="settings-field">
+                <div>
 
-                    <label>
+                    <label class="admin-label">
                         📍 آدرس باشگاه
                     </label>
 
                     <input
                         id="gameAddressInput"
-                        type="text"
-                        maxlength="150"
                         placeholder="مثلاً سالن جام جم"
                     >
 
                 </div>
 
 
-                <div class="settings-field">
+                <div>
 
-                    <label>
-                        📅 تاریخ بازی
+                    <label class="admin-label">
+                        📅 تاریخ
                     </label>
 
                     <input
                         id="gameDateInput"
-                        type="text"
-                        maxlength="30"
                         placeholder="مثلاً ۱۴۰۵/۰۶/۱۰"
                     >
 
                 </div>
 
 
-                <div class="settings-field">
+                <div>
 
-                    <label>
-                        🕐 زمان بازی
+                    <label class="admin-label">
+                        🕐 زمان
                     </label>
 
                     <input
                         id="gameTimeInput"
-                        type="text"
-                        maxlength="10"
                         placeholder="مثلاً 22:30"
                     >
 
                 </div>
 
 
-                <div class="settings-field full">
-
-                    <button
-                        id="saveGameInfoBtn"
-                        class="settings-save-btn"
-                    >
-                        💾 ذخیره اطلاعات بازی
-                    </button>
-
-                </div>
-
             </div>
+
+
+            <button
+                id="saveGameInfoBtn"
+                class="save-btn"
+            >
+                💾 ذخیره اطلاعات بازی
+            </button>
 
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
              ADD PLAYER
-        ========================= -->
+        ================================================== -->
 
         <div class="admin-box">
 
@@ -1841,23 +2143,88 @@ input[type="file"] {
             </label>
 
             <input
-                id="newPlayerName"
-                type="text"
+                id="newName"
                 maxlength="40"
                 placeholder="نام بازیکن"
             >
 
 
             <label class="admin-label">
-                🎂 سن بازیکن
+                🎂 سن
             </label>
 
             <input
-                id="newPlayerAge"
+                id="newAge"
                 type="number"
                 min="1"
                 max="100"
-                placeholder="سن بازیکن"
+                placeholder="سن"
+            >
+
+
+            <label class="admin-label">
+                📌 پست
+            </label>
+
+            <select id="newPosition">
+
+                <option value="ST">
+                    ST - مهاجم
+                </option>
+
+                <option value="CF">
+                    CF - مهاجم
+                </option>
+
+                <option value="LW">
+                    LW - وینگر چپ
+                </option>
+
+                <option value="RW">
+                    RW - وینگر راست
+                </option>
+
+                <option value="CAM">
+                    CAM - هافبک هجومی
+                </option>
+
+                <option value="CM">
+                    CM - هافبک
+                </option>
+
+                <option value="CDM">
+                    CDM - هافبک دفاعی
+                </option>
+
+                <option value="CB">
+                    CB - دفاع وسط
+                </option>
+
+                <option value="LB">
+                    LB - دفاع چپ
+                </option>
+
+                <option value="RB">
+                    RB - دفاع راست
+                </option>
+
+                <option value="GK">
+                    GK - دروازه‌بان
+                </option>
+
+            </select>
+
+
+            <label class="admin-label">
+                ⭐ امتیاز کلی
+            </label>
+
+            <input
+                id="newScore"
+                type="number"
+                min="0"
+                max="99"
+                value="0"
             >
 
 
@@ -1866,7 +2233,7 @@ input[type="file"] {
             </label>
 
             <input
-                id="newPlayerPhoto"
+                id="newPhoto"
                 type="file"
                 accept="image/*"
             >
@@ -1882,15 +2249,57 @@ input[type="file"] {
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
+             REGISTER MATCH
+        ================================================== -->
+
+        <div class="admin-box">
+
+            <h3>
+                🏟️ ثبت بازی
+            </h3>
+
+
+            <div class="match-box">
+
+                <div class="small">
+                    بازیکن‌های حاضر در این بازی را انتخاب کن:
+                </div>
+
+
+                <div
+                    id="matchPlayers"
+                    class="match-list"
+                >
+
+                    <div class="loading">
+                        در حال بارگذاری...
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="registerMatchBtn"
+                    class="save-btn"
+                >
+                    🏟️ ثبت بازی برای انتخاب‌شده‌ها
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
              PLAYER MANAGEMENT
-        ========================= -->
+        ================================================== -->
 
         <h3
             style="
-                color:#ffd700;
+                color:#f5d76c;
                 text-align:center;
-                margin:25px 0 15px;
+                margin:28px 0 15px;
             "
         >
             ⚽ مدیریت بازیکنان
@@ -1916,21 +2325,24 @@ input[type="file"] {
 </div>
 
 
-<!-- =========================
-     FIREBASE
-========================= -->
+<!-- =========================================================
+     FIREBASE + JS
+========================================================= -->
 
 <script type="module">
 
 
 import {
+
     initializeApp
+
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
 import {
+
     getDatabase,
     ref,
     push,
@@ -1938,14 +2350,16 @@ import {
     onValue,
     update,
     remove
+
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
-/* =========================
+
+/* =========================================================
    FIREBASE CONFIG
-========================= */
+========================================================= */
 
 const firebaseConfig = {
 
@@ -1981,16 +2395,18 @@ const db =
     getDatabase(app);
 
 
-/* =========================
-   CHANGE PAGE
-========================= */
+/* =========================================================
+   HELPERS
+========================================================= */
 
-window.showPage = function(pageId) {
+window.showPage = function(pageId){
 
     const pages = [
+
         "attendancePage",
         "playersPage",
         "adminPage"
+
     ];
 
 
@@ -1999,7 +2415,7 @@ window.showPage = function(pageId) {
         const page =
             document.getElementById(id);
 
-        if (page) {
+        if(page){
 
             page.classList.add("hidden");
 
@@ -2012,13 +2428,16 @@ window.showPage = function(pageId) {
         document.getElementById(pageId);
 
 
-    if (selected) {
+    if(selected){
 
         selected.classList.remove("hidden");
 
         window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+
+            top:0,
+
+            behavior:"smooth"
+
         });
 
     }
@@ -2026,197 +2445,224 @@ window.showPage = function(pageId) {
 };
 
 
-/* =========================
-   STATUS ICON
-========================= */
 
-function statusIcon(status) {
+function escapeHtml(value){
 
-    if (status === "میام") {
+    return String(value ?? "")
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+
+function safeNumber(
+    value,
+    min = 0,
+    max = Infinity
+){
+
+    let n =
+        Number(value);
+
+
+    if(!Number.isFinite(n)){
+
+        n = min;
+
+    }
+
+
+    n =
+        Math.max(
+            min,
+            n
+        );
+
+
+    if(
+        Number.isFinite(max)
+    ){
+
+        n =
+            Math.min(
+                max,
+                n
+            );
+
+    }
+
+
+    return n;
+
+}
+
+
+
+function statusIcon(status){
+
+    if(status === "میام"){
         return "🟢";
     }
 
-    if (status === "نمیام") {
+
+    if(status === "نمیام"){
         return "🔴";
     }
 
-    if (status === "شاید") {
+
+    if(status === "شاید"){
         return "🟡";
     }
+
 
     return "⚪";
 
 }
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
+/* =========================================================
+   IMAGE
+========================================================= */
 
-function escapeHtml(value) {
+function readImage(file){
 
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    return new Promise(
+        (resolve,reject) => {
 
-}
+            if(!file){
 
+                resolve("");
 
-/* =========================
-   IMAGE COMPRESS
-========================= */
+                return;
 
-function imageToBase64(file) {
-
-    return new Promise((resolve, reject) => {
-
-        const reader =
-            new FileReader();
+            }
 
 
-        reader.onload = function(event) {
+            if(
+                !file.type.startsWith(
+                    "image/"
+                )
+            ){
 
-            const img =
-                new Image();
-
-
-            img.onload = function() {
-
-                const maxSize = 600;
-
-                let width = img.width;
-                let height = img.height;
-
-
-                if (width > height) {
-
-                    if (width > maxSize) {
-
-                        height =
-                            height * maxSize / width;
-
-                        width = maxSize;
-
-                    }
-
-                }
-
-                else {
-
-                    if (height > maxSize) {
-
-                        width =
-                            width * maxSize / height;
-
-                        height = maxSize;
-
-                    }
-
-                }
-
-
-                const canvas =
-                    document.createElement("canvas");
-
-
-                canvas.width = width;
-                canvas.height = height;
-
-
-                const ctx =
-                    canvas.getContext("2d");
-
-
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    width,
-                    height
+                reject(
+                    new Error(
+                        "فایل انتخاب‌شده عکس نیست."
+                    )
                 );
 
+                return;
+
+            }
+
+
+            if(
+                file.size >
+                4 * 1024 * 1024
+            ){
+
+                reject(
+                    new Error(
+                        "حجم عکس باید کمتر از 4 مگابایت باشد."
+                    )
+                );
+
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload = () => {
 
                 resolve(
-                    canvas.toDataURL(
-                        "image/jpeg",
-                        0.82
+                    reader.result
+                );
+
+            };
+
+
+            reader.onerror = () => {
+
+                reject(
+                    new Error(
+                        "خواندن عکس انجام نشد."
                     )
                 );
 
             };
 
 
-            img.onerror = reject;
+            /*
+              عکس به صورت مستقیم ذخیره می‌شود.
+              هیچ فیلتر یا تغییر چهره‌ای اعمال نمی‌شود.
+            */
 
-            img.src = event.target.result;
+            reader.readAsDataURL(file);
 
-        };
-
-
-        reader.onerror = reject;
-
-        reader.readAsDataURL(file);
-
-    });
+        }
+    );
 
 }
 
 
-/* =========================
-   LOAD GAME INFO
-========================= */
+/* =========================================================
+   GAME INFO
+========================================================= */
 
-function loadGameInfo() {
+function loadGameInfo(){
 
     onValue(
-        ref(db, "gameInfo"),
+
+        ref(
+            db,
+            "gameInfo"
+        ),
+
         snapshot => {
 
             const info =
                 snapshot.val() || {};
 
 
-            const clubName =
-                info.clubName ||
-                "ثبت نشده";
-
-            const address =
-                info.address ||
-                "ثبت نشده";
-
-            const date =
-                info.date ||
-                "ثبت نشده";
-
-            const time =
-                info.time ||
-                "ثبت نشده";
-
-
             document.getElementById(
                 "gameClubName"
-            ).textContent = clubName;
+            ).textContent =
+                info.clubName ||
+                "ثبت نشده";
 
 
             document.getElementById(
                 "gameAddress"
-            ).textContent = address;
+            ).textContent =
+                info.address ||
+                "ثبت نشده";
 
 
             document.getElementById(
                 "gameDate"
-            ).textContent = date;
+            ).textContent =
+                info.date ||
+                "ثبت نشده";
 
 
             document.getElementById(
                 "gameTime"
-            ).textContent = time;
+            ).textContent =
+                info.time ||
+                "ثبت نشده";
 
-
-            /* ADMIN INPUTS */
 
             const clubInput =
                 document.getElementById(
@@ -2239,159 +2685,133 @@ function loadGameInfo() {
                 );
 
 
-            if (clubInput) {
+            if(clubInput){
+
                 clubInput.value =
                     info.clubName || "";
+
             }
 
-            if (addressInput) {
+
+            if(addressInput){
+
                 addressInput.value =
                     info.address || "";
+
             }
 
-            if (dateInput) {
+
+            if(dateInput){
+
                 dateInput.value =
                     info.date || "";
+
             }
 
-            if (timeInput) {
+
+            if(timeInput){
+
                 timeInput.value =
                     info.time || "";
+
             }
 
+        },
+
+        error => {
+
+            console.error(
+                "Game info error:",
+                error
+            );
+
         }
+
     );
 
 }
 
 
-/* =========================
-   SAVE GAME INFO
-========================= */
 
-async function saveGameInfo() {
-
-    const clubInput =
-        document.getElementById(
-            "gameClubInput"
-        );
-
-    const addressInput =
-        document.getElementById(
-            "gameAddressInput"
-        );
-
-    const dateInput =
-        document.getElementById(
-            "gameDateInput"
-        );
-
-    const timeInput =
-        document.getElementById(
-            "gameTimeInput"
-        );
-
+async function saveGameInfo(){
 
     const clubName =
-        clubInput.value.trim();
+        document.getElementById(
+            "gameClubInput"
+        ).value.trim();
+
 
     const address =
-        addressInput.value.trim();
+        document.getElementById(
+            "gameAddressInput"
+        ).value.trim();
+
 
     const date =
-        dateInput.value.trim();
+        document.getElementById(
+            "gameDateInput"
+        ).value.trim();
+
 
     const time =
-        timeInput.value.trim();
+        document.getElementById(
+            "gameTimeInput"
+        ).value.trim();
 
 
-    if (!clubName) {
+    if(
+        !clubName ||
+        !address ||
+        !date ||
+        !time
+    ){
 
         alert(
-            "نام باشگاه را وارد کن 🏟️"
+            "همه اطلاعات بازی را کامل وارد کن ⚽"
         );
-
-        clubInput.focus();
 
         return;
 
     }
 
 
-    if (!address) {
-
-        alert(
-            "آدرس باشگاه را وارد کن 📍"
-        );
-
-        addressInput.focus();
-
-        return;
-
-    }
-
-
-    if (!date) {
-
-        alert(
-            "تاریخ بازی را وارد کن 📅"
-        );
-
-        dateInput.focus();
-
-        return;
-
-    }
-
-
-    if (!time) {
-
-        alert(
-            "زمان بازی را وارد کن 🕐"
-        );
-
-        timeInput.focus();
-
-        return;
-
-    }
-
-
-    try {
+    try{
 
         await set(
-            ref(db, "gameInfo"),
+
+            ref(
+                db,
+                "gameInfo"
+            ),
+
             {
-                clubName: clubName,
-                address: address,
-                date: date,
-                time: time
+                clubName,
+                address,
+                date,
+                time
             }
+
         );
 
 
         alert(
-            "اطلاعات بازی با موفقیت ذخیره شد ✅"
+            "اطلاعات بازی ذخیره شد ✅"
         );
 
     }
-
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
         alert(
-            "ذخیره اطلاعات بازی انجام نشد ❌"
+            "ذخیره اطلاعات بازی انجام نشد ❌\n" +
+            error.message
         );
 
     }
 
 }
 
-
-/* =========================
-   SAVE GAME INFO BUTTON
-========================= */
 
 document
     .getElementById(
@@ -2403,14 +2823,19 @@ document
     );
 
 
-/* =========================
-   LOAD PLAYERS FOR ATTENDANCE
-========================= */
+/* =========================================================
+   ATTENDANCE PLAYERS
+========================================================= */
 
-function loadAttendancePlayers() {
+function loadAttendancePlayers(){
 
     onValue(
-        ref(db, "players"),
+
+        ref(
+            db,
+            "players"
+        ),
+
         snapshot => {
 
             const select =
@@ -2419,27 +2844,59 @@ function loadAttendancePlayers() {
                 );
 
 
-            const currentValue =
+            const oldValue =
                 select.value;
 
 
-            let html = `
-                <option value="">
-                    بازیکن را انتخاب کن
-                </option>
-            `;
+            const players = [];
 
 
             snapshot.forEach(item => {
 
-                const player =
-                    item.val();
+                players.push({
 
+                    id:item.key,
+
+                    ...item.val()
+
+                });
+
+            });
+
+
+            players.sort(
+                (a,b) =>
+                    String(
+                        a.name || ""
+                    ).localeCompare(
+                        String(
+                            b.name || ""
+                        ),
+                        "fa"
+                    )
+            );
+
+
+            let html = `
+
+                <option value="">
+                    بازیکن را انتخاب کن
+                </option>
+
+            `;
+
+
+            players.forEach(player => {
 
                 html += `
-                    <option value="${item.key}">
-                        ${escapeHtml(player.name)}
+
+                    <option value="${player.id}">
+                        ${escapeHtml(
+                            player.name ||
+                            "بدون نام"
+                        )}
                     </option>
+
                 `;
 
             });
@@ -2449,38 +2906,53 @@ function loadAttendancePlayers() {
                 html;
 
 
-            if (currentValue) {
+            if(oldValue){
 
                 const option =
-                    select.querySelector(
-                        `option[value="${CSS.escape(currentValue)}"]`
+                    Array.from(
+                        select.options
+                    ).find(
+                        x =>
+                            x.value ===
+                            oldValue
                     );
 
-                if (option) {
+
+                if(option){
 
                     select.value =
-                        currentValue;
+                        oldValue;
 
                 }
 
             }
 
+        },
+
+        error => {
+
+            console.error(
+                "Attendance players error:",
+                error
+            );
+
         }
+
     );
 
 }
 
 
-/* =========================
+/* =========================================================
    SAVE ATTENDANCE
-========================= */
+========================================================= */
 
-async function saveAttendance(status) {
+async function saveAttendance(status){
 
-    const select =
+    const id =
         document.getElementById(
             "attendancePlayer"
-        );
+        ).value;
 
 
     const message =
@@ -2489,11 +2961,7 @@ async function saveAttendance(status) {
         );
 
 
-    const id =
-        select.value;
-
-
-    if (!id) {
+    if(!id){
 
         message.textContent =
             "اول بازیکنت رو انتخاب کن ⚽";
@@ -2503,16 +2971,19 @@ async function saveAttendance(status) {
     }
 
 
-    try {
+    try{
 
         await update(
+
             ref(
                 db,
                 "players/" + id
             ),
+
             {
-                status: status
+                status
             }
+
         );
 
 
@@ -2520,22 +2991,21 @@ async function saveAttendance(status) {
             "اعلام حضورت با موفقیت ثبت شد ✅";
 
     }
-
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
         message.textContent =
             "ثبت اعلام حضور انجام نشد ❌";
 
+        alert(
+            "Firebase اجازه تغییر وضعیت را نداد."
+        );
+
     }
 
 }
 
-
-/* =========================
-   ATTENDANCE BUTTONS
-========================= */
 
 document
     .getElementById("comeBtn")
@@ -2561,14 +3031,19 @@ document
     );
 
 
-/* =========================
-   LOAD ATTENDANCE
-========================= */
+/* =========================================================
+   ATTENDANCE LIST
+========================================================= */
 
-function loadAttendance() {
+function loadAttendance(){
 
     onValue(
-        ref(db, "players"),
+
+        ref(
+            db,
+            "players"
+        ),
+
         snapshot => {
 
             const come = [];
@@ -2582,25 +3057,34 @@ function loadAttendance() {
                     item.val();
 
 
-                if (player.status === "میام") {
+                if(
+                    player.status ===
+                    "میام"
+                ){
 
-                    come.push(player.name);
-
-                }
-
-                else if (
-                    player.status === "نمیام"
-                ) {
-
-                    no.push(player.name);
+                    come.push(
+                        player.name
+                    );
 
                 }
+                else if(
+                    player.status ===
+                    "نمیام"
+                ){
 
-                else if (
-                    player.status === "شاید"
-                ) {
+                    no.push(
+                        player.name
+                    );
 
-                    maybe.push(player.name);
+                }
+                else if(
+                    player.status ===
+                    "شاید"
+                ){
+
+                    maybe.push(
+                        player.name
+                    );
 
                 }
 
@@ -2608,9 +3092,14 @@ function loadAttendance() {
 
 
             const makeNames =
-                (names, icon) => {
+                (
+                    names,
+                    icon
+                ) => {
 
-                    if (!names.length) {
+                    if(
+                        !names.length
+                    ){
 
                         return "کسی ثبت نکرده";
 
@@ -2618,18 +3107,22 @@ function loadAttendance() {
 
 
                     return names
+
                         .map(
                             name =>
                                 icon +
                                 " " +
                                 escapeHtml(name)
                         )
+
                         .join("<br>");
 
                 };
 
 
-            const html = `
+            document.getElementById(
+                "attendanceList"
+            ).innerHTML = `
 
                 <div class="attendance-section">
 
@@ -2639,7 +3132,10 @@ function loadAttendance() {
                     </h3>
 
                     <div class="attendance-names">
-                        ${makeNames(come, "🟢")}
+                        ${makeNames(
+                            come,
+                            "🟢"
+                        )}
                     </div>
 
                 </div>
@@ -2653,7 +3149,10 @@ function loadAttendance() {
                     </h3>
 
                     <div class="attendance-names">
-                        ${makeNames(no, "🔴")}
+                        ${makeNames(
+                            no,
+                            "🔴"
+                        )}
                     </div>
 
                 </div>
@@ -2667,35 +3166,55 @@ function loadAttendance() {
                     </h3>
 
                     <div class="attendance-names">
-                        ${makeNames(maybe, "🟡")}
+                        ${makeNames(
+                            maybe,
+                            "🟡"
+                        )}
                     </div>
 
                 </div>
 
             `;
 
+        },
 
-            document
-                .getElementById(
-                    "attendanceList"
-                )
-                .innerHTML =
-                html;
+        error => {
+
+            console.error(
+                "Attendance error:",
+                error
+            );
+
+            document.getElementById(
+                "attendanceList"
+            ).innerHTML = `
+
+                <div class="empty">
+                    دریافت وضعیت حضور انجام نشد ❌
+                </div>
+
+            `;
 
         }
+
     );
 
 }
 
 
-/* =========================
-   LOAD PLAYER CARDS
-========================= */
+/* =========================================================
+   PLAYER CARDS
+========================================================= */
 
-function loadPlayers() {
+function loadPlayers(){
 
     onValue(
-        ref(db, "players"),
+
+        ref(
+            db,
+            "players"
+        ),
+
         snapshot => {
 
             const players = [];
@@ -2705,7 +3224,7 @@ function loadPlayers() {
 
                 players.push({
 
-                    id: item.key,
+                    id:item.key,
 
                     ...item.val()
 
@@ -2715,9 +3234,17 @@ function loadPlayers() {
 
 
             players.sort(
-                (a, b) =>
-                    (Number(b.score) || 0) -
-                    (Number(a.score) || 0)
+                (a,b) =>
+                    safeNumber(
+                        b.score,
+                        0,
+                        99
+                    ) -
+                    safeNumber(
+                        a.score,
+                        0,
+                        99
+                    )
             );
 
 
@@ -2727,7 +3254,7 @@ function loadPlayers() {
                 );
 
 
-            if (!players.length) {
+            if(!players.length){
 
                 container.innerHTML = `
 
@@ -2737,8 +3264,7 @@ function loadPlayers() {
 
                         <br><br>
 
-                        مدیر تیم باید بازیکن‌ها را
-                        از پنل مدیریت اضافه کند.
+                        بازیکن‌ها فقط از پنل مدیریت اضافه می‌شوند.
 
                     </div>
 
@@ -2755,41 +3281,105 @@ function loadPlayers() {
             players.forEach(player => {
 
                 const score =
-                    Number(player.score) || 0;
+                    safeNumber(
+                        player.score,
+                        0,
+                        99
+                    );
 
-                const goals =
-                    Number(player.goals) || 0;
-
-                const assists =
-                    Number(player.assists) || 0;
-
-                const games =
-                    Number(player.games) || 0;
 
                 const age =
-                    Number(player.age) || 0;
+                    safeNumber(
+                        player.age
+                    );
 
 
-                let photoHtml = "";
+                const goals =
+                    safeNumber(
+                        player.goals
+                    );
 
 
-                if (player.photo) {
+                const assists =
+                    safeNumber(
+                        player.assists
+                    );
 
-                    photoHtml = `
+
+                const games =
+                    safeNumber(
+                        player.games
+                    );
+
+
+                const pac =
+                    safeNumber(
+                        player.pac,
+                        0,
+                        99
+                    );
+
+
+                const sho =
+                    safeNumber(
+                        player.sho,
+                        0,
+                        99
+                    );
+
+
+                const pas =
+                    safeNumber(
+                        player.pas,
+                        0,
+                        99
+                    );
+
+
+                const dri =
+                    safeNumber(
+                        player.dri,
+                        0,
+                        99
+                    );
+
+
+                const def =
+                    safeNumber(
+                        player.def,
+                        0,
+                        99
+                    );
+
+
+                const phy =
+                    safeNumber(
+                        player.phy,
+                        0,
+                        99
+                    );
+
+
+                const photo =
+                    player.photo
+
+                    ?
+
+                    `
 
                         <img
                             class="player-photo"
                             src="${player.photo}"
-                            alt="${escapeHtml(player.name)}"
+                            alt="${escapeHtml(
+                                player.name
+                            )}"
                         >
 
-                    `;
+                    `
 
-                }
+                    :
 
-                else {
-
-                    photoHtml = `
+                    `
 
                         <div class="no-photo">
                             ⚽
@@ -2797,50 +3387,108 @@ function loadPlayers() {
 
                     `;
 
-                }
-
 
                 html += `
 
-                    <div class="fifa-card">
+                    <article
+                        class="fifa-card"
+                    >
+
 
                         <div class="card-top">
 
+
                             <div>
 
-                                <div class="rating">
+                                <div class="card-rating">
                                     ${score}
                                 </div>
 
-                                <div class="rating-label">
-                                    RATING
-                                </div>
-
-                                <div class="position">
-                                    ⚽
+                                <div class="card-position">
+                                    ${escapeHtml(
+                                        player.position ||
+                                        "ST"
+                                    )}
                                 </div>
 
                             </div>
 
 
-                            <div class="status-badge">
-                                ${statusIcon(player.status)}
+                            <div class="card-status">
+                                ${statusIcon(
+                                    player.status
+                                )}
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="card-attributes">
+
+                            <div class="attr-line">
+                                PAC
+                                <strong>
+                                    ${pac}
+                                </strong>
+                            </div>
+
+                            <div class="attr-line">
+                                SHO
+                                <strong>
+                                    ${sho}
+                                </strong>
+                            </div>
+
+                            <div class="attr-line">
+                                PAS
+                                <strong>
+                                    ${pas}
+                                </strong>
+                            </div>
+
+                            <div class="attr-line">
+                                DRI
+                                <strong>
+                                    ${dri}
+                                </strong>
+                            </div>
+
+                            <div class="attr-line">
+                                DEF
+                                <strong>
+                                    ${def}
+                                </strong>
+                            </div>
+
+                            <div class="attr-line">
+                                PHY
+                                <strong>
+                                    ${phy}
+                                </strong>
                             </div>
 
                         </div>
 
 
-                        ${photoHtml}
+                        <div class="photo-frame">
 
-
-                        <div class="fifa-name">
-
-                            ${escapeHtml(player.name)}
+                            ${photo}
 
                         </div>
 
 
-                        <div class="age">
+                        <h3 class="card-name">
+
+                            ${escapeHtml(
+                                player.name ||
+                                "بدون نام"
+                            )}
+
+                        </h3>
+
+
+                        <div class="card-age">
 
                             🎂 سن:
                             ${
@@ -2857,11 +3505,7 @@ function loadPlayers() {
 
                             <div class="card-stat">
 
-                                ⚽
-
-                                <span>
-                                    گل
-                                </span>
+                                ⚽ گل
 
                                 <strong>
                                     ${goals}
@@ -2872,11 +3516,7 @@ function loadPlayers() {
 
                             <div class="card-stat">
 
-                                🎯
-
-                                <span>
-                                    پاس گل
-                                </span>
+                                🎯 پاس گل
 
                                 <strong>
                                     ${assists}
@@ -2887,11 +3527,7 @@ function loadPlayers() {
 
                             <div class="card-stat">
 
-                                🏟
-
-                                <span>
-                                    بازی
-                                </span>
+                                🏟 بازی
 
                                 <strong>
                                     ${games}
@@ -2902,7 +3538,8 @@ function loadPlayers() {
 
                         </div>
 
-                    </div>
+
+                    </article>
 
                 `;
 
@@ -2912,25 +3549,48 @@ function loadPlayers() {
             container.innerHTML =
                 html;
 
+        },
+
+        error => {
+
+            console.error(
+                "Players error:",
+                error
+            );
+
+            document.getElementById(
+                "playerCards"
+            ).innerHTML = `
+
+                <div class="empty">
+                    بارگذاری بازیکنان انجام نشد ❌
+                </div>
+
+            `;
+
         }
+
     );
 
 }
 
 
-/* =========================
+/* =========================================================
    ADMIN LOGIN
-========================= */
+========================================================= */
 
-function loginAdmin() {
+function loginAdmin(){
 
-    const password =
-        document
-            .getElementById("adminPass")
-            .value;
+    const pass =
+        document.getElementById(
+            "adminPass"
+        ).value;
 
 
-    if (password !== "habib7979") {
+    if(
+        pass !==
+        "habib7979"
+    ){
 
         alert(
             "رمز مدیر اشتباه است ❌"
@@ -2941,31 +3601,31 @@ function loginAdmin() {
     }
 
 
-    document
-        .getElementById("adminLogin")
-        .classList
-        .add("hidden");
+    document.getElementById(
+        "adminLogin"
+    ).classList.add(
+        "hidden"
+    );
 
 
-    document
-        .getElementById("adminContent")
-        .classList
-        .remove("hidden");
+    document.getElementById(
+        "adminContent"
+    ).classList.remove(
+        "hidden"
+    );
 
-
-    loadAdminPlayers();
 
     loadGameInfo();
+    loadAdminPlayers();
+    loadMatchPlayers();
 
 }
 
 
-/* =========================
-   LOGIN BUTTON
-========================= */
-
 document
-    .getElementById("adminLoginBtn")
+    .getElementById(
+        "adminLoginBtn"
+    )
     .addEventListener(
         "click",
         loginAdmin
@@ -2973,12 +3633,17 @@ document
 
 
 document
-    .getElementById("adminPass")
+    .getElementById(
+        "adminPass"
+    )
     .addEventListener(
         "keydown",
         event => {
 
-            if (event.key === "Enter") {
+            if(
+                event.key ===
+                "Enter"
+            ){
 
                 loginAdmin();
 
@@ -2988,104 +3653,96 @@ document
     );
 
 
-/* =========================
-   ADD NEW PLAYER
-========================= */
+/* =========================================================
+   ADD PLAYER
+========================================================= */
 
-async function addNewPlayer() {
-
-    const nameInput =
-        document.getElementById(
-            "newPlayerName"
-        );
-
-
-    const ageInput =
-        document.getElementById(
-            "newPlayerAge"
-        );
-
-
-    const photoInput =
-        document.getElementById(
-            "newPlayerPhoto"
-        );
-
+async function addPlayer(){
 
     const name =
-        nameInput.value.trim();
+        document.getElementById(
+            "newName"
+        ).value.trim();
 
 
     const age =
-        Number(ageInput.value) || 0;
-
-
-    if (!name) {
-
-        alert(
-            "اسم بازیکن را وارد کن ⚽"
+        safeNumber(
+            document.getElementById(
+                "newAge"
+            ).value,
+            1,
+            100
         );
 
-        nameInput.focus();
+
+    const position =
+        document.getElementById(
+            "newPosition"
+        ).value;
+
+
+    const score =
+        safeNumber(
+            document.getElementById(
+                "newScore"
+            ).value,
+            0,
+            99
+        );
+
+
+    const photoFile =
+        document.getElementById(
+            "newPhoto"
+        ).files[0];
+
+
+    if(!name){
+
+        alert(
+            "نام بازیکن را وارد کن ⚽"
+        );
 
         return;
 
     }
 
 
-    if (
+    if(
         age < 1 ||
         age > 100
-    ) {
+    ){
 
         alert(
             "سن بازیکن را درست وارد کن 🎂"
         );
 
-        ageInput.focus();
-
         return;
 
     }
 
 
-    try {
+    try{
 
         let photo = "";
 
 
-        if (
-            photoInput.files &&
-            photoInput.files.length > 0
-        ) {
-
-            const file =
-                photoInput.files[0];
-
-
-            if (
-                file.size >
-                8 * 1024 * 1024
-            ) {
-
-                alert(
-                    "حجم عکس باید کمتر از 8 مگابایت باشد."
-                );
-
-                return;
-
-            }
-
+        if(photoFile){
 
             photo =
-                await imageToBase64(file);
+                await readImage(
+                    photoFile
+                );
 
         }
 
 
         const playerRef =
             push(
-                ref(db, "players")
+                ref(
+                    db,
+                    "players"
+                )
             );
 
 
@@ -3093,31 +3750,58 @@ async function addNewPlayer() {
             playerRef,
             {
 
-                name: name,
+                name,
 
-                age: age,
+                age,
 
-                photo: photo,
+                position,
 
-                status: "شاید",
+                photo,
 
-                goals: 0,
+                status:"شاید",
 
-                assists: 0,
+                score,
 
-                games: 0,
+                goals:0,
 
-                score: 0
+                assists:0,
+
+                games:0,
+
+                pac:0,
+
+                sho:0,
+
+                pas:0,
+
+                dri:0,
+
+                def:0,
+
+                phy:0
 
             }
         );
 
 
-        nameInput.value = "";
+        document.getElementById(
+            "newName"
+        ).value = "";
 
-        ageInput.value = "";
 
-        photoInput.value = "";
+        document.getElementById(
+            "newAge"
+        ).value = "";
+
+
+        document.getElementById(
+            "newScore"
+        ).value = "0";
+
+
+        document.getElementById(
+            "newPhoto"
+        ).value = "";
 
 
         alert(
@@ -3125,13 +3809,13 @@ async function addNewPlayer() {
         );
 
     }
-
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
         alert(
-            "اضافه کردن بازیکن انجام نشد ❌"
+            "اضافه کردن بازیکن انجام نشد ❌\n" +
+            error.message
         );
 
     }
@@ -3139,26 +3823,29 @@ async function addNewPlayer() {
 }
 
 
-/* =========================
-   ADD PLAYER BUTTON
-========================= */
-
 document
-    .getElementById("addPlayerBtn")
+    .getElementById(
+        "addPlayerBtn"
+    )
     .addEventListener(
         "click",
-        addNewPlayer
+        addPlayer
     );
 
 
-/* =========================
-   LOAD ADMIN PLAYERS
-========================= */
+/* =========================================================
+   ADMIN PLAYER LIST
+========================================================= */
 
-function loadAdminPlayers() {
+function loadAdminPlayers(){
 
     onValue(
-        ref(db, "players"),
+
+        ref(
+            db,
+            "players"
+        ),
+
         snapshot => {
 
             const container =
@@ -3183,7 +3870,9 @@ function loadAdminPlayers() {
                 let photoPreview = "";
 
 
-                if (player.photo) {
+                if(
+                    player.photo
+                ){
 
                     photoPreview = `
 
@@ -3196,8 +3885,7 @@ function loadAdminPlayers() {
                     `;
 
                 }
-
-                else {
+                else{
 
                     photoPreview = `
 
@@ -3216,48 +3904,40 @@ function loadAdminPlayers() {
                         class="fifa-card admin-card"
                     >
 
+
                         ${photoPreview}
 
 
                         <h3>
 
                             👤
-                            ${escapeHtml(player.name)}
+                            ${escapeHtml(
+                                player.name ||
+                                "بدون نام"
+                            )}
 
                         </h3>
 
 
-                        <div class="admin-status">
-
-                            وضعیت:
-                            ${statusIcon(player.status)}
-                            ${escapeHtml(
-                                player.status ||
-                                "نامشخص"
-                            )}
-
-                        </div>
-
-
-                        <label class="admin-label">
-                            👤 نام بازیکن
+                        <label
+                            class="admin-label"
+                        >
+                            👤 نام
                         </label>
-
 
                         <input
                             id="name-${id}"
-                            type="text"
-                            maxlength="40"
                             value="${escapeHtml(
                                 player.name || ""
                             )}"
                         >
 
 
-                        <label class="admin-label">
+                        <label
+                            class="admin-label"
+                        >
                             🎂 سن
                         </label>
-
 
                         <input
                             id="age-${id}"
@@ -3265,15 +3945,36 @@ function loadAdminPlayers() {
                             min="1"
                             max="100"
                             value="${
-                                Number(player.age) || 0
+                                Number(
+                                    player.age
+                                ) || 0
                             }"
                         >
 
 
-                        <label class="admin-label">
-                            📷 تغییر عکس
+                        <label
+                            class="admin-label"
+                        >
+                            📌 پست
                         </label>
 
+                        <select
+                            id="position-${id}"
+                        >
+
+                            ${positionOptions(
+                                player.position ||
+                                "ST"
+                            )}
+
+                        </select>
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            📷 عکس جدید
+                        </label>
 
                         <input
                             id="photo-${id}"
@@ -3282,55 +3983,60 @@ function loadAdminPlayers() {
                         >
 
 
-                        <label class="admin-label">
-                            ⚽ گل
+                        <label
+                            class="admin-label"
+                        >
+                            🟢 وضعیت حضور
                         </label>
 
-
-                        <input
-                            id="goals-${id}"
-                            type="number"
-                            min="0"
-                            value="${
-                                Number(player.goals) || 0
-                            }"
+                        <select
+                            id="status-${id}"
                         >
 
+                            <option
+                                value="میام"
+                                ${
+                                    player.status ===
+                                    "میام"
+                                    ? "selected"
+                                    : ""
+                                }
+                            >
+                                🟢 میام
+                            </option>
 
-                        <label class="admin-label">
-                            🎯 پاس گل
-                        </label>
+                            <option
+                                value="نمیام"
+                                ${
+                                    player.status ===
+                                    "نمیام"
+                                    ? "selected"
+                                    : ""
+                                }
+                            >
+                                🔴 نمیام
+                            </option>
+
+                            <option
+                                value="شاید"
+                                ${
+                                    player.status ===
+                                    "شاید"
+                                    ? "selected"
+                                    : ""
+                                }
+                            >
+                                🟡 شاید
+                            </option>
+
+                        </select>
 
 
-                        <input
-                            id="assists-${id}"
-                            type="number"
-                            min="0"
-                            value="${
-                                Number(player.assists) || 0
-                            }"
+                        <label
+                            class="admin-label"
                         >
-
-
-                        <label class="admin-label">
-                            🏟 بازی
-                        </label>
-
-
-                        <input
-                            id="games-${id}"
-                            type="number"
-                            min="0"
-                            value="${
-                                Number(player.games) || 0
-                            }"
-                        >
-
-
-                        <label class="admin-label">
                             ⭐ امتیاز
                         </label>
-
 
                         <input
                             id="score-${id}"
@@ -3338,14 +4044,198 @@ function loadAdminPlayers() {
                             min="0"
                             max="99"
                             value="${
-                                Number(player.score) || 0
+                                safeNumber(
+                                    player.score,
+                                    0,
+                                    99
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            ⚡ PAC
+                        </label>
+
+                        <input
+                            id="pac-${id}"
+                            type="number"
+                            min="0"
+                            max="99"
+                            value="${
+                                safeNumber(
+                                    player.pac,
+                                    0,
+                                    99
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            🎯 SHO
+                        </label>
+
+                        <input
+                            id="sho-${id}"
+                            type="number"
+                            min="0"
+                            max="99"
+                            value="${
+                                safeNumber(
+                                    player.sho,
+                                    0,
+                                    99
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            🪄 PAS
+                        </label>
+
+                        <input
+                            id="pas-${id}"
+                            type="number"
+                            min="0"
+                            max="99"
+                            value="${
+                                safeNumber(
+                                    player.pas,
+                                    0,
+                                    99
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            🎮 DRI
+                        </label>
+
+                        <input
+                            id="dri-${id}"
+                            type="number"
+                            min="0"
+                            max="99"
+                            value="${
+                                safeNumber(
+                                    player.dri,
+                                    0,
+                                    99
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            🛡️ DEF
+                        </label>
+
+                        <input
+                            id="def-${id}"
+                            type="number"
+                            min="0"
+                            max="99"
+                            value="${
+                                safeNumber(
+                                    player.def,
+                                    0,
+                                    99
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            💪 PHY
+                        </label>
+
+                        <input
+                            id="phy-${id}"
+                            type="number"
+                            min="0"
+                            max="99"
+                            value="${
+                                safeNumber(
+                                    player.phy,
+                                    0,
+                                    99
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            ⚽ گل
+                        </label>
+
+                        <input
+                            id="goals-${id}"
+                            type="number"
+                            min="0"
+                            value="${
+                                safeNumber(
+                                    player.goals
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            🎯 پاس گل
+                        </label>
+
+                        <input
+                            id="assists-${id}"
+                            type="number"
+                            min="0"
+                            value="${
+                                safeNumber(
+                                    player.assists
+                                )
+                            }"
+                        >
+
+
+                        <label
+                            class="admin-label"
+                        >
+                            🏟 بازی
+                        </label>
+
+                        <input
+                            id="games-${id}"
+                            type="number"
+                            min="0"
+                            value="${
+                                safeNumber(
+                                    player.games
+                                )
                             }"
                         >
 
 
                         <button
                             class="save-btn"
-                            onclick="saveStats('${id}')"
+                            onclick="savePlayerChanges('${id}')"
                         >
                             💾 ذخیره تغییرات
                         </button>
@@ -3357,6 +4247,7 @@ function loadAdminPlayers() {
                         >
                             🗑 حذف بازیکن
                         </button>
+
 
                     </div>
 
@@ -3371,220 +4262,290 @@ function loadAdminPlayers() {
                 `
 
                     <div class="empty">
-
                         هنوز بازیکنی ثبت نشده ⚽
-
                     </div>
 
                 `;
 
+        },
+
+        error => {
+
+            console.error(
+                "Admin players error:",
+                error
+            );
+
         }
+
     );
 
 }
 
 
-/* =========================
-   SAVE PLAYER
-========================= */
+/* =========================================================
+   POSITION OPTIONS
+========================================================= */
 
-window.saveStats =
-async function(id) {
+function positionOptions(
+    selected
+){
 
-    const nameInput =
-        document.getElementById(
-            "name-" + id
-        );
+    const options = [
 
+        ["ST","ST - مهاجم"],
+        ["CF","CF - مهاجم"],
+        ["LW","LW - وینگر چپ"],
+        ["RW","RW - وینگر راست"],
+        ["CAM","CAM - هافبک هجومی"],
+        ["CM","CM - هافبک"],
+        ["CDM","CDM - هافبک دفاعی"],
+        ["CB","CB - دفاع وسط"],
+        ["LB","LB - دفاع چپ"],
+        ["RB","RB - دفاع راست"],
+        ["GK","GK - دروازه‌بان"]
 
-    const ageInput =
-        document.getElementById(
-            "age-" + id
-        );
-
-
-    const photoInput =
-        document.getElementById(
-            "photo-" + id
-        );
-
-
-    const goalsInput =
-        document.getElementById(
-            "goals-" + id
-        );
+    ];
 
 
-    const assistsInput =
-        document.getElementById(
-            "assists-" + id
-        );
+    return options
+
+        .map(
+            ([value,label]) => `
+
+                <option
+                    value="${value}"
+                    ${
+                        value === selected
+                        ? "selected"
+                        : ""
+                    }
+                >
+                    ${label}
+                </option>
+
+            `
+        )
+
+        .join("");
+
+}
 
 
-    const gamesInput =
-        document.getElementById(
-            "games-" + id
-        );
+/* =========================================================
+   SAVE PLAYER CHANGES
+========================================================= */
+
+window.savePlayerChanges =
+async function(id){
+
+    try{
+
+        const name =
+            document.getElementById(
+                "name-" + id
+            ).value.trim();
 
 
-    const scoreInput =
-        document.getElementById(
-            "score-" + id
-        );
+        const age =
+            safeNumber(
+                document.getElementById(
+                    "age-" + id
+                ).value,
+                1,
+                100
+            );
 
 
-    if (
-        !nameInput ||
-        !ageInput ||
-        !goalsInput ||
-        !assistsInput ||
-        !gamesInput ||
-        !scoreInput
-    ) {
-
-        alert(
-            "اطلاعات بازیکن پیدا نشد ❌"
-        );
-
-        return;
-
-    }
+        const position =
+            document.getElementById(
+                "position-" + id
+            ).value;
 
 
-    const name =
-        nameInput.value.trim();
+        const status =
+            document.getElementById(
+                "status-" + id
+            ).value;
 
 
-    const age =
-        Number(ageInput.value) || 0;
-
-
-    const goals =
-        Math.max(
-            0,
-            Number(goalsInput.value) || 0
-        );
-
-
-    const assists =
-        Math.max(
-            0,
-            Number(assistsInput.value) || 0
-        );
-
-
-    const games =
-        Math.max(
-            0,
-            Number(gamesInput.value) || 0
-        );
-
-
-    const score =
-        Math.min(
-            99,
-            Math.max(
+        const score =
+            safeNumber(
+                document.getElementById(
+                    "score-" + id
+                ).value,
                 0,
-                Number(scoreInput.value) || 0
-            )
-        );
+                99
+            );
 
 
-    if (!name) {
-
-        alert(
-            "نام بازیکن نمی‌تواند خالی باشد ❌"
-        );
-
-        return;
-
-    }
-
-
-    if (
-        age < 1 ||
-        age > 100
-    ) {
-
-        alert(
-            "سن بازیکن درست نیست ❌"
-        );
-
-        return;
-
-    }
+        const pac =
+            safeNumber(
+                document.getElementById(
+                    "pac-" + id
+                ).value,
+                0,
+                99
+            );
 
 
-    try {
+        const sho =
+            safeNumber(
+                document.getElementById(
+                    "sho-" + id
+                ).value,
+                0,
+                99
+            );
+
+
+        const pas =
+            safeNumber(
+                document.getElementById(
+                    "pas-" + id
+                ).value,
+                0,
+                99
+            );
+
+
+        const dri =
+            safeNumber(
+                document.getElementById(
+                    "dri-" + id
+                ).value,
+                0,
+                99
+            );
+
+
+        const def =
+            safeNumber(
+                document.getElementById(
+                    "def-" + id
+                ).value,
+                0,
+                99
+            );
+
+
+        const phy =
+            safeNumber(
+                document.getElementById(
+                    "phy-" + id
+                ).value,
+                0,
+                99
+            );
+
+
+        const goals =
+            safeNumber(
+                document.getElementById(
+                    "goals-" + id
+                ).value
+            );
+
+
+        const assists =
+            safeNumber(
+                document.getElementById(
+                    "assists-" + id
+                ).value
+            );
+
+
+        const games =
+            safeNumber(
+                document.getElementById(
+                    "games-" + id
+                ).value
+            );
+
+
+        const photoInput =
+            document.getElementById(
+                "photo-" + id
+            );
+
+
+        if(!name){
+
+            alert(
+                "نام بازیکن خالیه ❌"
+            );
+
+            return;
+
+        }
+
 
         const data = {
 
-            name: name,
+            name,
 
-            age: age,
+            age,
 
-            goals: goals,
+            position,
 
-            assists: assists,
+            status,
 
-            games: games,
+            score,
 
-            score: score
+            pac,
+            sho,
+            pas,
+            dri,
+            def,
+            phy,
+
+            goals,
+
+            assists,
+
+            games
 
         };
 
 
-        if (
+        if(
             photoInput &&
             photoInput.files &&
             photoInput.files.length > 0
-        ) {
-
-            const file =
-                photoInput.files[0];
-
-
-            if (
-                file.size >
-                8 * 1024 * 1024
-            ) {
-
-                alert(
-                    "حجم عکس باید کمتر از 8 مگابایت باشد."
-                );
-
-                return;
-
-            }
-
+        ){
 
             data.photo =
-                await imageToBase64(file);
+                await readImage(
+                    photoInput.files[0]
+                );
 
         }
 
 
         await update(
+
             ref(
                 db,
                 "players/" + id
             ),
+
             data
+
         );
 
 
         alert(
-            "اطلاعات بازیکن با موفقیت ذخیره شد ✅"
+            "اطلاعات بازیکن ذخیره شد ✅"
         );
 
     }
-
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
         alert(
-            "ذخیره اطلاعات انجام نشد ❌"
+            "ذخیره اطلاعات انجام نشد ❌\n" +
+            error.message
         );
 
     }
@@ -3592,12 +4553,12 @@ async function(id) {
 };
 
 
-/* =========================
+/* =========================================================
    DELETE PLAYER
-========================= */
+========================================================= */
 
 window.deletePlayer =
-async function(id) {
+async function(id){
 
     const answer =
         confirm(
@@ -3605,12 +4566,14 @@ async function(id) {
         );
 
 
-    if (!answer) {
+    if(!answer){
+
         return;
+
     }
 
 
-    try {
+    try{
 
         await remove(
             ref(
@@ -3625,13 +4588,13 @@ async function(id) {
         );
 
     }
-
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
         alert(
-            "حذف بازیکن انجام نشد ❌"
+            "حذف بازیکن انجام نشد ❌\n" +
+            error.message
         );
 
     }
@@ -3639,9 +4602,223 @@ async function(id) {
 };
 
 
-/* =========================
+/* =========================================================
+   MATCH PLAYERS
+========================================================= */
+
+function loadMatchPlayers(){
+
+    onValue(
+
+        ref(
+            db,
+            "players"
+        ),
+
+        snapshot => {
+
+            const container =
+                document.getElementById(
+                    "matchPlayers"
+                );
+
+
+            let html = "";
+
+
+            snapshot.forEach(item => {
+
+                const player =
+                    item.val();
+
+
+                html += `
+
+                    <label class="match-player">
+
+                        <input
+                            type="checkbox"
+                            data-match-player="1"
+                            value="${item.key}"
+                        >
+
+                        <span>
+                            ${escapeHtml(
+                                player.name ||
+                                "بدون نام"
+                            )}
+                        </span>
+
+                        <span class="small">
+                            ${
+                                safeNumber(
+                                    player.games
+                                )
+                            }
+                            بازی
+                        </span>
+
+                    </label>
+
+                `;
+
+            });
+
+
+            container.innerHTML =
+                html ||
+
+                `
+                    <div class="empty">
+                        بازیکنی برای ثبت بازی وجود ندارد.
+                    </div>
+                `;
+
+        },
+
+        error => {
+
+            console.error(
+                "Match players error:",
+                error
+            );
+
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   REGISTER MATCH
+========================================================= */
+
+async function registerMatch(){
+
+    const selected =
+        Array.from(
+            document.querySelectorAll(
+                'input[data-match-player="1"]:checked'
+            )
+        );
+
+
+    if(!selected.length){
+
+        alert(
+            "حداقل یک بازیکن را انتخاب کن ⚽"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        await Promise.all(
+
+            selected.map(
+                async checkbox => {
+
+                    const id =
+                        checkbox.value;
+
+
+                    const snapshot =
+                        await new Promise(
+                            resolve => {
+
+                                onValue(
+
+                                    ref(
+                                        db,
+                                        "players/" + id
+                                    ),
+
+                                    snap =>
+                                        resolve(snap),
+
+                                    {
+                                        onlyOnce:true
+                                    }
+
+                                );
+
+                            }
+                        );
+
+
+                    const player =
+                        snapshot.val() || {};
+
+
+                    const games =
+                        safeNumber(
+                            player.games
+                        );
+
+
+                    await update(
+
+                        ref(
+                            db,
+                            "players/" + id
+                        ),
+
+                        {
+                            games:
+                                games + 1
+                        }
+
+                    );
+
+                }
+            )
+
+        );
+
+
+        selected.forEach(
+            checkbox => {
+                checkbox.checked = false;
+            }
+        );
+
+
+        alert(
+            "بازی برای بازیکنان انتخاب‌شده ثبت شد ✅"
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "ثبت بازی انجام نشد ❌\n" +
+            error.message
+        );
+
+    }
+
+}
+
+
+document
+    .getElementById(
+        "registerMatchBtn"
+    )
+    .addEventListener(
+        "click",
+        registerMatch
+    );
+
+
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 loadGameInfo();
 
@@ -3651,10 +4828,8 @@ loadAttendance();
 
 loadPlayers();
 
-
 </script>
 
 
 </body>
-
 </html>
