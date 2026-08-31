@@ -2,10 +2,16 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Footballers ⚽</title>
+
 
 <style>
 
@@ -22,6 +28,7 @@ html{
 }
 
 body{
+
     margin:0;
     min-height:100vh;
 
@@ -297,30 +304,6 @@ header::after{
         .22s ease;
 }
 
-.menu button::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:-110%;
-    top:0;
-
-    width:55%;
-    height:100%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.30),
-            transparent
-        );
-
-    transition:.5s;
-}
-
 .menu button:hover{
 
     transform:
@@ -331,11 +314,6 @@ header::after{
         rgba(0,0,0,.35);
 }
 
-.menu button:hover::after{
-
-    left:130%;
-}
-
 
 /* =========================================================
    PAGE
@@ -344,8 +322,6 @@ header::after{
 .page{
 
     position:relative;
-
-    overflow:hidden;
 
     padding:23px;
 
@@ -368,7 +344,10 @@ header::after{
         0 25px 50px
         rgba(0,0,0,.24),
 
-        inset 0 0 45px
+        inset
+        0
+        0
+        45px
         rgba(255,215,90,.018);
 }
 
@@ -481,8 +460,7 @@ select{
 
     outline:none;
 
-    transition:
-        .2s;
+    transition:.2s;
 }
 
 input::placeholder{
@@ -501,7 +479,9 @@ select:focus{
 }
 
 input[type="file"]{
+
     padding:9px;
+
 }
 
 select{
@@ -509,7 +489,9 @@ select{
 }
 
 select option{
+
     color:white;
+
     background:#0d141e;
 }
 
@@ -589,12 +571,6 @@ select option{
             #111a27,
             #070d15
         );
-
-    box-shadow:
-        inset 0
-        0
-        35px
-        rgba(255,215,90,.02);
 }
 
 .game-info-title{
@@ -677,8 +653,7 @@ select option{
 
     font-weight:900;
 
-    word-break:
-        break-word;
+    word-break:break-word;
 }
 
 
@@ -840,8 +815,7 @@ select option{
 
 
 /* =========================================================
-   FIFA STYLE PLAYER CARD
-   3:4
+   FIFA PLAYER CARD
 ========================================================= */
 
 .fifa-card{
@@ -889,16 +863,12 @@ select option{
         0 20px 40px
         rgba(0,0,0,.42),
 
-        inset 0
+        inset
+        0
         0
         0
         1px
-        rgba(255,215,90,.10),
-
-        inset 0
-        0
-        50px
-        rgba(0,77,146,.08);
+        rgba(255,215,90,.10);
 
     transition:.28s ease;
 }
@@ -915,12 +885,7 @@ select option{
         rgba(0,0,0,.52),
 
         0 0 24px
-        rgba(255,215,90,.13),
-
-        inset 0
-        0
-        50px
-        rgba(0,77,146,.10);
+        rgba(255,215,90,.13);
 }
 
 .fifa-card::before{
@@ -962,7 +927,7 @@ select option{
 
 
 /* =========================================================
-   CARD TOP
+   FIFA CARD TOP
 ========================================================= */
 
 .card-top{
@@ -987,12 +952,6 @@ select option{
     line-height:.92;
 
     font-weight:900;
-
-    text-shadow:
-        0
-        0
-        10px
-        rgba(255,215,90,.12);
 }
 
 .card-position{
@@ -1026,7 +985,7 @@ select option{
 
 
 /* =========================================================
-   CARD PHOTO
+   FIFA CARD PHOTO
 ========================================================= */
 
 .photo-frame{
@@ -1055,6 +1014,7 @@ select option{
 .player-photo{
 
     width:100%;
+
     height:100%;
 
     display:block;
@@ -1075,6 +1035,7 @@ select option{
 .no-photo{
 
     width:72%;
+
     height:100%;
 
     display:flex;
@@ -1095,7 +1056,7 @@ select option{
 
 
 /* =========================================================
-   CARD NAME
+   FIFA CARD NAME
 ========================================================= */
 
 .card-name{
@@ -1146,40 +1107,7 @@ select option{
 
 
 /* =========================================================
-   CARD ATTRIBUTES
-========================================================= */
-
-.card-attributes{
-
-    position:absolute;
-
-    z-index:5;
-
-    top:9%;
-
-    left:10%;
-
-    display:grid;
-
-    gap:2px;
-
-    color:#cad2dd;
-
-    font-size:9px;
-
-    text-align:left;
-}
-
-.attr-line strong{
-
-    color:#f6d66b;
-
-    margin-left:2px;
-}
-
-
-/* =========================================================
-   CARD STATS
+   FIFA CARD STATS
 ========================================================= */
 
 .card-stats{
@@ -1309,10 +1237,6 @@ select option{
     gap:10px;
 }
 
-.full{
-    grid-column:1/-1;
-}
-
 .admin-label{
 
     display:block;
@@ -1346,6 +1270,16 @@ select option{
         );
 
     font-weight:900;
+
+    cursor:pointer;
+}
+
+.save-btn:hover{
+
+    filter:brightness(1.08);
+
+    transform:
+        translateY(-1px);
 }
 
 .delete-btn{
@@ -1370,15 +1304,87 @@ select option{
         );
 
     font-weight:800;
+
+    cursor:pointer;
 }
 
-.admin-card{
+.delete-btn:hover{
 
-    text-align:right;
+    filter:brightness(1.08);
 }
 
-.admin-card h3{
+
+/* =========================================================
+   ADMIN PLAYER CARD
+   این کارت هیچ ارتباطی با fifa-card ندارد
+========================================================= */
+
+.admin-player-card{
+
+    position:relative;
+
+    width:100%;
+
+    height:auto;
+
+    min-height:0;
+
+    padding:20px;
+
+    overflow:visible;
+
+    border:
+        1px solid
+        #273444;
+
+    border-radius:21px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111a25,
+            #090f17
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.25);
+}
+
+.admin-player-card h3{
+
+    margin:
+        10px
+        0
+        16px;
+
+    color:#f5d76c;
+
     text-align:center;
+
+    font-size:20px;
+}
+
+.admin-player-card input,
+.admin-player-card select{
+
+    width:100%;
+
+    display:block;
+
+    margin:
+        6px
+        0;
+}
+
+.admin-player-card .save-btn,
+.admin-player-card .delete-btn{
+
+    display:block;
+
+    position:relative;
+
+    z-index:5;
 }
 
 .admin-photo-preview{
@@ -1421,6 +1427,7 @@ select option{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     border:
@@ -1498,6 +1505,7 @@ select option{
 }
 
 .small{
+
     color:#778293;
 
     font-size:11px;
@@ -1542,8 +1550,10 @@ select option{
 @media(max-width:900px){
 
     .game-info-grid{
+
         grid-template-columns:
             repeat(2,1fr);
+
     }
 
 }
@@ -1551,27 +1561,33 @@ select option{
 @media(max-width:700px){
 
     .menu{
+
         grid-template-columns:1fr;
+
     }
 
     .status-buttons{
+
         grid-template-columns:1fr;
+
     }
 
     .two-col{
-        grid-template-columns:1fr;
-    }
 
-    .full{
-        grid-column:auto;
+        grid-template-columns:1fr;
+
     }
 
     .cards{
+
         grid-template-columns:1fr;
+
     }
 
     .page{
+
         padding:16px;
+
     }
 
 }
@@ -1579,41 +1595,15 @@ select option{
 @media(max-width:430px){
 
     .game-info-grid{
+
         grid-template-columns:1fr;
+
     }
 
 }
-/* =========================================================
-   FIX ADMIN PLAYER CARDS
-========================================================= */
 
-.admin-card{
-    aspect-ratio:auto !important;
-    min-height:auto !important;
-    height:auto !important;
-    overflow:visible !important;
-
-    padding:20px !important;
-
-    display:block;
-}
-
-.admin-card::before,
-.admin-card::after{
-    display:none !important;
-}
-
-.admin-card h3{
-    margin-top:10px;
-}
-
-.admin-card input,
-.admin-card select,
-.admin-card button{
-    position:relative;
-    z-index:20;
-}
 </style>
+
 </head>
 
 
@@ -1786,11 +1776,12 @@ select option{
 </header>
 
 
+
 <div class="container">
 
 
 <!-- =========================================================
-     MAIN MENU
+     MENU
 ========================================================= -->
 
 <div class="menu">
@@ -1818,8 +1809,9 @@ select option{
 </div>
 
 
+
 <!-- =========================================================
-     ATTENDANCE
+     ATTENDANCE PAGE
 ========================================================= -->
 
 <section
@@ -1831,8 +1823,6 @@ select option{
         ⚽ ثبت اعلام حضور
     </h2>
 
-
-    <!-- اطلاعات بازی -->
 
     <div class="game-info">
 
@@ -1923,13 +1913,10 @@ select option{
 
             </div>
 
-
         </div>
 
     </div>
 
-
-    <!-- انتخاب بازیکن -->
 
     <select id="attendancePlayer">
 
@@ -1939,8 +1926,6 @@ select option{
 
     </select>
 
-
-    <!-- وضعیت -->
 
     <div class="status-buttons">
 
@@ -1994,8 +1979,9 @@ select option{
 </section>
 
 
+
 <!-- =========================================================
-     PLAYERS
+     PLAYERS PAGE
 ========================================================= -->
 
 <section
@@ -2022,8 +2008,9 @@ select option{
 </section>
 
 
+
 <!-- =========================================================
-     ADMIN
+     ADMIN PAGE
 ========================================================= -->
 
 <section
@@ -2036,7 +2023,7 @@ select option{
     </h2>
 
 
-    <!-- LOGIN -->
+    <!-- ADMIN LOGIN -->
 
     <div
         id="adminLogin"
@@ -2063,6 +2050,7 @@ select option{
         </button>
 
     </div>
+
 
 
     <!-- ADMIN CONTENT -->
@@ -2142,7 +2130,6 @@ select option{
 
                 </div>
 
-
             </div>
 
 
@@ -2154,6 +2141,7 @@ select option{
             </button>
 
         </div>
+
 
 
         <!-- =================================================
@@ -2278,6 +2266,7 @@ select option{
         </div>
 
 
+
         <!-- =================================================
              REGISTER MATCH
         ================================================== -->
@@ -2320,6 +2309,7 @@ select option{
         </div>
 
 
+
         <!-- =================================================
              PLAYER MANAGEMENT
         ================================================== -->
@@ -2354,24 +2344,26 @@ select option{
 </div>
 
 
+
 <!-- =========================================================
-     FIREBASE + JS
+     FIREBASE + JAVASCRIPT
 ========================================================= -->
 
 <script type="module">
 
 
+/* =========================================================
+   FIREBASE IMPORT
+========================================================= */
+
 import {
-
     initializeApp
-
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
 import {
-
     getDatabase,
     ref,
     push,
@@ -2379,7 +2371,6 @@ import {
     onValue,
     update,
     remove
-
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
@@ -2424,8 +2415,9 @@ const db =
     getDatabase(app);
 
 
+
 /* =========================================================
-   HELPERS
+   PAGE NAVIGATION
 ========================================================= */
 
 window.showPage = function(pageId){
@@ -2446,7 +2438,9 @@ window.showPage = function(pageId){
 
         if(page){
 
-            page.classList.add("hidden");
+            page.classList.add(
+                "hidden"
+            );
 
         }
 
@@ -2459,7 +2453,10 @@ window.showPage = function(pageId){
 
     if(selected){
 
-        selected.classList.remove("hidden");
+        selected.classList.remove(
+            "hidden"
+        );
+
 
         window.scrollTo({
 
@@ -2474,6 +2471,10 @@ window.showPage = function(pageId){
 };
 
 
+
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function escapeHtml(value){
 
@@ -2539,17 +2540,23 @@ function safeNumber(
 function statusIcon(status){
 
     if(status === "میام"){
+
         return "🟢";
+
     }
 
 
     if(status === "نمیام"){
+
         return "🔴";
+
     }
 
 
     if(status === "شاید"){
+
         return "🟡";
+
     }
 
 
@@ -2558,8 +2565,9 @@ function statusIcon(status){
 }
 
 
+
 /* =========================================================
-   IMAGE
+   IMAGE READER
 ========================================================= */
 
 function readImage(file){
@@ -2633,17 +2641,13 @@ function readImage(file){
             };
 
 
-            /*
-              عکس به صورت مستقیم ذخیره می‌شود.
-              هیچ فیلتر یا تغییر چهره‌ای اعمال نمی‌شود.
-            */
-
             reader.readAsDataURL(file);
 
         }
     );
 
 }
+
 
 
 /* =========================================================
@@ -2698,15 +2702,18 @@ function loadGameInfo(){
                     "gameClubInput"
                 );
 
+
             const addressInput =
                 document.getElementById(
                     "gameAddressInput"
                 );
 
+
             const dateInput =
                 document.getElementById(
                     "gameDateInput"
                 );
+
 
             const timeInput =
                 document.getElementById(
@@ -2852,8 +2859,9 @@ document
     );
 
 
+
 /* =========================================================
-   ATTENDANCE PLAYERS
+   ATTENDANCE PLAYER LIST
 ========================================================= */
 
 function loadAttendancePlayers(){
@@ -2972,6 +2980,7 @@ function loadAttendancePlayers(){
 }
 
 
+
 /* =========================================================
    SAVE ATTENDANCE
 ========================================================= */
@@ -3028,7 +3037,8 @@ async function saveAttendance(status){
             "ثبت اعلام حضور انجام نشد ❌";
 
         alert(
-            "Firebase اجازه تغییر وضعیت را نداد."
+            "ثبت اعلام حضور انجام نشد.\n" +
+            error.message
         );
 
     }
@@ -3036,8 +3046,11 @@ async function saveAttendance(status){
 }
 
 
+
 document
-    .getElementById("comeBtn")
+    .getElementById(
+        "comeBtn"
+    )
     .addEventListener(
         "click",
         () => saveAttendance("میام")
@@ -3045,7 +3058,9 @@ document
 
 
 document
-    .getElementById("noBtn")
+    .getElementById(
+        "noBtn"
+    )
     .addEventListener(
         "click",
         () => saveAttendance("نمیام")
@@ -3053,11 +3068,14 @@ document
 
 
 document
-    .getElementById("maybeBtn")
+    .getElementById(
+        "maybeBtn"
+    )
     .addEventListener(
         "click",
         () => saveAttendance("شاید")
     );
+
 
 
 /* =========================================================
@@ -3096,6 +3114,8 @@ function loadAttendance(){
                     );
 
                 }
+
+
                 else if(
                     player.status ===
                     "نمیام"
@@ -3106,6 +3126,8 @@ function loadAttendance(){
                     );
 
                 }
+
+
                 else if(
                     player.status ===
                     "شاید"
@@ -3120,33 +3142,30 @@ function loadAttendance(){
             });
 
 
-            const makeNames =
-                (
-                    names,
-                    icon
-                ) => {
+            function makeNames(
+                names,
+                icon
+            ){
 
-                    if(
-                        !names.length
-                    ){
+                if(!names.length){
 
-                        return "کسی ثبت نکرده";
+                    return "کسی ثبت نکرده";
 
-                    }
+                }
 
 
-                    return names
+                return names
 
-                        .map(
-                            name =>
-                                icon +
-                                " " +
-                                escapeHtml(name)
-                        )
+                    .map(
+                        name =>
+                            icon +
+                            " " +
+                            escapeHtml(name)
+                    )
 
-                        .join("<br>");
+                    .join("<br>");
 
-                };
+            }
 
 
             document.getElementById(
@@ -3214,6 +3233,7 @@ function loadAttendance(){
                 error
             );
 
+
             document.getElementById(
                 "attendanceList"
             ).innerHTML = `
@@ -3231,8 +3251,9 @@ function loadAttendance(){
 }
 
 
+
 /* =========================================================
-   PLAYER CARDS
+   PLAYER FIFA CARDS
 ========================================================= */
 
 function loadPlayers(){
@@ -3341,54 +3362,6 @@ function loadPlayers(){
                     );
 
 
-                const pac =
-                    safeNumber(
-                        player.pac,
-                        0,
-                        99
-                    );
-
-
-                const sho =
-                    safeNumber(
-                        player.sho,
-                        0,
-                        99
-                    );
-
-
-                const pas =
-                    safeNumber(
-                        player.pas,
-                        0,
-                        99
-                    );
-
-
-                const dri =
-                    safeNumber(
-                        player.dri,
-                        0,
-                        99
-                    );
-
-
-                const def =
-                    safeNumber(
-                        player.def,
-                        0,
-                        99
-                    );
-
-
-                const phy =
-                    safeNumber(
-                        player.phy,
-                        0,
-                        99
-                    );
-
-
                 const photo =
                     player.photo
 
@@ -3433,6 +3406,7 @@ function loadPlayers(){
                                     ${score}
                                 </div>
 
+
                                 <div class="card-position">
                                     ${escapeHtml(
                                         player.position ||
@@ -3449,53 +3423,6 @@ function loadPlayers(){
                                 )}
                             </div>
 
-
-                        </div>
-
-
-                        <div class="card-attributes">
-
-                            <div class="attr-line">
-                                PAC
-                                <strong>
-                                    ${pac}
-                                </strong>
-                            </div>
-
-                            <div class="attr-line">
-                                SHO
-                                <strong>
-                                    ${sho}
-                                </strong>
-                            </div>
-
-                            <div class="attr-line">
-                                PAS
-                                <strong>
-                                    ${pas}
-                                </strong>
-                            </div>
-
-                            <div class="attr-line">
-                                DRI
-                                <strong>
-                                    ${dri}
-                                </strong>
-                            </div>
-
-                            <div class="attr-line">
-                                DEF
-                                <strong>
-                                    ${def}
-                                </strong>
-                            </div>
-
-                            <div class="attr-line">
-                                PHY
-                                <strong>
-                                    ${phy}
-                                </strong>
-                            </div>
 
                         </div>
 
@@ -3520,6 +3447,7 @@ function loadPlayers(){
                         <div class="card-age">
 
                             🎂 سن:
+
                             ${
                                 age > 0
                                 ? age
@@ -3587,12 +3515,15 @@ function loadPlayers(){
                 error
             );
 
+
             document.getElementById(
                 "playerCards"
             ).innerHTML = `
 
                 <div class="empty">
+
                     بارگذاری بازیکنان انجام نشد ❌
+
                 </div>
 
             `;
@@ -3602,6 +3533,7 @@ function loadPlayers(){
     );
 
 }
+
 
 
 /* =========================================================
@@ -3645,10 +3577,13 @@ function loginAdmin(){
 
 
     loadGameInfo();
+
     loadAdminPlayers();
+
     loadMatchPlayers();
 
 }
+
 
 
 document
@@ -3680,6 +3615,7 @@ document
 
         }
     );
+
 
 
 /* =========================================================
@@ -3776,7 +3712,9 @@ async function addPlayer(){
 
 
         await set(
+
             playerRef,
+
             {
 
                 name,
@@ -3795,21 +3733,10 @@ async function addPlayer(){
 
                 assists:0,
 
-                games:0,
-
-                pac:0,
-
-                sho:0,
-
-                pas:0,
-
-                dri:0,
-
-                def:0,
-
-                phy:0
+                games:0
 
             }
+
         );
 
 
@@ -3852,6 +3779,7 @@ async function addPlayer(){
 }
 
 
+
 document
     .getElementById(
         "addPlayerBtn"
@@ -3860,6 +3788,7 @@ document
         "click",
         addPlayer
     );
+
 
 
 /* =========================================================
@@ -3899,9 +3828,7 @@ function loadAdminPlayers(){
                 let photoPreview = "";
 
 
-                if(
-                    player.photo
-                ){
+                if(player.photo){
 
                     photoPreview = `
 
@@ -3930,7 +3857,7 @@ function loadAdminPlayers(){
                 html += `
 
                     <div
-                        class="fifa-card admin-card"
+                        class="admin-player-card"
                     >
 
 
@@ -3948,11 +3875,10 @@ function loadAdminPlayers(){
                         </h3>
 
 
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             👤 نام
                         </label>
+
 
                         <input
                             id="name-${id}"
@@ -3962,11 +3888,10 @@ function loadAdminPlayers(){
                         >
 
 
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             🎂 سن
                         </label>
+
 
                         <input
                             id="age-${id}"
@@ -3981,11 +3906,10 @@ function loadAdminPlayers(){
                         >
 
 
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             📌 پست
                         </label>
+
 
                         <select
                             id="position-${id}"
@@ -3999,11 +3923,10 @@ function loadAdminPlayers(){
                         </select>
 
 
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             📷 عکس جدید
                         </label>
+
 
                         <input
                             id="photo-${id}"
@@ -4012,11 +3935,10 @@ function loadAdminPlayers(){
                         >
 
 
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             🟢 وضعیت حضور
                         </label>
+
 
                         <select
                             id="status-${id}"
@@ -4034,6 +3956,7 @@ function loadAdminPlayers(){
                                 🟢 میام
                             </option>
 
+
                             <option
                                 value="نمیام"
                                 ${
@@ -4045,6 +3968,7 @@ function loadAdminPlayers(){
                             >
                                 🔴 نمیام
                             </option>
+
 
                             <option
                                 value="شاید"
@@ -4061,11 +3985,10 @@ function loadAdminPlayers(){
                         </select>
 
 
-                        <label
-                            class="admin-label"
-                        >
-                            ⭐ امتیاز
+                        <label class="admin-label">
+                            ⭐ امتیاز کلی
                         </label>
+
 
                         <input
                             id="score-${id}"
@@ -4082,137 +4005,10 @@ function loadAdminPlayers(){
                         >
 
 
-                        <label
-                            class="admin-label"
-                        >
-                            ⚡ PAC
-                        </label>
-
-                        <input
-                            id="pac-${id}"
-                            type="number"
-                            min="0"
-                            max="99"
-                            value="${
-                                safeNumber(
-                                    player.pac,
-                                    0,
-                                    99
-                                )
-                            }"
-                        >
-
-
-                        <label
-                            class="admin-label"
-                        >
-                            🎯 SHO
-                        </label>
-
-                        <input
-                            id="sho-${id}"
-                            type="number"
-                            min="0"
-                            max="99"
-                            value="${
-                                safeNumber(
-                                    player.sho,
-                                    0,
-                                    99
-                                )
-                            }"
-                        >
-
-
-                        <label
-                            class="admin-label"
-                        >
-                            🪄 PAS
-                        </label>
-
-                        <input
-                            id="pas-${id}"
-                            type="number"
-                            min="0"
-                            max="99"
-                            value="${
-                                safeNumber(
-                                    player.pas,
-                                    0,
-                                    99
-                                )
-                            }"
-                        >
-
-
-                        <label
-                            class="admin-label"
-                        >
-                            🎮 DRI
-                        </label>
-
-                        <input
-                            id="dri-${id}"
-                            type="number"
-                            min="0"
-                            max="99"
-                            value="${
-                                safeNumber(
-                                    player.dri,
-                                    0,
-                                    99
-                                )
-                            }"
-                        >
-
-
-                        <label
-                            class="admin-label"
-                        >
-                            🛡️ DEF
-                        </label>
-
-                        <input
-                            id="def-${id}"
-                            type="number"
-                            min="0"
-                            max="99"
-                            value="${
-                                safeNumber(
-                                    player.def,
-                                    0,
-                                    99
-                                )
-                            }"
-                        >
-
-
-                        <label
-                            class="admin-label"
-                        >
-                            💪 PHY
-                        </label>
-
-                        <input
-                            id="phy-${id}"
-                            type="number"
-                            min="0"
-                            max="99"
-                            value="${
-                                safeNumber(
-                                    player.phy,
-                                    0,
-                                    99
-                                )
-                            }"
-                        >
-
-
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             ⚽ گل
                         </label>
+
 
                         <input
                             id="goals-${id}"
@@ -4226,11 +4022,10 @@ function loadAdminPlayers(){
                         >
 
 
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             🎯 پاس گل
                         </label>
+
 
                         <input
                             id="assists-${id}"
@@ -4244,11 +4039,10 @@ function loadAdminPlayers(){
                         >
 
 
-                        <label
-                            class="admin-label"
-                        >
+                        <label class="admin-label">
                             🏟 بازی
                         </label>
+
 
                         <input
                             id="games-${id}"
@@ -4286,12 +4080,15 @@ function loadAdminPlayers(){
 
 
             container.innerHTML =
+
                 html ||
 
                 `
 
                     <div class="empty">
+
                         هنوز بازیکنی ثبت نشده ⚽
+
                     </div>
 
                 `;
@@ -4305,6 +4102,19 @@ function loadAdminPlayers(){
                 error
             );
 
+
+            document.getElementById(
+                "adminPlayers"
+            ).innerHTML = `
+
+                <div class="empty">
+
+                    دریافت بازیکنان انجام نشد ❌
+
+                </div>
+
+            `;
+
         }
 
     );
@@ -4312,26 +4122,35 @@ function loadAdminPlayers(){
 }
 
 
+
 /* =========================================================
    POSITION OPTIONS
 ========================================================= */
 
-function positionOptions(
-    selected
-){
+function positionOptions(selected){
 
     const options = [
 
         ["ST","ST - مهاجم"],
+
         ["CF","CF - مهاجم"],
+
         ["LW","LW - وینگر چپ"],
+
         ["RW","RW - وینگر راست"],
+
         ["CAM","CAM - هافبک هجومی"],
+
         ["CM","CM - هافبک"],
+
         ["CDM","CDM - هافبک دفاعی"],
+
         ["CB","CB - دفاع وسط"],
+
         ["LB","LB - دفاع چپ"],
+
         ["RB","RB - دفاع راست"],
+
         ["GK","GK - دروازه‌بان"]
 
     ];
@@ -4359,6 +4178,7 @@ function positionOptions(
         .join("");
 
 }
+
 
 
 /* =========================================================
@@ -4402,66 +4222,6 @@ async function(id){
             safeNumber(
                 document.getElementById(
                     "score-" + id
-                ).value,
-                0,
-                99
-            );
-
-
-        const pac =
-            safeNumber(
-                document.getElementById(
-                    "pac-" + id
-                ).value,
-                0,
-                99
-            );
-
-
-        const sho =
-            safeNumber(
-                document.getElementById(
-                    "sho-" + id
-                ).value,
-                0,
-                99
-            );
-
-
-        const pas =
-            safeNumber(
-                document.getElementById(
-                    "pas-" + id
-                ).value,
-                0,
-                99
-            );
-
-
-        const dri =
-            safeNumber(
-                document.getElementById(
-                    "dri-" + id
-                ).value,
-                0,
-                99
-            );
-
-
-        const def =
-            safeNumber(
-                document.getElementById(
-                    "def-" + id
-                ).value,
-                0,
-                99
-            );
-
-
-        const phy =
-            safeNumber(
-                document.getElementById(
-                    "phy-" + id
                 ).value,
                 0,
                 99
@@ -4521,13 +4281,6 @@ async function(id){
 
             score,
 
-            pac,
-            sho,
-            pas,
-            dri,
-            def,
-            phy,
-
             goals,
 
             assists,
@@ -4536,6 +4289,13 @@ async function(id){
 
         };
 
+
+        /*
+          اگر عکس جدید انتخاب شده باشد،
+          عکس قبلی جایگزین می‌شود.
+          اگر عکس جدید انتخاب نشده باشد،
+          عکس قبلی دست‌نخورده باقی می‌ماند.
+        */
 
         if(
             photoInput &&
@@ -4582,6 +4342,7 @@ async function(id){
 };
 
 
+
 /* =========================================================
    DELETE PLAYER
 ========================================================= */
@@ -4605,10 +4366,12 @@ async function(id){
     try{
 
         await remove(
+
             ref(
                 db,
                 "players/" + id
             )
+
         );
 
 
@@ -4629,6 +4392,7 @@ async function(id){
     }
 
 };
+
 
 
 /* =========================================================
@@ -4671,20 +4435,27 @@ function loadMatchPlayers(){
                             value="${item.key}"
                         >
 
+
                         <span>
+
                             ${escapeHtml(
                                 player.name ||
                                 "بدون نام"
                             )}
+
                         </span>
 
+
                         <span class="small">
+
                             ${
                                 safeNumber(
                                     player.games
                                 )
                             }
+
                             بازی
+
                         </span>
 
                     </label>
@@ -4695,12 +4466,17 @@ function loadMatchPlayers(){
 
 
             container.innerHTML =
+
                 html ||
 
                 `
+
                     <div class="empty">
+
                         بازیکنی برای ثبت بازی وجود ندارد.
+
                     </div>
+
                 `;
 
         },
@@ -4719,6 +4495,7 @@ function loadMatchPlayers(){
 }
 
 
+
 /* =========================================================
    REGISTER MATCH
 ========================================================= */
@@ -4727,9 +4504,11 @@ async function registerMatch(){
 
     const selected =
         Array.from(
+
             document.querySelectorAll(
                 'input[data-match-player="1"]:checked'
             )
+
         );
 
 
@@ -4797,8 +4576,10 @@ async function registerMatch(){
                         ),
 
                         {
+
                             games:
                                 games + 1
+
                         }
 
                     );
@@ -4811,7 +4592,10 @@ async function registerMatch(){
 
         selected.forEach(
             checkbox => {
-                checkbox.checked = false;
+
+                checkbox.checked =
+                    false;
+
             }
         );
 
@@ -4835,6 +4619,7 @@ async function registerMatch(){
 }
 
 
+
 document
     .getElementById(
         "registerMatchBtn"
@@ -4843,6 +4628,7 @@ document
         "click",
         registerMatch
     );
+
 
 
 /* =========================================================
@@ -4861,4 +4647,5 @@ loadPlayers();
 
 
 </body>
+
 </html>
